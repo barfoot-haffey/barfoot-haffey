@@ -1,4 +1,13 @@
-<!-- 
+<?php
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+?>
+
+<!--
 /*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
     A program for running experiments on the web
     Copyright 2012-2016 Mikey Garcia & Nate Kornell
@@ -15,167 +24,375 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
-*/
+ 		
+		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
+*/  
 -->
 <head>
-	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
-	<meta charset="utf-8">
+
+<style>
+body, html {
+    height: 100%;
+}
+
+.parallax {
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+
+
+<head>
+	<link rel="shortcut icon" type="image/x-icon" href="logos/collector.ico.png" />	
 </head>
 
-
-<script src="browserCheck.js"></script>
-<?php
-
-require_once 'Code/initiateCollector.php';
-require_once("libraries.html");
-require "Code/nojs.php";
-?>
-
-<?php
-if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    
-	require_once "../../sqlConnect.php";
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	$cwd = explode("/",getcwd ());
-	if(count($cwd) == 1){ //then developing on local host
-		$cwd = explode("\\",getcwd ());
-		$_SESSION['version'] = $cwd[5];
-		$_SESSION['local_website'] = "http://localhost/collector_local";
-	} else {
-		$_SESSION['version'] = $cwd[7];
-		$_SESSION['local_website'] = "https://www.open-collector.org";
-	}
-  $logo_string = explode(".",$_SESSION['version']);
-  $logo_string = $logo_string[0];
-
-?>
+<body>
 
 
-<link rel="stylesheet" href="Style.css"></link>
 
-<nav class="navbar fixed-top navbar-light bg-primary navbar-expand-lg" id="top_navbar" style="height:50px; padding:5px">
-  <?php require("../logos/logo.php") ?>
-	<div class="collapse navbar-collapse">	
-		<ul class="navbar-nav mr-auto">
-			<div id="page_selected"></div>
-		</ul>		    
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/ammap.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+	<li class="nav-item">
+		<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#navs-home" role="tab" aria-controls="pills-home" aria-selected="true">Versions</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#navs-contributors" role="tab" aria-controls="pills-profile" aria-selected="false">Contributors</a>
+	</li>
+	<li class="nav-item"  id="researchers_map_tab">
+		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-map" role="tab" aria-controls="pills-contact" aria-selected="false">Researcher map</a>
+	</li>
+  <li class="nav-item"  id="participant_map_tab">
+		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-pp_map" role="tab" aria-controls="pills-contact" aria-selected="false">Participant map</a>
+	</li>
+	<li class="nav-item"  id="contact_tab">
+		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+	</li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+	<div class="tab-pane fade show active" id="navs-home" role="tabpanel" aria-labelledby="pills-home-tab">
+		<div class="jumbotron">
+			<h1 class="display-4">Collector</h1>
+			<p class="lead">A free tool for online data collection</p>
+			<hr class="my-4">
+			<p>Select which version you would like to use:</p>
+			<img src="logos/kitten.png"/ style="height:50px;width:50px"> <a class="btn btn-primary btn-lg" href="kitten" role="button">Kitten</a> A developmental version of <b>Cat</b> <br><br>
+			<img src="logos/cat.png"/ style="height:50px;width:50px"> <button class="btn btn-disabled btn-lg" href="" role="button">Cat</button> (not yet released)
+		</div>
 	</div>
-	<a href="https://collectalk.com/" target="_blank" style="margin:2px">
-		<button class="btn btn-primary">Discuss</button>
-	</a>
-	<a href="http://www.uoropen.org/Workshops/Collector-Tutorial/" target="_blank" style="margin:2px">
-		<button class="btn btn-primary">Tutorial</button>
-	</a>
-	<button class="btn btn-outline-primary bg-white" id="help_btn" style="margin:2px; font-weight:bold">Help</button>
-	<?php require("LogoutInterface.php") ?>
-</nav>
+	<div class="tab-pane fade" id="navs-contributors" role="tabpanel" aria-labelledby="pills-profile-tab">
+		<?php require("contributors.php") ?>	
+	</div>
+	<div class="tab-pane fade" id="navs-map" role="tabpanel" aria-labelledby="pills-contact-tab">
+		<div id="mapdiv" style="width: 100%; height:400px;"></div>
+    <div id="listdiv"></div>
+	</div>
+  <div class="tab-pane fade" id="navs-pp_map" role="tabpanel" aria-labelledby="pills-contact-tab">
+		<div id="ppmapdiv" style="width: 100%; height:400px;"></div>
+    <div id="pplistdiv"></div>
+	</div>
+	<div class="tab-pane fade" id="navs-contact" role="tabpanel" aria-labelledby="pills-contact-tab">			
+			<table class="table">
+				<tr>
+					<th> Query type </th>
+					<th> Person </th>
+					<th> Role </th>
+					<th> Email </th>
+				<tr>
+					<td> General </td>
+					<td> Dr Anthony Haffey </td>
+					<td> Lead Developer </td>
+					<td> anthony dot haffey at gmail dot com </td>
+				</tr>
+			</table>
+	</div>
+	
+	
+	
+</div>
 
-<br><br>
 
-<table id="content_table" style="width:100%">
-  <tr>
-		<td colspan="2" class='survey_cell_view_td'><textarea id="survey_cell_view" readonly></textarea></td>		
-	</td>
-	<tr>
-    <td id="content_area">
-      <?php 
-        $names = array("Simulator","Surveys","Boost","Data");
-        $pages = ["Simulator/simulator.php","Surveys/Surveys.php","Boost/Boost.php","Data/data.php"];
-        for($i = 0; $i < count($pages); $i++){
-          $this_name = $names[$i];
-          $this_page = $pages[$i];          
-      ?>
-          <div class="collapse multi-collapse" style="width:100%" id="<?php echo "collapse_$this_name" ?>" >
-            <?php require("IndexTabs/$this_page"); ?>		
-          </div>	          
-      <?php
+
+<style>
+#mapdiv {
+  background: #eee;
+}
+</style>
+<script>
+
+var icon = "M21.25,8.375V28h6.5V8.375H21.25zM12.25,28h6.5V4.125h-6.5V28zM3.25,28h6.5V12.625h-6.5V28z";
+
+maps_initiated = {
+  researcher:false,
+  participant:false
+}
+
+//navs-pp_map
+$("#participant_map_tab").on("click",function(){
+  if(maps_initiated.participant == false){
+    maps_initiated.participant = true;
+    $.post("AjaxPPCountries.php",{},function(returned_data){
+      
+      data = Papa.parse(Papa.unparse(JSON.parse(returned_data)),{       
+        delimiter: "",	// auto-detect
+        newline: "",	// auto-detect
+        quoteChar: '"',
+        escapeChar: '"',
+        header: true,
+        trimHeader: false,
+        dynamicTyping: false,
+        preview: 0,
+        encoding: "",
+        worker: false,
+        comments: false,
+        step: undefined,
+        complete: undefined,
+        error: undefined,
+        download: false,
+        skipEmptyLines: false,
+        chunk: undefined,
+        fastMode: undefined,
+        beforeFirstChunk: undefined,
+        withCredentials: undefined
+      });
+            
+      areas_array  = [];
+      images_array = [];
+      
+      var table_content = "<table class='table'>" +
+                            "<thead>" +
+                              "<tr>" +
+                                "<th scope='col'>Country</th>" +
+                                "<th scope='col'>Participants</th>" +
+                              "</tr>" +
+                            "</thead>" +
+                            "<tbody>";
+      
+      
+      var row_order = Object.keys(data.data);
+      
+      row_order.sort(function(a,b) {
+        return data.data[a].frequency - data.data[b].frequency;
+      });
+      console.dir(data);
+      data.data_sorted = [];
+      for(var i = 0; i < data.data.length; i++){
+        data.data_sorted[i] = data.data[row_order[i]];
+      }
+      data.data_sorted = data.data_sorted.reverse();
+      
+      var max_frequency = 0;
+      data.data_sorted.forEach(function(row){
+        if(row.frequency > max_frequency){
+          max_frequency = row.frequency;
         }
-?>
-    </td>		
-		<td id="help_area" class="help_class">
-			<?php 
-				if($_SESSION['user_email'] !== "guest"){
-					require("IndexTabs/Help/help.php");
-				}
-			?>
-		</td>
-	</tr>
-</table>
+      });
+      
+      data.data_sorted.forEach(function(row){
+        
+        table_content +=  "<tr>"+
+                            "<td>" + row.country + "</td>" +
+                            "<td>" + row.frequency + "</td>" +
+                          "</tr>" 
+        
+        var this_opacity = row.frequency/max_frequency < .1 ? .1 : row.frequency/max_frequency;
+        
+        if(row.institute !== ""){
+          areas_array.push({
+            id:row.code,
+            color:"rgb(0, 0, 255, " + this_opacity + ")",
+            //color:"#6495ED",
+            fillAlphas:row.frequency
+          });
+          
+        }
+      });
+      
+      table_content += "</tbody>"  + "</table>";
+      
+      $("#pplistdiv").html(table_content);
+      
+      AmCharts.makeChart( "ppmapdiv", {
+        /**
+         * this tells amCharts it's a map
+         */
+        "type": "map",
+      
+      
+     
+        /**
+         * create data provider object
+         * map property is usually the same as the name of the map file.
+         * getAreasFromMap indicates that amMap should read all the areas available
+         * in the map data and treat them as they are included in your data provider.
+         * in case you don't set it to true, all the areas except listed in data
+         * provider will be treated as unlisted.
+         */
+        "dataProvider": {
+          "map": "worldLow",
+          "areas": areas_array,
+      "images": images_array
+        },
+      "projection": "winkel3",
 
+        /** 
+         * create areas settings
+         * autoZoom set to true means that the map will zoom-in when clicked on the area
+         * selectedColor indicates color of the clicked area.
+         */
+        "areasSettings": {
+          "autoZoom": true,
+          "selectedColor": "#CC0000"
+        },
 
-<script>
-
-navbar_names  = <?= json_encode($names) ?>;
-navbar_html = "";
-navbar_colors = ["primary","primary","primary","primary"];
-
-navbar_names.forEach(function(name,index){
-	navbar_html += '<label class="btn btn-'+navbar_colors[index]+' select_page" id="option_'+name+'"  data-toggle="collapse" href="#collapse_'+name+'" role="button" aria-expanded="false" aria-controls="#collapse_'+name+'">'+
-		'<input type="radio" style="display:none" name="options" autocomplete="off" >'+name+
-	'</label>';	
+        /**
+         * let's say we want a small map to be displayed, so let's create it
+         */
+        "smallMap": {}
+      });		 
+    })
+    
+  
+  }  
+  
 });
-$("#page_selected").html(navbar_html);
 
-$(".select_page").on("click",function(){	
-	$('.collapse').collapse('hide');
-	$('.select_page').css("font-weight","normal");
-  $(this).css("font-weight","bold");	
-  $('.select_page').removeClass("bg-white");
-  $('.select_page').removeClass("text-primary");  
-  $(this).addClass("bg-white");
-  $(this).addClass("text-primary");
-  var this_id = this.id;
-	if(this_id == "option_Simulator"){
-		$("#help_content").animate(
-		{
-			top:"100px"
-		},
-		{
-			duration:200      
-		});  
-	} else {
-		setTimeout(function(){	
-			$("#help_content").animate(
-			{
-				top:"60px"
-			},
-			{
-				duration:200
-			});
-		},300);		
-	}
-});	
-if($("#collector_account_email").html() == "--undefined--" | $("#collector_account_email").html() == "guest"){
-	highlight_account("dropbox_account_email");
-	highlight_account("collector_account_email");	
-}
+$("#researchers_map_tab").on("click",function(){
+  if(maps_initiated.researcher == false){
+    maps_initiated.researcher = true;
+  
+    $.post("AjaxInstitutions.php",{},function(returned_data){
+      data = Papa.parse(Papa.unparse(JSON.parse(returned_data)),{       
+        delimiter: "",	// auto-detect
+        newline: "",	// auto-detect
+        quoteChar: '"',
+        escapeChar: '"',
+        header: true,
+        trimHeader: false,
+        dynamicTyping: false,
+        preview: 0,
+        encoding: "",
+        worker: false,
+        comments: false,
+        step: undefined,
+        complete: undefined,
+        error: undefined,
+        download: false,
+        skipEmptyLines: false,
+        chunk: undefined,
+        fastMode: undefined,
+        beforeFirstChunk: undefined,
+        withCredentials: undefined
+      });
+
+      console.dir(data.data);
+      data.data = data.data.filter(row => row.latitude !== "");
+            
+            
+      areas_array  = [];
+      images_array = [];
+      
+      var table_content = "<table class='table'>" +
+                            "<thead>" +
+                              "<tr>" +
+                                "<th scope='col'>Institute</th>" +
+                                "<th scope='col'>Country</th>" +                                
+                              "</tr>" +
+                            "</thead>" +
+                            "<tbody>";
+      
+      
+      data.data.forEach(function(row){
+        
+        table_content +=  "<tr>"+
+                            "<td>" + row.institute + "</td>" +
+                            "<td>" + row.country + "</td>" +
+                          "</tr>" 
+        
+        if(row.institute !== ""){
+          areas_array.push({
+            id:row.code,
+            color:"#6495ED"
+          });
+          images_array.push({
+            
+            "latitude": row.latitude,
+            "longitude": row.longitude,
+            "svgPath": icon,
+            "color": "#CCCC00",
+            "scale": 0.5,
+            "label": row.institute,
+            "labelShiftY": 2
+            
+          });
+        }
+      });
+      
+      table_content += "</tbody>"  + "</table>";
+      
+      $("#listdiv").html(table_content);
+      
+      AmCharts.makeChart( "mapdiv", {
+        /**
+         * this tells amCharts it's a map
+         */
+        "type": "map",
+      
+      
+     
+        /**
+         * create data provider object
+         * map property is usually the same as the name of the map file.
+         * getAreasFromMap indicates that amMap should read all the areas available
+         * in the map data and treat them as they are included in your data provider.
+         * in case you don't set it to true, all the areas except listed in data
+         * provider will be treated as unlisted.
+         */
+        "dataProvider": {
+          "map": "worldLow",
+          "areas": areas_array,
+      "images": images_array
+        },
+      "projection": "winkel3",
+
+        /** 
+         * create areas settings
+         * autoZoom set to true means that the map will zoom-in when clicked on the area
+         * selectedColor indicates color of the clicked area.
+         */
+        "areasSettings": {
+          "autoZoom": true,
+          "selectedColor": "#CC0000"
+        },
+
+        /**
+         * let's say we want a small map to be displayed, so let's create it
+         */
+        "smallMap": {}
+      });		 
+    });
+  }
+});
+
+
 
 </script>
-
-
-<script>
-
-window.mobilecheck = function() {
-  var check = false;
-  (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
-  return check;
-};
-
-if(window.mobilecheck() == false) {
-	$("#large_view").show();
-	$("#mobile_view").hide();
-} else {
-	$("#large_view").hide();
-	$("#mobile_view").show();
-};
-
-</script>
-<?php
-	mysqli_close($conn);
-} else {
-  require "LoginInterface.php";
-}
-?>
