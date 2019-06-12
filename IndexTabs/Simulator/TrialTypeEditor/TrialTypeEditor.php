@@ -61,7 +61,7 @@
 	}
 </style>
 <h6><em>ACE (https://ace.c9.io/)</em> is used for editing code</h6>  
-<div id="ACE_editor" 			style="display:none"></div>
+<div id="ACE_editor" 			style="display:none;max-width:1000px"></div>
 <div id="graphic_editor" 	style="display:none"><?php require("graphic.html") ?></div>
 
 

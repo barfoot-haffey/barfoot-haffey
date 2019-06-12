@@ -21,7 +21,7 @@
   },
 	download_at_end:{
     subtitle:"Can participant download at the end?",
-    text:"By default, participants will  be able to download their data at the end of the experiment. This can be turned <b>off</b> if you don't want this."
+    text:"By default, participants will  be able to download their data at the end of the experiment. This can be turned <b>off</b> if you don't want this. <b class='text-danger'>BUT YOU ALMOST CERTAINLY WANT THIS!!!!</b>"
   },
 	participant_id:{
     subtitle:"Participants give their ID",

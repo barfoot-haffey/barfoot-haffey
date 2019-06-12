@@ -130,7 +130,7 @@
 
 #exp_data > tbody > tr > td { text-align: center; padding: 15px; }
 #trial_type_selectors {
-  text-align:center;
+  /* text-align:center; */
   
 }
 

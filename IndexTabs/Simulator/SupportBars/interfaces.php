@@ -29,7 +29,7 @@
     
 <script>
 hide_show_table_span_html = '';
-var page_parts = ["Presentation","Conditions","Stimuli","Procedure","TrialTypes"];
+var page_parts = ["Presentation","Conditions","Procedure","Stimuli","TrialTypes"];
 page_parts.forEach(function(page_part){
 	hide_show_table_span_html += "<button class='btn btn-primary collectorSwitch display_button' type='button'>"+page_part+"</button>";
 	$("#"+page_part).on('show hide', function() {

@@ -1,23 +1,24 @@
 <!-- 
-/*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
-    A program for running experiments on the web
-    Copyright 2012-2016 Mikey Garcia & Nate Kornell
+  Author: Dr. Anthony Haffey
 
+  Collector: Cat/Kitten release
+  A program for running experiments on the web
+  Copyright 2012-2018 Mikey Garcia & Nate Kornell 
+  
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License version 3 as published by
+  the Free Software Foundation.
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License version 3 as published by
-    the Free Software Foundation.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>
- 		
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
-*/ 
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>
+ 
+  Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk) 
 -->
 
 <style>
@@ -88,7 +89,6 @@ td{
 }
 </style>
 <div id="survey_outline"></div>
-
 <script>
 /////////////////////////
 // Retrieving settings //
@@ -277,8 +277,6 @@ $("#proceed_button").on("click",function(){
 
 
 function load_survey(survey){
-  console.dir("survey");
-  console.dir(survey);
   // are we in preview?
   /////////////////////
   if(typeof(megaUberJson) !== "undefined" && megaUberJson.surveys.preview){     // Yes
@@ -380,6 +378,10 @@ function process_returned_questionnaire(data){
   write_survey(survey_obj.data,"this_survey_id");
   $("#please_wait_div").hide();
   $("#proceed_button").show();
+  
+  $('html, body').animate({
+    scrollTop: $("#survey_outline").offset().top
+  }, 1000);
 }
 
 function process_survey_question(this_row,row_no){
@@ -604,20 +606,19 @@ function process_survey_question(this_row,row_no){
           
           case "radio": 
           case "radio_vertical":
-            console.dir("hi");
-              var options = this_row["answers"].split("|");
-              var values   = this_row["values"].split("|");
-              question_td +=  response_html;
-              for(var i=0; i<options.length;i++){
-                  feedback_string = generate_feedback_string(feedback_array,i,feedback_color,row_no,this_row);
-                  
-                  question_td +=  '<div class="custom-control custom-radio">'+
-                                      '<input type="radio" class="custom-control-input '+this_class+' custom-control custom-radio '+this_row["item_name"]+'_item row_'+row_no+'" id="'+this_row["item_name"]+ i +'"  onchange="response_check(this)" value="' + values[i] + '" name="survey_'+this_row["item_name"].toLowerCase()+'">'+    
-                                      '<label class="custom-control-label" for="'+this_row["item_name"]+i+'">'+options[i]+'</label>'+
-                                      feedback_string +
-                                  '</div>';
-                                  
-              }
+            var options = this_row["answers"].split("|");
+            var values   = this_row["values"].split("|");
+            question_td +=  response_html;
+            for(var i=0; i<options.length;i++){
+              feedback_string = generate_feedback_string(feedback_array,i,feedback_color,row_no,this_row);
+                
+              question_td +=  '<div class="custom-control custom-radio">'+
+                                '<input type="radio" class="custom-control-input '+this_class+' custom-control custom-radio '+this_row["item_name"]+'_item row_'+row_no+'" id="'+this_row["item_name"]+ i +'"  onchange="response_check(this)" value="' + values[i] + '" name="survey_'+this_row["item_name"].toLowerCase()+'">'+    
+                                '<label class="custom-control-label" for="'+this_row["item_name"]+i+'">'+options[i]+'</label>'+
+                                  feedback_string +
+                              '</div>';
+                                
+            }
           break;
           
           case "radio_horizontal":
@@ -880,7 +881,7 @@ function write_survey(this_survey,this_id){
       unique_shuffles[i] !== ""){
         shuffled_content = this_survey_object.shuffle.map(function(element,index){
     	   if(typeof(element)!== "undefined" && element.toLowerCase() !== "none" && element.toLowerCase() == unique_shuffles[i]){
-    	       return this_survey_object.content[index];
+  	       return this_survey_object.content[index];
     	   } 
     	}).filter(elm => typeof(elm) !== "undefined");
     	new_order = shuffle(shuffled_content);
@@ -908,6 +909,9 @@ function write_survey(this_survey,this_id){
 	
 	$("#" + this_id).html(this_survey_html);
 	$("#" + this_id).show(1000);
+	
+	//scroll to top 
+  
 	
 	$(".show_tab").on("click",function(){
     if(this.className.indexOf("disabled") == -1){

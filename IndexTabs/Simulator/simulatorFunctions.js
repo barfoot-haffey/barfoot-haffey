@@ -17,6 +17,12 @@
  		
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
 */
+function clean_conditions(){
+  exp_json = megaUberJson.exp_mgmt.experiments[megaUberJson.exp_mgmt.experiment];	
+	exp_json.conditions = collectorPapaParsed(exp_json.cond_array);	
+	exp_json.conditions = exp_json.conditions.filter(row => row.procedure !== "");  
+}
+
 dbx_obj = {
 	queing:false,
 	queue : [],	
@@ -52,9 +58,7 @@ dbx_obj = {
 }
 
 function simulate_experiment() {    
-	exp_json = megaUberJson.exp_mgmt.experiments[megaUberJson.exp_mgmt.experiment];	
-	exp_json.conditions = collectorPapaParsed(exp_json.cond_array);	
-	exp_json.conditions = exp_json.conditions.filter(row => row.procedure !== "");
+	clean_conditions();
 	
 	if(exp_json.conditions.length > 1){
 		//detect if repetition in name 

@@ -81,7 +81,7 @@ $(window).bind('keydown', function(event) {
 			case 's':
 				if(simulator_on !== "true"){
 					event.preventDefault();
-					precrypted_data(parent.parent.exp_json);
+					precrypted_data(parent.parent.exp_json,"What do you want to save this file as?");
 				}
 			break;
 		}		

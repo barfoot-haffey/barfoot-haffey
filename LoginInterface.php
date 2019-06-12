@@ -22,10 +22,10 @@
 require_once("libraries.html");
 
 if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    
-    $login_style = "display:none";
-    $logout_style = '';
+  $login_style = "display:none";
+  $logout_style = '';
 } else {
-    $login_style = "";
+  $login_style = "";
 	$logout_style = "display:none";
 	$_SESSION['user_email'] = 'guest';    
 }
@@ -34,17 +34,17 @@ if(isset($_SESSION['user_email'])){
 } 
 
 if(isset($_POST['skin'])){
-    $_SESSION['skin'] = $_POST['skin']; 
+  $_SESSION['skin'] = $_POST['skin']; 
 }
 
 if(!isset($_SESSION['skin'])){
-    $_SESSION['skin'] = "Collector";
+  $_SESSION['skin'] = "Collector";
 }
 
 $error_message = '';
 if(isset($_SESSION['login_error'])){
-    $error_message = ($_SESSION['login_error']);
-    unset($_SESSION['login_error']);
+  $error_message = ($_SESSION['login_error']);
+  unset($_SESSION['login_error']);
 }
 
 $url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
@@ -60,7 +60,7 @@ error_message = "<?= $error_message ?>";
 
 <script>
 if(error_message !== ""){
-    bootbox.alert(error_message);
+  bootbox.alert(error_message);
 } 
 </script>
 
@@ -75,7 +75,7 @@ if(error_message !== ""){
 
 <form action="login.php" method="post" style="padding:0px">	
 	<span id="logout_span" style="<?= $logout_style ?>">			
-		<button type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
+		<button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
 	</span>	
     <input type='hidden' name='return_page' value='<?= $url ?>' />
     <div id="login_register_span"  style="<?= $login_style ?>; height:90%">
@@ -91,10 +91,13 @@ if(error_message !== ""){
 							<input id="password_input" name="user_password" type="password" class="form-control" placeholder="password">
 					</div>
 					<div class="row">
-						<input class="btn btn-primary" type="button" style="margin:3px" id="login_button" 		value="login">				
-						<input class="btn btn-primary" type="button" style="margin:3px" id="register_button" value="register">
-						<input class="btn btn-primary" type="button" style="margin:3px" id="forgot_button" 	value="forgot password">
+						<input class="btn btn-primary" type="button" style="margin:3px" id="login_button" 		value="login">										
+            <button type="button" class="btn btn-primary" style="display:none" data-toggle="modal" data-target="#institute_div" onclick="list_institutes()" id="register_map_button"> Register </button>
+            <input class="btn btn-primary" type="button" style="margin:3px" id="register_button" value="register" style="display:none">
 				
+            <input class="btn btn-primary" type="button" style="margin:3px" id="forgot_button" 	value="forgot password">
+            
+           
 						<!-- hidden inputs -->
 						<input type="submit" class="collectorButton" id="forgot_button_submit" name='login_type' value="forgot" style="display:none">
 						<input type='hidden' name='participant_researcher' id='participant_researcher'>
@@ -106,7 +109,33 @@ if(error_message !== ""){
     </div>			
 </form>
 
+<div id="institute_div" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <?php
+          require("ResearcherInstitution.html");
+        ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="skip_map_button">Skip</button>
+        <button type="button" class="btn btn-primary" id="register_proceed_button">Proceed</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <script>
+
+$("#register_proceed_button").on("click",function(){
+  $("#country_selected").click();
+});
+$("#skip_map_button").on("click",function(){
+  $("#register_submit").click();
+});
 
 $("#forgot_button").on("click",function(){
 	var email_val = $("#username_input").val();
@@ -119,12 +148,16 @@ $("#forgot_button").on("click",function(){
 	});
 });
 
+
+
 $("#register_button").on("click",function(){
-	// checks
+  // checks
 	// password long enough?
 	if($("#password_input").val().length < 8){
 		bootbox.alert("Your password is too short. Please make a password of at least 8 characters. Ideally with a mixture of capital letters, numbers and characters.");			
 	} else {
+    
+    
 		bootbox.confirm("Making sure you don't lose your password is extremely important! Your password is used as part of the encryption and decryption of your data. <br><br>In short, if you lose your password then you lose your data. <br><br> Once you've made sure your password will not be lost, click on <b>OK</b> to proceed",function(result){
 			if(result){
 				bootbox.prompt({
@@ -133,7 +166,7 @@ $("#register_button").on("click",function(){
 					callback: function (result) {
 						if(result == $("#password_input").val()){
 							$("#participant_researcher").val("both");
-							$("#register_submit").click();
+              $("#register_map_button").click();							
 						} else {
 							alert("Passwords did not match.");
 						}

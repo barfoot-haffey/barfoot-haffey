@@ -19,20 +19,26 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 -->
+<head>
+	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
+	<meta charset="utf-8">
+</head>
+
+
 <script src="browserCheck.js"></script>
 <?php
 
 require_once 'Code/initiateCollector.php';
+require_once("libraries.html");
+require "Code/nojs.php";
+?>
+
+<?php
 if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    
-
-
 	require_once "../../sqlConnect.php";
-
-
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
-
 	$cwd = explode("/",getcwd ());
 	if(count($cwd) == 1){ //then developing on local host
 		$cwd = explode("\\",getcwd ());
@@ -42,18 +48,11 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 		$_SESSION['version'] = $cwd[7];
 		$_SESSION['local_website'] = "https://www.open-collector.org";
 	}
-
+  $logo_string = explode(".",$_SESSION['version']);
+  $logo_string = $logo_string[0];
 
 ?>
 
-<head>
-	<link rel="shortcut icon" type="image/x-icon" href="../logos/<?= $_SESSION['version'] ?>.png" />
-	<meta charset="utf-8">
-	<?php
-		require_once("libraries.html");
-		require "Code/nojs.php";
-	?>
-</head>
 
 <link rel="stylesheet" href="Style.css"></link>
 
@@ -71,8 +70,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 		<button class="btn btn-primary">Tutorial</button>
 	</a>
 	<button class="btn btn-outline-primary bg-white" id="help_btn" style="margin:2px; font-weight:bold">Help</button>
-	<?php require("LogoutInterface.php") ?>	
-	<?php require("LoginInterface.php")  ?>
+	<?php require("LogoutInterface.php") ?>
 </nav>
 
 <br><br>

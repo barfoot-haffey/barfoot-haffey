@@ -187,6 +187,9 @@ if(strpos($_SESSION['local_website'],"localhost") !== false){
 		</div>		
 	</div>
 </div>
+<div id="participant_country" style="display:none">
+  <?php require ("ParticipantCountry.html"); ?>
+</div>
 <script>
 
 exp_condition = "<?= $condition ?>";
@@ -228,7 +231,7 @@ function collectorPapaParsed(preparsed){
 
 // transform exp_json into readable csv
 ///////////////////////////////////////
-function precrypted_data(decrypted_data){
+function precrypted_data(decrypted_data,message){
 	responses_csv = decrypted_data.responses;
 	response_headers = [];
 	responses_csv.forEach(function(row){
@@ -261,7 +264,7 @@ function precrypted_data(decrypted_data){
 	});
 	
 	bootbox.prompt({
-		title:"What do you want to save this file as?",
+		title:message,
 		value:$("#participant_code").val()+".csv",
 		callback:function(result){
 			if(result !== null){
@@ -270,8 +273,10 @@ function precrypted_data(decrypted_data){
 		}
 	});
 }
-function final_trial(){	
-	
+experiment_finished_and_emailed = false;
+function final_trial(){
+  $("#participant_country").show();
+	$("#experiment_div").html("<h3 class='text-primary'>Please do not close this window until it has been confirmed that the researcher has been e-mailed your data (or you have downloaded the data yourself that you will e-mail the researcher). If you do not get a prompt to do this within 30 seconds, press CTRL-S and you should be able to directly download your data.</h3>");
 	download_at_end = exp_json.this_condition.download_at_end;
 	
 	if(typeof(simulator_on) == "undefined" || simulator_on == "false"){
@@ -280,55 +285,66 @@ function final_trial(){
 		},function(returned_data){
 			
 			message_data = returned_data.split(" encrypted data = ");
-			if(message_data.length == 1){
-				bootbox.alert("Problem encrypting and/or emailing data, please download the data and email it to the researcher");
-				bootbox.alert(message_data);
+      
+      if(message_data.length == 1){
+        //retrieve researcher e-mail address
+        
+        precrypted_data(exp_json,"Problem encrypting: <b>"+ message_data +"</b>, we'll try again every 10 seconds, but in case it fails, please download and e-mail this file. What do you want to save this file as? (you will get this message each time we fail to e-mail your data to the researcher)");
+        
+        setTimeout(function(){
+          final_trial();  
+        },10000);        
 			} else {
+        
 				encrypted_data = message_data[1];
+        
+        if(typeof(exp_json.this_condition.end_message) !== "undefined" && exp_json.this_condition.end_message !== ""){
+          $("#experiment_div").html("<h3 class='text-primary'>"+exp_json.this_condition.end_message+"</h3>");
+        } 
+        $("#experiment_div").append("<div id='download_div'></div>");
+        
 				if(download_at_end == "on"){
-					$("#experiment_div").html("<h1>"+message_data[0]+" <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
-					$("#encrypt_click").on("click",function(){
-						bootbox.prompt({
-							title:"What do you want to save this file as?",
-							value:$("#participant_code").val()+"_encrypted.txt",
-							callback:function(result){
-								var blob = new Blob([encrypted_data], {type: 'text/csv'});
-								if(window.navigator.msSaveOrOpenBlob) {
-									window.navigator.msSaveBlob(blob, result);
-								}
-								else{
-									var elem = window.document.createElement('a');
-									elem.href = window.URL.createObjectURL(blob);
-									elem.download = result;        
-									document.body.appendChild(elem);
-									elem.click();        
-									document.body.removeChild(elem);
-								}
-							}
-						});
-					});
-					$("#raw_click").on("click",function(){
-						precrypted_data(exp_json);
-					});
+          $("#download_div").html("<h1>"+message_data[0]+" <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
+            
+            $("#encrypt_click").on("click",function(){
+              bootbox.prompt({
+                title:"What do you want to save this file as?",
+                value:$("#participant_code").val()+"_encrypted.txt",
+                callback:function(result){
+                  var blob = new Blob([encrypted_data], {type: 'text/csv'});
+                  if(window.navigator.msSaveOrOpenBlob) {
+                    window.navigator.msSaveBlob(blob, result);
+                  }
+                  else{
+                    var elem = window.document.createElement('a');
+                    elem.href = window.URL.createObjectURL(blob);
+                    elem.download = result;        
+                    document.body.appendChild(elem);
+                    elem.click();        
+                    document.body.removeChild(elem);
+                  }
+                }
+              });
+            });
+            $("#raw_click").on("click",function(){
+              precrypted_data(exp_json,"What do you want to save this file as?");
+            });        
 				} else if(download_at_end == "off") {
 					// do nothing
 				} else {
 					bootbox.alert("It's unclear whether the researcher wants you to be able to download your data or not");					
 				}
+        experiment_finished_and_emailed = true;
 			}
 		});
 		
-		if(typeof(exp_json.this_condition.end_message) !== "undefined" && exp_json.this_condition.end_message !== ""){
-			$("#experiment_div").html("<h3 class='text-primary'>"+exp_json.this_condition.end_message+"</h3>");
-		} else {
-			$("#experiment_div").html("<h1>You have finished. You can download the data by clicking <b><span id='download_json' class='text-success'>here</span></b><a id='downloadAnchorElem' style='display:none'></a>. Please keep this tab open until we confirm that the researcher has been emailed an encrypted version of your data.</h1>");
-		}
+		
 		
 	} else {
 		$("#experiment_div").html("<h1>You have finished. You can download the data by clicking <b><span id='download_json'>here</span></b>.</h1>");
 	}
 	$("#download_json").on("click",function(){
-		precrypted_data(exp_json);		
+		precrypted_data(exp_json,"What do you want to save this file as?");
 	});
 }
 $("#complete_task").on("click",function(){
@@ -932,11 +948,14 @@ function write_trial_iframe(index){
 		
     trial_content += "<button style='opacity:0; filter: alpha(opacity=0)' id='zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'></button>";
     
-		doc = document.getElementById('trial'+index).contentWindow.document.getElementById('post'+i).contentWindow.document;
-		doc.open();
-		doc.write(libraries + trial_content); //libraries + trial_content
-		doc.close();
-				
+		doc = document.getElementById('trial'+index).contentWindow.document.getElementById('post'+i).contentWindow;
+		doc.document.open();
+		doc.document.write(libraries + trial_content); //libraries + trial_content
+		doc.document.close();
+    
+    //autoscroll to top of iframe (in case the trial runs over)
+    doc.scrollTo(0,0);
+
 		var no_images = (trial_content.match(/<img/g) || []).length;
 		exp_json.uninitiated_stims.push(no_images);
 		exp_json.uninitiated_stims_sum = exp_json.uninitiated_stims.reduce(function(acc,val){return acc + val });
@@ -1042,12 +1061,23 @@ $(window).bind('keydown', function(event) {
 			case 's':
 				if(simulator_on !== "true"){
 					event.preventDefault();
-					precrypted_data(exp_json);
+					precrypted_data(exp_json,"What do you want to save this file as?");
 				}
 			break;
 		}		
 	}	
 });
+
+
+//prevent closing without warning
+window.onbeforeunload = function() {
+  if(experiment_finished_and_emailed == false){
+    
+    precrypted_data(exp_json,"It looks like you're trying to leave the experiment before you're finished (or at least before the data has been e-mailed to the researcher. Please choose a filename to save your data as and e-mail it to the researcher. It should appear in your downloads folder.");
+    
+    return "Please do not try to refresh - you will have to restart if you do so.";	    
+  }
+};
 
 $("body").css("text-align","center");
 $("body").css("margin","auto");

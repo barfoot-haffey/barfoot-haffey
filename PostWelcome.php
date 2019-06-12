@@ -76,6 +76,6 @@ if($result -> num_rows == 0){
 	}
 		
 } else {
-	echo "error: A user with this ID has already started this task - please contact ".$_SESSION['researchers'][0]." about how to proceed. <br><br> Alternately, to start from the beginning, click 'OK'.";
+	echo "error: A user with this ID has already started this task - please contact ".$_SESSION['researchers'][0]." about how to proceed. <br><br> Alternately, to start from the beginning, click 'OK'. experiment_id:$experiment_id";
 }
 ?>

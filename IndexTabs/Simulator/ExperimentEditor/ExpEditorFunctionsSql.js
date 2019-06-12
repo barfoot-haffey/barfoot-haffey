@@ -148,45 +148,6 @@ function remove_from_list(experiment){
 	}
 }
 
-
-function commit_save(){
-	bootbox.dialog({
-		title:"What commit messages do you want?",
-		message:"<h5>Experiment Commit Message</h5><textarea id='experiment_commit_textarea' maxlength='500'></textarea>"+
-				"<h5>Trialtype Commit Message</h5><textarea id='trialtype_commit_textarea' maxlength='500'></textarea>",
-		buttons: {
-			commit: {
-				label: "Commit",
-				className : "btn-success",
-				callback: function(){
-					experiment_commit = $("#experiment_commit_textarea").val();
-					trialtype_commit  = $("#trialtype_commit_textarea").val();
-					if(experiment_commit !== ""){
-						experiment = megaUberJson.exp_mgmt.experiment;
-						this_exp   = megaUberJson.exp_mgmt.experiments[experiment];
-						this_exp.commit_message = experiment_commit;
-						if(typeof(megaUberJson.exp_mgmt.versions[experiment]) == "undefined"){
-							megaUberJson.exp_mgmt.versions[experiment] = [this_exp]; // note that this is incomplete until the user loads previous experiments.
-						} else {
-							megaUberJson.exp_mgmt.versions[experiment].push(this_exp);
-						}
-					}
-					$("#save_btn").click();
-					/*
-						
-						this is where I'll put code to deal with saving trialtypes
-					
-					*/
-				}
-			},
-			cancel: {
-				label: "Cancel",
-				className: "btn-danger",
-			}
-		}
-	});	
-}
-
 //solution on  https://stackoverflow.com/questions/46155/how-can-you-validate-an-email-address-in-javascript
 function validateEmail(email) { 
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

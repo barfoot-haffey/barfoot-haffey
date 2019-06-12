@@ -20,19 +20,29 @@
 */
 -->
 <style>
-    #instruct_text{
-        margin:auto;
-        width:100%;
-        height:700px;
-        line-height: 700px;
-        text-align: center;
-    }
-    #proceed_button{
-        position:absolute;
-        top:750px;
-        right: 20px;
-    }
+#instruct_text{
+  margin:auto;
+  width:600px;
+  height:600px;
+  text-align: center;  
+}
+#proceed_button{
+  position:absolute;
+  top:600px;
+  right: 20px;
+}
+#trial_contents{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  width:600;
+  height:600;
+}
 </style>
-
-<div id="instruct_text">{{text}}</div>
-<button class="btn btn-primary" id="proceed_button" onclick="Trial.submit()">Proceed</button>
+<div id="trial_contents">
+  <div id="instruct_text">{{text}}</div>
+  <button class="btn btn-primary" id="proceed_button" onclick="Trial.submit()">Proceed</button>  
+</div>

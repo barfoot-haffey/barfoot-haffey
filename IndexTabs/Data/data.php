@@ -41,7 +41,41 @@ if($_SESSION['user_email'] == "guest"){
 	</select>
 	<input type="button" id="data_submit_btn" class="btn btn-primary"	value="Decrypt file(s)" style="display:none">
 	<input type="submit" 	name="submit" 			id="submit_btn" class="btn btn-primary"	value="Decrypt file" style="display:none">
+  
 </form>
+
+<div id="drop_zone">Drop files here</div>
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById('drop_zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+</script>
 
 
 <script>
@@ -96,8 +130,8 @@ $sql = "SELECT * FROM `view_researcher_pps` WHERE `email` = '$email'";
 $result = $conn->query($sql);
 $data_array = [];
 while($row = $result->fetch_assoc()) {
-	$this_obj = new stdClass();
-	$this_obj->completion_code 	= $row['completion_code'];
+  $this_obj = new stdClass();
+  $this_obj->completion_code 	= $row['completion_code'];
 	$this_obj->experiment_id    = $row['experiment_id'];
 	$this_obj->participant_code = $row['participant_code'];
 	$this_obj->name    					= $row['name'];
@@ -155,12 +189,12 @@ if($researcher_sql_data == ''){
 <script>	
 
 var data_obj = <?= json_encode($data_array) ?>;
-table_html = '<table class="table">'+
-				"<tr>"+
-					"<th> Experiment 				</th>" +
-					"<th> Participant id		</th>" +					
-					"<th> Completion code 	</th>" +
-				"</tr>";
+table_html =  '<table class="table">'+
+                "<tr>"+
+                  "<th> Experiment 				</th>" +
+                  "<th> Participant id		</th>" +					
+                  "<th> Completion code 	</th>" +
+                "</tr>";
 				
 for(i in data_obj){
 	
@@ -206,7 +240,9 @@ function validate_filename(){
 			var pp_code  = exp_pp[1].replace(".txt","");
 			var completion_code = data_obj.filter(row => row.participant_code.toLowerCase() == pp_code.toLowerCase() && row.experiment_id == exp_code)[0];
 			if(typeof(completion_code) == "undefined"){
-				bootbox.alert("It looks like participant <b>" + pp_code + "</b> completed the task after you started this session of Collector. <br><br> Please reload this page before trying to decrypt this participant's data");
+				bootbox.alert("You cannot (currently) decrypt this file. We assume this is either because: <br><br>"+
+                      "- You logged in before the participant completed the task. If so, you should be able to refresh the page and then proceed with decrypting the file with code:<b>" + pp_code + "</b> <br><br>" +
+                      "- You are logged in with the wrong account (specifically the wrong <b>Collector</b> account). If this is the case, please switch your Collector account and try again");
 			} else {
 				completion_codes[this_name] = completion_code;	
 			}

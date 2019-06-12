@@ -315,6 +315,9 @@ $("#save_boost_btn").on("click",function(){
 ///////////////
 
 function autoload_boosts(){
+  if(typeof(megaUberJson.autoloaded_boosts) == "undefined"){
+    megaUberJson.autoloaded_boosts = {};
+  }
   if(Object.keys(megaUberJson.autoloaded_boosts).length !== 0){
     bootbox.confirm("Are you sure you want to load the following boosts: <br>" + Object.keys(megaUberJson.autoloaded_boosts).join("<br>"),function(response){
       if(response){

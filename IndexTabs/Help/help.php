@@ -113,7 +113,17 @@ if(isAuthenticated()){
 	dbx.usersGetCurrentAccount()
 	.then(function(account_info){		
 		$("#dropbox_account_email").html(account_info.email);
-		$("#startup_prog").html("Dropbox account: <a href='https://www.dropbox.com/home/Apps/Open-Collector' target='_blank'>" + account_info.email + "</a>");
+		$("#startup_prog").html("Dropbox account: <a href='https://www.dropbox.com/home/Apps/Open-Collector' target='_blank'>" + account_info.email + "</a> <button class='btn btn-info' id='intro_switch_dbx'>Switch account</button>");
+    $("#intro_switch_dbx").on("click",function(){
+      dbx.setClientId(CLIENT_ID); // i think is necessary				
+      if(local_website.indexOf("localhost") !== -1){
+        local_website += "/www";
+      }
+      authUrl = dbx.getAuthenticationUrl(local_website+'/<?= $_SESSION['version'] ?>');
+      authUrl += "&force_reauthentication=true";	
+      document.getElementById('authlink').href = authUrl;
+      $("#authlink")[0].click();
+    });
 	})
 	.catch(function(error){
 		console.dir("Dropbox not logged in yet");
@@ -310,8 +320,21 @@ function helperActivate(help_title, cellValue,help_type){
   
 	// give Procedure advice
   ////////////////////////
+  
+  
+  
+  
 	if(proc_sheets.indexOf(help_type) !== -1){
-    if(help_title == ""){
+    if(help_title == "survey"){
+      $("#help_subtitle").html("Currently available surveys");
+      var def_surveys  = Object.keys(megaUberJson.surveys.default_surveys).sort();
+      var user_surveys = Object.keys(megaUberJson.surveys.user_surveys).sort();
+      
+      def_surveys  = def_surveys.join("<br>");
+      user_surveys = user_surveys.join("<br>");
+      
+      $("#help_text").html("<b>Default surveys</b><br>" + def_surveys + "<br><br><b>User Surveys</b><br>" + user_surveys);
+    } else if(help_title == ""){
       $("#help_subtitle").html("Blank header");
       $("#help_text").html("Valid <b>procedure</b> settings include: <br><em>" + Object.keys(help_obj.proc).join("<br>")+"</em>");
     } else {

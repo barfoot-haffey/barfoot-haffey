@@ -192,117 +192,118 @@ $("#save_btn").on("click", function(){
 	var experiment = megaUberJson.exp_mgmt.experiment;
 	var this_exp = megaUberJson.exp_mgmt.experiments[experiment];
 
-
 	//parse procs for survey saving next
-	if(typeof(this_exp.parsed_procs) == "undefined"){
-		this_exp.parsed_procs = {};
-		var procs = Object.keys(this_exp.all_procs);
-		procs.forEach(function(proc){
-			this_exp.parsed_procs[proc] = Papa.parse(Papa.unparse(this_exp.all_procs[proc]),{header:true}).data;
-		});
-	}
-		
-	//add surveys to experiment
-	if(typeof(this_exp.surveys) == "undefined"){
-      surveys = {};
-	}	
+	if(typeof(this_exp) !== "undefined") {
+ //   if(typeof(this_exp.parsed_procs) == "undefined"){
+      this_exp.parsed_procs = {};
+      var procs = Object.keys(this_exp.all_procs);
+      procs.forEach(function(proc){
+        this_exp.parsed_procs[proc] = Papa.parse(Papa.unparse(this_exp.all_procs[proc]),{header:true}).data;
+      });
+   // }
+      
+    //add surveys to experiment
+    if(typeof(this_exp.surveys) == "undefined"){
+      this_exp.surveys = {};
+    }	
 	
-	Object.keys(this_exp.parsed_procs).forEach(function(proc_name){
-		this_proc = this_exp.parsed_procs[proc_name];
-		this_proc.forEach(function(proc_row){
-			if(typeof(proc_row.survey) !== "undefined" && 
-				proc_row.survey !== ""){
-				var this_survey = proc_row.survey.toLowerCase();
-        if(typeof(megaUberJson.surveys.user_surveys[this_survey]) !== "undefined"){
-					this_exp.surveys[this_survey] = megaUberJson.surveys.user_surveys[this_survey];
-					
-					//check for boosts
-					if(typeof(this_exp.boosts) == "undefined"){
-						this_exp.boosts = {};
-					}
-					keyed_survey = Papa.parse(Papa.unparse(megaUberJson.surveys.user_surveys[this_survey]),{header:true}).data;
-					
-          
-					keyed_survey.forEach(function(key_row){
-						clean_key_row = clean_obj_keys(key_row);
-            if(typeof(clean_key_row.type) !== "undefined"){
-              var survey_boost_type = clean_key_row.type.toLowerCase();
-              if(typeof(megaUberJson.boosts[survey_boost_type]) !== "undefined"){
-                this_exp.boosts[survey_boost_type] = {
-                  location:'',
-                  contents:megaUberJson.boosts[survey_boost_type].contents
-                }
-              }              
+    Object.keys(this_exp.parsed_procs).forEach(function(proc_name){
+      this_proc = this_exp.parsed_procs[proc_name];
+      this_proc.forEach(function(proc_row){
+        if(typeof(proc_row.survey) !== "undefined" && 
+          proc_row.survey !== ""){
+          var this_survey = proc_row.survey.toLowerCase();
+          if(typeof(megaUberJson.surveys.user_surveys[this_survey]) !== "undefined"){
+            if(typeof(this_exp.surveys) == "undefined"){
+              this_exp.surveys = {};
             }
-					});
-					
-				} else if(typeof(megaUberJson.surveys.default_surveys[this_survey]) !== "undefined"){
-					this_exp.surveys[proc_row.survey] = megaUberJson.surveys.default_surveys[this_survey];
-				}	else {
-					bootbox.alert("The survey <b>" + proc_row.survey + "</b> in your procedure sheet doesn't appear to exist. Please check the spelling of it");
-				}
-			}
-		});
-	});
+            this_exp.surveys[this_survey] = megaUberJson.surveys.user_surveys[this_survey];
+            
+            //check for boosts
+            if(typeof(this_exp.boosts) == "undefined"){
+              this_exp.boosts = {};
+            }
+            keyed_survey = Papa.parse(Papa.unparse(megaUberJson.surveys.user_surveys[this_survey]),{header:true}).data;
+            keyed_survey.forEach(function(key_row){
+              clean_key_row = clean_obj_keys(key_row);
+              if(typeof(clean_key_row.type) !== "undefined"){
+                var survey_boost_type = clean_key_row.type.toLowerCase();
+                if(typeof(megaUberJson.boosts[survey_boost_type]) !== "undefined"){
+                  this_exp.boosts[survey_boost_type] = {
+                    location:'',
+                    contents:megaUberJson.boosts[survey_boost_type].contents
+                  }
+                }              
+              }
+            });            
+          } else if(typeof(megaUberJson.surveys.default_surveys[this_survey]) !== "undefined"){
+            this_exp.surveys[proc_row.survey] = megaUberJson.surveys.default_surveys[this_survey];
+          }	else {
+            bootbox.alert("The survey <b>" + proc_row.survey + "</b> in your procedure sheet doesn't appear to exist. Please check the spelling of it");
+          }
+        }
+      });
+    });
 
-	var proc = this_exp.procedure;
-	trialtype_index = this_exp.all_procs[proc][0].indexOf("trial type");
-	
-	var trialtypes = this_exp.all_procs[proc].map(row => row[trialtype_index]);
-	trialtypes = _.uniq(trialtypes);
-	trialtypes = trialtypes.filter(Boolean); //remove blanks
-	
-	if(typeof(this_exp.trialtypes) == "undefined"){
-		this_exp.trialtypes = {};
-	}
-		
-	trialtypes.forEach(function(trialtype){
-		if(typeof(megaUberJson.trialtypes.user_trialtypes[trialtype]) == "undefined"){
-			this_exp.trialtypes[trialtype] = megaUberJson.trialtypes.default_trialtypes[trialtype];			
-		} else {
-			this_exp.trialtypes[trialtype] = megaUberJson.trialtypes.user_trialtypes[trialtype];
-			dbx_obj.new_upload({path:"/TrialTypes/"+trialtype+".html",contents:megaUberJson.trialtypes.user_trialtypes[trialtype],mode:'overwrite'},function(result){
-				console.dir(result);
-			},function(error){
-				report_error(error);				
-			});			
-		}		
-	});
-	
-	dbx_obj.new_upload({path: "/Experiments/"+experiment+".json", contents: JSON.stringify(this_exp), mode:'overwrite'},
-		function(returned_data){
-			if(typeof(this_exp.location) == "undefined"){
-				dbx.sharingCreateSharedLink({path:returned_data.path_lower})
-					.then(function(returned_link){
-						this_exp.location = returned_link.url;
-						$.post("AjaxExperimentLocation.php",
-							{
-								location:   this_exp.location,
-								experiment: experiment
-							},
-							function(returned_data){
-								custom_alert(returned_data);
-								
-								dbx_obj.new_upload({path: "/Experiments/"+experiment+".json", contents: JSON.stringify(this_exp), mode:'overwrite'},function(location_saved){
-									custom_alert("experiment_location sorted");
-									$("#run_link").attr("href","https://www.open-collector.org/"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);	
-									updateUberMegaFile();
-								},function(error){
-									custom_alert("check console for error saving location");
-									bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");;
-								});								
-							}
-						);
-					})
-					.catch(function(error){
-						report_error(error);
-					});
-			} else {
-				updateUberMegaFile();
-			}
-		},function(error){
-			alert(error);
-		});
+    var proc = this_exp.procedure;
+    trialtype_index = this_exp.all_procs[proc][0].indexOf("trial type");
+    
+    var trialtypes = this_exp.all_procs[proc].map(row => row[trialtype_index]);
+    trialtypes = _.uniq(trialtypes);
+    trialtypes = trialtypes.filter(Boolean); //remove blanks
+    
+    if(typeof(this_exp.trialtypes) == "undefined"){
+      this_exp.trialtypes = {};
+    }
+      
+    trialtypes.forEach(function(trialtype){
+      if(typeof(megaUberJson.trialtypes.user_trialtypes[trialtype]) == "undefined"){
+        this_exp.trialtypes[trialtype] = megaUberJson.trialtypes.default_trialtypes[trialtype];			
+      } else {
+        this_exp.trialtypes[trialtype] = megaUberJson.trialtypes.user_trialtypes[trialtype];
+        dbx_obj.new_upload({path:"/TrialTypes/"+trialtype+".html",contents:megaUberJson.trialtypes.user_trialtypes[trialtype],mode:'overwrite'},function(result){
+          //console.dir(result);
+        },function(error){
+          report_error(error);				
+        });			
+      }		
+    });
+    
+    dbx_obj.new_upload({path: "/Experiments/"+experiment+".json", contents: JSON.stringify(this_exp), mode:'overwrite'},
+      function(returned_data){
+        if(typeof(this_exp.location) == "undefined"){
+          dbx.sharingCreateSharedLink({path:returned_data.path_lower})
+            .then(function(returned_link){
+              this_exp.location = returned_link.url;
+              $.post("AjaxExperimentLocation.php",
+                {
+                  location:   this_exp.location,
+                  experiment: experiment
+                },
+                function(returned_data){
+                  custom_alert(returned_data);
+                  
+                  dbx_obj.new_upload({path: "/Experiments/"+experiment+".json", contents: JSON.stringify(this_exp), mode:'overwrite'},function(location_saved){
+                    custom_alert("experiment_location sorted");
+                    $("#run_link").attr("href","https://www.open-collector.org/"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);	
+                    updateUberMegaFile();
+                  },function(error){
+                    custom_alert("check console for error saving location");
+                    bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");;
+                  });								
+                }
+              );
+            })
+            .catch(function(error){
+              report_error(error);
+            });
+        } else {
+          updateUberMegaFile();
+        }
+      },function(error){
+        alert(error);
+      });
+  }
 });
 $("#stim_select").on("change",function(){
 	var experiment = megaUberJson.exp_mgmt.experiment;

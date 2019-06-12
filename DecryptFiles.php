@@ -77,7 +77,7 @@ for($i = 0; $i < count($_FILES['filesToUpload']['tmp_name']); $i++){
 }
 ?>
 <head>
-	<link rel="shortcut icon" type="image/x-icon" href="../logos/<?= $_SESSION['version'] ?>.png" />
+	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
 	<meta charset="utf-8">
 </head>
 
@@ -93,7 +93,6 @@ for($i = 0; $i < count($_FILES['filesToUpload']['tmp_name']); $i++){
 <script>
 completion_codes = <?= $completion_codes ?>;
 decrypted_array = <?= json_encode($decrypted_array) ?>;
-decrypted_data_array = [];
 response_headers 		 = [];
 condition_headers 	 = [];	
 for(var i = 0; i < decrypted_array.length ; i++) {
@@ -165,9 +164,10 @@ table_html += "</table>";
 $("#table_preview").html(table_html);
 
 $("#download_btn").on("click",function(){
+  var default_filename = downloadable_csv[1][0] + "_" + downloadable_csv[1][1] + ".csv";
 	bootbox.prompt({
-		title:"What do you want to save this file as?",
-		value:"data.csv",
+		title: "What do you want to save this file as?",
+		value: default_filename, //"data.csv",
 		callback:function(result){
 			if(result){
 				save_csv(result,Papa.unparse(downloadable_csv));

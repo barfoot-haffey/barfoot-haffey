@@ -55,7 +55,9 @@ if(isset($_SESSION['user_email'])){
 			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="https://www.open-collector.org/logos/collector.ico.png" id="collector_logo">
 		</td>
     <td>
-    
+      <form action="login.php" method="post" style="padding:0px">	
+        <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>        
+      </form>
     </td>
 	</tr>
 </table>
@@ -103,7 +105,11 @@ $(".logo").hover(function(){
 });
 
 $("#collector_logo").on("click", function(){
-	bootbox.alert("Click on <b>Log out</b> to change which Collector account you're logged in with.");
+  bootbox.confirm("Are you sure you want to log-out?",function(response){
+    if(response){      
+      $("#logout_btn").click();
+    }
+  });  
 });
 
 var local_website = "<?= $_SESSION['local_website'] ?>";

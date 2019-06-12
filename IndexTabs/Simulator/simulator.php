@@ -85,25 +85,31 @@ $("#cell_content").on("blur",function(){
 block_save = true;
 </script>
 <br><br>
-<table id="simulator_table">    
+<table id="simulator_table">
   <tr>
-    <td id="Presentation">            
-      <div id="ExperimentContainer" style="text-align:center; margin:auto">
-        <?php 
-          require(__DIR__ ."/../../sqlExperiment.php");
-        ?>			
-        <div id="preview_message">Select an experiment to be able to start a preview. Once you press start the experiment will buffer to the level of trials you've selected.</div>
-      </div>
+    <td>
+      <table>
+        <tr>
+          <td id="Presentation">            
+            <div id="ExperimentContainer" style="text-align:center; margin:auto">
+              <?php 
+                require(__DIR__ ."/../../sqlExperiment.php");
+              ?>			
+              <div id="preview_message">Select an experiment to be able to start a preview. Once you press start the experiment will buffer to the level of trials you've selected.</div>
+            </div>
+          </td>        
+        </tr>
+        <tr>
+          <td id="run_stop_buttons" align="centre">
+            <button type="button" id="run_button" class="btn btn-primary">Run Simulation</button>
+            <button type="button" id="stop_button" class="btn btn-primary">Stop Simulation</button>
+            <button type="button" id="shuffle_off_button" class="btn btn-primary" title='Click to turn Shuffle OFF'>Shuffle</button>
+            <button type="button" id="shuffle_on_button" class="btn btn-outline-primary" title='Click to turn Shuffle ON' style="display:none">Shuffle</button>
+          </td>
+        </tr> 
+      </table>
     </td>
   </tr>
-  <tr>
-    <td id="run_stop_buttons" align="centre">
-      <button type="button" id="run_button" class="btn btn-primary">Run Simulation</button>
-      <button type="button" id="stop_button" class="btn btn-primary">Stop Simulation</button>
-      <button type="button" id="shuffle_off_button" class="btn btn-primary" title='Click to turn Shuffle OFF'>Shuffle</button>
-      <button type="button" id="shuffle_on_button" class="btn btn-outline-primary" title='Click to turn Shuffle ON' style="display:none">Shuffle</button>
-    </td>
-  </tr> 
   <tr>
     <td>
       <div id="authorised_interface">

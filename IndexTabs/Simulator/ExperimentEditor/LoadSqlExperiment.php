@@ -147,14 +147,15 @@ $("#rename_exp_btn").on("click",function(){
 
 $("#run_btn").on("click",function(){
 	var select_html = '<select id="select_condition" class="custom-select">';
-	exp_json.conditions.forEach(function(condition){
+	clean_conditions();  
+  exp_json.conditions.forEach(function(condition){
 		select_html += "<option>" + condition.name + "</option>";
 	});
 	select_html += "</select>";
 	
 	bootbox.dialog({
 		title:"Select a Condition",
-		message:"The multiple conditions functionality <b>HAS NOT</b> been finalised. Please only create experiments with one condition in this version of Collector, and just select the top option when running it.  <br><br>" + select_html, //There are multiple conditions in this experiment - please select which one you would like to run:
+		message:"The multiple conditions functionality <b>HAS ONLY</b> just been finalised. Please pilot this carefully when using it in your own research. <br><br> Which condition would you like to run? <br><br>" + select_html, 
 		buttons: {
 			start: {
 				label: "Start",
@@ -409,6 +410,13 @@ function update_dropdown_lists(){
 	var this_exp   = megaUberJson.exp_mgmt.experiments[experiment];
 	var stim_values = [];
 	var proc_values = [];
+  
+  //wipe the stimuli list
+  $('#proc_select').find('option').remove();
+  $('#stim_select').find('option').remove();
+  
+  //wipe the procedure list
+  
 	Object.keys(this_exp.all_procs).forEach(function(this_proc){
 		proc_values.push(this_proc);
 		$('#proc_select').append($('<option>', {
@@ -520,19 +528,11 @@ $(window).bind('keydown', function(event) {
         event.preventDefault();
           $("#save_btn").click();
         break;
-      }    
-		if(event.shiftKey){
-			switch (String.fromCharCode(event.which).toLowerCase()) {
-				case 'c':
-					event.preventDefault();
-					commit_save();
-				break;
-			}
-		}
+    }
   }	
 });
 $(window).bind('keyup', function(event) {
-    delete keys[event.which];
+  delete keys[event.which];
 });
 
 // Experiment Template
