@@ -27,15 +27,14 @@
 
 <script src="browserCheck.js"></script>
 <?php
-
 require_once 'Code/initiateCollector.php';
 require_once("libraries.html");
 require "Code/nojs.php";
 ?>
 
 <?php
-if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    
-	require_once "../../sqlConnect.php";
+if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    	
+  require_once "../../sqlConnect.php";  
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
 	error_reporting(E_ALL);
@@ -45,17 +44,14 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 		$_SESSION['version'] = $cwd[5];
 		$_SESSION['local_website'] = "http://localhost/collector_local";
 	} else {
-		$_SESSION['version'] = $cwd[7];
-		$_SESSION['local_website'] = "https://www.open-collector.org";
+    $_SESSION['version'] = $cwd[4];
+		$_SESSION['local_website'] = "https://www.ocollector.org";
 	}
   $logo_string = explode(".",$_SESSION['version']);
   $logo_string = $logo_string[0];
 
 ?>
-
-
 <link rel="stylesheet" href="Style.css"></link>
-
 <nav class="navbar fixed-top navbar-light bg-primary navbar-expand-lg" id="top_navbar" style="height:50px; padding:5px">
   <?php require("../logos/logo.php") ?>
 	<div class="collapse navbar-collapse">	
@@ -63,17 +59,16 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 			<div id="page_selected"></div>
 		</ul>		    
 	</div>
-	<a href="https://collectalk.com/" target="_blank" style="margin:2px">
+	<a href="https://github.com/anthonyhaffey/open-collector/issues" target="_blank" style="margin:2px">
 		<button class="btn btn-primary">Discuss</button>
 	</a>
 	<a href="http://www.uoropen.org/Workshops/Collector-Tutorial/" target="_blank" style="margin:2px">
 		<button class="btn btn-primary">Tutorial</button>
 	</a>
 	<button class="btn btn-outline-primary bg-white" id="help_btn" style="margin:2px; font-weight:bold">Help</button>
-	<?php require("LogoutInterface.php") ?>
+	<?php require("LogoutInterface.php"); ?>
 </nav>
 
-<br><br>
 
 <table id="content_table" style="width:100%">
   <tr>

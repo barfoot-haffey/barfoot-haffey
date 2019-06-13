@@ -22,25 +22,11 @@ if($_SESSION['user_email'] == "guest"){
 	echo "You cannot create a study unless you are logged in. Please log in or register.";
 } else {
 	$simulator_on = "true";
-	require 'initiateTool.php';    
+	require 'initiateTool.html';    
 ?>
 
 <!-- Scripts needed for simulator -->
 <link rel="stylesheet" type="text/css" href="IndexTabs/Simulator/SimulatorStyle.css" media="screen" />
-
-<style>
-.fixed-top-2 {
-	margin-top: 50px;
-  height: 42px;
-}
-#sim_navbar{
-  padding: 0px;
-}
-#simulator_table{
-	margin-top: 0px;
-}
-</style>
-
 
 <script>
 var User_Data = {
@@ -57,7 +43,6 @@ window.onbeforeunload = function() {
 	}		
 };
 </script>
-
 <nav class="navbar navbar-primary bg-white fixed-top fixed-top-2" id="sim_navbar">
 	<?php require("ExperimentEditor/LoadSqlExperiment.php"); ?>
   <span class='not_survey_cell_view_td' align="right">
@@ -79,7 +64,7 @@ $(".collectorSwitch").on("click",function(){
 
 
 $("#cell_content").on("blur",function(){
-    $("#cell_content").hide();
+  $("#cell_content").hide();
 });
 
 block_save = true;

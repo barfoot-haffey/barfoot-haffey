@@ -32,17 +32,7 @@ error_reporting(E_ALL);
 
 <style>
 body, html {
-    height: 100%;
-}
-
-.parallax {
-    height: 100%; 
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100%;
 }
 </style>
 
@@ -82,7 +72,10 @@ body, html {
 		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-map" role="tab" aria-controls="pills-contact" aria-selected="false">Researcher map</a>
 	</li>
   <li class="nav-item"  id="participant_map_tab">
-		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-pp_map" role="tab" aria-controls="pills-contact" aria-selected="false">Participant map</a>
+		<a class="nav-link" id="pills-pp-tab" data-toggle="pill" href="#navs-pp_map" role="tab" aria-controls="pills-pp" aria-selected="false">Participant map</a>
+	</li>
+  <li class="nav-item"  id="security_tab">
+		<a class="nav-link" id="pills-security-tab" data-toggle="pill" href="#navs-security" role="tab" aria-controls="pills-security" aria-selected="false">Security</a>
 	</li>
 	<li class="nav-item"  id="contact_tab">
 		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
@@ -110,6 +103,9 @@ body, html {
 		<div id="ppmapdiv" style="width: 100%; height:400px;"></div>
     <div id="pplistdiv"></div>
 	</div>
+  <div class="tab-pane fade" id="navs-security" role="tabpanel" aria-labelledby="pills-security-tab">
+		<?php require("security.html") ?>	
+	</div>
 	<div class="tab-pane fade" id="navs-contact" role="tabpanel" aria-labelledby="pills-contact-tab">			
 			<table class="table">
 				<tr>
@@ -125,12 +121,7 @@ body, html {
 				</tr>
 			</table>
 	</div>
-	
-	
-	
 </div>
-
-
 
 <style>
 #mapdiv {

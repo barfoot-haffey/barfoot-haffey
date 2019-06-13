@@ -83,6 +83,7 @@ $(".help_general").html(help_general_html);
 help_obj.tip_no = Math.floor(Math.random() * help_obj.main.length);
 $(".tip"+help_obj.tip_no).show();
 
+
 if(isAuthenticated()){
 	help_div_content = $(".help_general").html();
 	startup_dialog = bootbox.dialog({
@@ -167,11 +168,12 @@ if(isAuthenticated()){
 				});				
 			})
 			.catch(function(error){
-				//if file doesn't exist - create it
+        
+        //if file doesn't exist - create it
 				megaUberJson = {
           boosts:    {},
 					exp_mgmt:  {	
-						user_data: 				JSON.parse(' <?= $user_data  ?> '),
+						user_data: 				'tbc', //JSON.parse(' < ?= $user_data  ?> '),
 						any_loaded: 	 		false, 
 						authenticated:   	false,
 						current_manager: 	'',	
@@ -194,6 +196,7 @@ if(isAuthenticated()){
 				}
 				updateUberMegaFile("new");
 				initiate_actions();
+        
 			});
 			
 }	else {

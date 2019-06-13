@@ -21,7 +21,7 @@
 	$new_exp_json = file_get_contents(__DIR__ . '/default_new_experiment.json');
 		
 	$user_email  = $_SESSION['user_email'];
-	$initial_sql = "Select * FROM `users_beta` WHERE `email`='$user_email'";
+	$initial_sql = "Select * FROM `users` WHERE `email`='$user_email'";
 	$result 	 = $conn->query($initial_sql);
 	
 	
@@ -36,10 +36,12 @@
 	$result 	 = $conn->query($experiment_sql);	
 	$experiments	=	[];	
 	$published_links  = [];
+  
 	while($row = $result->fetch_assoc()) {
 		array_push($experiments,  	$row['name']);	
 		array_push($published_links, $row['published_id']."|".$row['experiment_id']);		
 	}
+  
 	
 ?>
 

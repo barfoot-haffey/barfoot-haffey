@@ -1,2 +1,0 @@
-[11-Jun-2019 15:05:47 UTC] PHP Warning:  require(contributors.php): failed to open stream: No such file or directory in /home/ocollector/public_html/index.php on line 103
-[11-Jun-2019 15:05:47 UTC] PHP Fatal error:  require(): Failed opening required 'contributors.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/index.php on line 103

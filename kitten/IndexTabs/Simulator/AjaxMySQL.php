@@ -82,7 +82,7 @@ if($action == "new"){
 		
 		if ($conn->query($sql) === TRUE) {
 			
-			$sql = "INSERT INTO `contributors_beta` (`experiment_id`,`user_id`) VALUES(
+			$sql = "INSERT INTO `contributors` (`experiment_id`,`user_id`) VALUES(
 				(SELECT `experiment_id` FROM `experiments_beta` WHERE `location` = '$location'), 
 				(SELECT `user_id` FROM `users_beta` WHERE `email`='$user_email'));";
 			
@@ -124,7 +124,7 @@ if($action == "publish"){
 	
 	$encrypted_privKey = openssl_encrypt ($privkey, $cipher, $local_key, true);
 	
-	$sql = "SELECT `experiment_id`,`published_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors_beta` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
+	$sql = "SELECT `experiment_id`,`published_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
 	 
 	// need to change published to true;
 	
@@ -225,7 +225,7 @@ if($action == "save"){
 }
 
 if($action == "unpublish"){	 
-	$sql = "SELECT `experiment_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors_beta` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
+	$sql = "SELECT `experiment_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
 	
 	// need to change published to true;
 		
