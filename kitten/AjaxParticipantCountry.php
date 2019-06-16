@@ -1,6 +1,6 @@
 <?php
 
-require("../sqlConnect.php");
+require("../../sqlConnect.php");
 
 //print_r($_POST);
 $country_id   = $_POST['country_id'];
@@ -20,19 +20,5 @@ if ($conn->query($sql) === TRUE) {
 } else {
   echo  $conn->error;;
 }
-
-
-
-/*
-$sql = "SELECT * FROM `participant_countries`";
-$row = $result->fetch_assoc()
-
-
-while() {
-	array_push($institutions,$row);
-}
-
-echo json_encode($institutions);
-*/
 
 ?>

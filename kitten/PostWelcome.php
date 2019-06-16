@@ -19,6 +19,10 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $cipher = "aes-256-cbc";
 define('AES_256_CBC', 'aes-256-cbc');
 
@@ -48,7 +52,7 @@ while($row = $result->fetch_assoc()){
 $_SESSION['researchers'] = $researchers;
 	
 	
-$sql 		= "SELECT * FROM `data_beta` WHERE `experiment_id` = '$experiment_id' AND `participant_code` = '$participant_code'";
+$sql 		= "SELECT * FROM `data` WHERE `experiment_id` = '$experiment_id' AND `participant_code` = '$participant_code'";
 $result = $conn -> query($sql);
 
 $_SESSION['experiment_id'] = $experiment_id;
@@ -66,7 +70,7 @@ if($result -> num_rows == 0){
 	$_SESSION['completion_code'] = $completion_code;
 		
 	//add it to the table		
-	$sql = "INSERT INTO `data_beta`(`experiment_id`, `participant_code`,`completion_code`) VALUES ('$experiment_id' ,'$participant_code','$completion_code')";
+	$sql = "INSERT INTO `data`(`experiment_id`, `participant_code`,`completion_code`) VALUES ('$experiment_id' ,'$participant_code','$completion_code')";
 		
 	if ($conn->query($sql) === TRUE) {
 		// great - do/say nothing
