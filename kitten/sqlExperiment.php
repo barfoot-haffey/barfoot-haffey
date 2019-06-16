@@ -80,7 +80,7 @@ if(isset($simulator_on)){
 	$iv  		       = false;
 	$location      = "";  
 	$published_id  = false;
-	$condition 		 = "";
+	$condition 		 = "";	
 } else {
 	
 	if(isset($_GET['name'])){
@@ -88,28 +88,8 @@ if(isset($simulator_on)){
 	} else {
 		$condition = "";
 	}
-	$location	= $_GET['location'];
-	
-	
-	// get public keys of researchers 
-	///////////////////////////////////
-		
-	$public_key_owners = [];
-	$sql    					 = "SELECT * FROM `view_experiment_users` WHERE `location` = '$location'"; 
-	$result 					 = $conn->query($sql); 
-	while($row = $result->fetch_assoc()) {
-		array_push($public_key_owners,$row['email']);
-	}
-		
+	$location	= $_GET['location'];	
 	require("Welcome.php");
-}
-
-$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$url = explode("/",$url);
-if(strpos($_SESSION['local_website'],"localhost") !== false){
-	$_SESSION['version'] = $url[5];	
-} else {
-	$_SESSION['version'] = $url[3];	
 }
 
 ?>
@@ -273,6 +253,7 @@ function final_trial(){
 		$.post("emailData.php",{
 			all_data   : JSON.stringify(exp_json),
 		},function(returned_data){
+			console.dir(returned_data);
 			
 			message_data = returned_data.split(" encrypted data = ");
       

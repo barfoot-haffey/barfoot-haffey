@@ -1,0 +1,771 @@
+[11-Jun-2019 15:13:07 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:13:07 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:14:50 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:14:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:15:53 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:15:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:16:07 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:16:07 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:17:23 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:17:23 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:17:36 UTC] PHP Warning:  mysqli::mysqli(): (HY000/1045): Access denied for user 'AnthonyTheob0ld'@'localhost' (using password: YES) in /home/ocollector/sqlConnect.php on line 10
+[11-Jun-2019 15:17:36 UTC] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home/ocollector/public_html/kitten/login.php on line 138
+[11-Jun-2019 15:17:36 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:19:21 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[11-Jun-2019 15:19:51 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:03:39 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[13-Jun-2019 09:03:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:03:50 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 48
+[13-Jun-2019 09:03:50 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:03:50 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:07:02 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:07:02 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 47
+[13-Jun-2019 09:07:02 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:07:02 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:44:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[13-Jun-2019 09:44:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:44:37 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 47
+[13-Jun-2019 09:44:37 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:44:37 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:44:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:44:40 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 47
+[13-Jun-2019 09:44:40 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:44:40 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:45:34 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:45:34 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 48
+[13-Jun-2019 09:45:34 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:45:34 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:46:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:46:26 UTC] PHP Notice:  Undefined offset: 7 in /home/ocollector/public_html/kitten/index.php on line 49
+[13-Jun-2019 09:46:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:46:26 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 09:46:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 09:46:33 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 09:46:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:31:14 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[13-Jun-2019 14:31:17 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:31:17 UTC] PHP Notice:  Undefined index: version in /home/ocollector/public_html/kitten/index.php on line 47
+[13-Jun-2019 14:31:17 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:31:17 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:31:44 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:31:44 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:31:44 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:32:49 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:32:49 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:32:49 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:33:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:33:04 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:33:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:34:58 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:34:58 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:34:58 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:35:24 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:35:24 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:35:24 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 39
+[13-Jun-2019 14:37:34 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:37:34 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:37:34 UTC] PHP Parse error:  syntax error, unexpected 'while' (T_WHILE), expecting ',' or ';' in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:37:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:37:40 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:37:40 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:38:19 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:38:19 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:38:19 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:39:48 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:39:48 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:39:48 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:40:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:40:04 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:40:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:40:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:40:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:40:26 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:40:31 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:40:32 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:40:32 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:40:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:40:41 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:40:41 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:42:08 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:42:08 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:42:08 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:45:54 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:45:54 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:45:54 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:46:30 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:46:30 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:46:30 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:50:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:50:04 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:50:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:50:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:50:22 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:50:22 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:50:28 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:50:28 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:50:28 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:50:57 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:50:57 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:50:57 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:51:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:51:33 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:51:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:51:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:51:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:51:38 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:52:01 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:52:01 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:52:01 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:52:20 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:52:20 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:52:20 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:52:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:52:29 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:52:29 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:52:52 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:52:52 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:52:52 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:53:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:53:05 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:53:05 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:53:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:53:33 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:53:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:53:45 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:53:45 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:53:45 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 14:54:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:54:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:54:47 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:55:27 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:55:27 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:55:27 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:55:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:55:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:55:38 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:55:49 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:55:49 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:55:49 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 14:56:09 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 14:56:09 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 14:56:09 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:03:41 UTC] PHP Warning:  Unterminated comment starting line 76 in /home/ocollector/public_html/kitten/index.php on line 76
+[13-Jun-2019 15:03:41 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ocollector/public_html/kitten/index.php on line 183
+[13-Jun-2019 15:04:28 UTC] PHP Warning:  Unterminated comment starting line 76 in /home/ocollector/public_html/kitten/index.php on line 76
+[13-Jun-2019 15:04:28 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ocollector/public_html/kitten/index.php on line 183
+[13-Jun-2019 15:04:56 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ocollector/public_html/kitten/index.php on line 76
+[13-Jun-2019 15:05:17 UTC] PHP Warning:  Unterminated comment starting line 76 in /home/ocollector/public_html/kitten/index.php on line 76
+[13-Jun-2019 15:05:17 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/ocollector/public_html/kitten/index.php on line 183
+[13-Jun-2019 15:05:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:05:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:05:26 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:05:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:05:42 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:05:42 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 15:10:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:10:53 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:10:53 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:11:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:11:22 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:11:22 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:11:54 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:11:54 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:11:54 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:23:58 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:23:58 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:24:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:24:41 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:24:41 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:24:59 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:24:59 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:24:59 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 28
+[13-Jun-2019 15:24:59 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[13-Jun-2019 15:25:36 UTC] PHP Warning:  require(../sqlConnect.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/AjaxInstitutesList.php on line 3
+[13-Jun-2019 15:25:36 UTC] PHP Fatal error:  require(): Failed opening required '../sqlConnect.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/AjaxInstitutesList.php on line 3
+[13-Jun-2019 15:25:49 UTC] PHP Warning:  require(../sqlConnect.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/AjaxInstitutesList.php on line 3
+[13-Jun-2019 15:25:49 UTC] PHP Fatal error:  require(): Failed opening required '../sqlConnect.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/AjaxInstitutesList.php on line 3
+[13-Jun-2019 15:25:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:26:06 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:32:06 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:32:06 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:32:06 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 28
+[13-Jun-2019 15:32:06 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:32:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:32:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:32:26 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:32:43 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:32:43 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:32:43 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Data/data.php on line 132
+[13-Jun-2019 15:40:08 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:40:08 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:40:08 UTC] PHP Notice:  Undefined variable: user_data in /home/ocollector/public_html/kitten/IndexTabs/Help/help.php on line 174
+[13-Jun-2019 15:42:11 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:42:11 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:42:11 UTC] PHP Notice:  Undefined variable: user_data in /home/ocollector/public_html/kitten/IndexTabs/Help/help.php on line 176
+[13-Jun-2019 15:42:32 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:42:32 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:42:32 UTC] PHP Notice:  Undefined variable: user_data in /home/ocollector/public_html/kitten/IndexTabs/Help/help.php on line 176
+[13-Jun-2019 15:43:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:43:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:43:47 UTC] PHP Notice:  Undefined variable: user_data in /home/ocollector/public_html/kitten/IndexTabs/Help/help.php on line 175
+[13-Jun-2019 15:44:00 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:44:00 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 15:44:35 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 15:44:35 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:07:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:07:03 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:07:31 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:07:31 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:08:57 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:08:57 UTC] PHP Notice:  Undefined variable: published_links in /home/ocollector/public_html/kitten/index.php on line 200
+[13-Jun-2019 16:08:57 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:10:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:10:05 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:13:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:13:40 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:15:20 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:15:20 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:16:17 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:16:17 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:16:45 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:16:45 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:16:45 UTC] PHP Warning:  require(initiateTool.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/IndexTabs/Simulator/simulator.php on line 25
+[13-Jun-2019 16:16:45 UTC] PHP Fatal error:  require(): Failed opening required 'initiateTool.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/IndexTabs/Simulator/simulator.php on line 25
+[13-Jun-2019 16:16:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:16:53 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:17:09 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:17:09 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:17:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:17:42 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:44:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:44:22 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:44:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:44:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:44:59 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:44:59 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:45:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:45:22 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:45:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:45:40 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:46:07 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:46:07 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:46:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:46:29 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:46:36 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:46:36 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:48:17 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:48:17 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:53:34 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:53:34 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 16:56:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 16:56:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 17:57:28 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 17:57:44 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:15:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:15:24 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:15:30 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:15:44 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:16:02 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:16:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:16:25 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:16:27 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:22:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:22:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:23:16 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[13-Jun-2019 18:23:19 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:23:19 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 18:23:22 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:23:22 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 18:27:12 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:27:12 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 18:27:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:27:50 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 18:32:13 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 18:32:13 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[13-Jun-2019 19:33:15 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 19:33:15 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 19:33:16 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[13-Jun-2019 19:33:16 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:26 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[14-Jun-2019 07:55:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:37 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[14-Jun-2019 07:55:42 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[14-Jun-2019 07:55:46 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[14-Jun-2019 07:55:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[14-Jun-2019 07:55:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[14-Jun-2019 07:55:50 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 03:51:41 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 03:51:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:19:53 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:19:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[15-Jun-2019 10:19:59 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:19:59 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 10:20:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:20:03 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 10:21:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:21:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 10:22:00 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:22:00 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 10:23:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:23:33 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[15-Jun-2019 10:23:43 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:64) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:23:43 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 110
+[15-Jun-2019 10:27:57 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:64) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:27:57 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 110
+[15-Jun-2019 10:29:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:64) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:29:41 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 110
+[15-Jun-2019 10:30:33 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:62) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:30:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 108
+[15-Jun-2019 10:32:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[15-Jun-2019 10:32:03 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 107
+[16-Jun-2019 06:35:37 UTC] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:35:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/iv-anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 181
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 182
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/local_key.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 183
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/priv_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 184
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/public_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 185
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  file_put_contents(../../simplekeys/saltpepper_anthony.haffey@gmail.com.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/login.php on line 186
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[16-Jun-2019 06:35:40 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:35:40 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 06:35:43 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:35:43 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 06:36:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:36:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 107
+[16-Jun-2019 06:36:54 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:36:54 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 86
+[16-Jun-2019 06:36:54 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 06:36:54 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 111
+[16-Jun-2019 06:42:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:42:29 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 86
+[16-Jun-2019 06:42:29 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 06:42:29 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 111
+[16-Jun-2019 06:44:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:44:29 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 86
+[16-Jun-2019 06:44:29 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 06:44:30 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/PostWelcome.php on line 42
+[16-Jun-2019 06:49:21 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:49:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 86
+[16-Jun-2019 06:49:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 06:49:28 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 06:49:28 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 06:49:40 UTC] PHP Warning:  require(../sqlConnect.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 06:49:40 UTC] PHP Fatal error:  require(): Failed opening required '../sqlConnect.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 06:51:49 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:61) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:51:49 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 86
+[16-Jun-2019 06:51:49 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 06:52:24 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:22) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 06:52:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 06:52:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 48
+[16-Jun-2019 06:53:01 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 06:53:01 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 06:55:50 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 06:55:50 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:04:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:04:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:04:29 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:04:29 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:05:03 UTC] PHP Warning:  require(../sqlConnect.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 07:05:03 UTC] PHP Fatal error:  require(): Failed opening required '../sqlConnect.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 07:09:13 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:09:13 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:09:19 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:09:19 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:10:19 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:10:19 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:10:24 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:10:24 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:26:55 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:26:55 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:27:06 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:27:06 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:28:05 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:28:05 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:28:44 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:28:44 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:28:50 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:28:50 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:34:23 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:34:23 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:34:30 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:34:30 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:34:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:34:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:35:02 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:35:02 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:45:27 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:45:27 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:45:33 UTC] PHP Warning:  require_once(../../mailerPassword.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:45:33 UTC] PHP Fatal error:  require_once(): Failed opening required '../../mailerPassword.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 07:51:23 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:51:23 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:51:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:51:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:52:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:52:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:54:52 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:54:52 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:55:08 UTC] PHP Parse error:  syntax error, unexpected 'use' (T_USE) in /home/ocollector/public_html/kitten/emailData.php on line 56
+[16-Jun-2019 07:55:22 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:55:22 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:55:26 UTC] PHP Parse error:  syntax error, unexpected 'use' (T_USE) in /home/ocollector/public_html/kitten/emailData.php on line 56
+[16-Jun-2019 07:55:34 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:55:34 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:56:20 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:56:20 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 07:59:53 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 07:59:53 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:00:00 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:00:00 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:00:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:00:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:08:54 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/sqlExperiment.php:5) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 08:08:54 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 50
+[16-Jun-2019 08:08:54 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 51
+[16-Jun-2019 08:09:16 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:09:16 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:09:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:09:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:12:33 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:12:33 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:17:07 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 46
+[16-Jun-2019 08:17:07 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 47
+[16-Jun-2019 08:54:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 50
+[16-Jun-2019 08:54:24 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 51
+[16-Jun-2019 08:55:15 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 52
+[16-Jun-2019 08:55:15 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 53
+[16-Jun-2019 08:55:37 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 56
+[16-Jun-2019 08:55:37 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 57
+[16-Jun-2019 09:06:33 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 56
+[16-Jun-2019 09:06:33 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 57
+[16-Jun-2019 09:12:06 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 53
+[16-Jun-2019 09:12:06 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 54
+[16-Jun-2019 09:12:27 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 09:12:27 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 88
+[16-Jun-2019 09:33:23 UTC] PHP Notice:  Undefined variable: condition in /home/ocollector/public_html/kitten/sqlExperiment.php on line 200
+[16-Jun-2019 09:33:48 UTC] PHP Notice:  Undefined variable: published_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 87
+[16-Jun-2019 09:33:48 UTC] PHP Notice:  Undefined variable: condition in /home/ocollector/public_html/kitten/sqlExperiment.php on line 201
+[16-Jun-2019 09:34:06 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 88
+[16-Jun-2019 09:34:06 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 89
+[16-Jun-2019 09:34:35 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 88
+[16-Jun-2019 09:34:35 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 89
+[16-Jun-2019 09:35:30 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 88
+[16-Jun-2019 09:35:30 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/sqlExperiment.php on line 89
+[16-Jun-2019 11:41:45 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 11:41:47 UTC] PHP Warning:  array_push() expects parameter 1 to be array, null given in /home/ocollector/public_html/kitten/login.php on line 165
+[16-Jun-2019 11:41:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:198) in /home/ocollector/public_html/kitten/login.php on line 227
+[16-Jun-2019 11:41:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 11:41:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 11:41:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 11:41:50 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 11:50:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 11:50:04 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 12:38:46 UTC] PHP Warning:  require(../sqlConnect.php): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 12:38:46 UTC] PHP Fatal error:  require(): Failed opening required '../sqlConnect.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/ocollector/public_html/kitten/AjaxParticipantCountry.php on line 3
+[16-Jun-2019 13:24:54 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/sqlExperiment.php on line 92
+[16-Jun-2019 13:24:54 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 99
+[16-Jun-2019 13:25:08 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 99
+[16-Jun-2019 13:29:04 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 110
+[16-Jun-2019 13:29:19 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 112
+[16-Jun-2019 13:29:29 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 113
+[16-Jun-2019 13:43:02 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:43:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:196) in /home/ocollector/public_html/kitten/login.php on line 225
+[16-Jun-2019 13:43:04 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:43:04 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:43:04 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[16-Jun-2019 13:43:08 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:43:08 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:43:08 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[16-Jun-2019 13:54:39 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:54:39 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:54:39 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 40
+[16-Jun-2019 13:55:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:55:29 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:55:29 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 43
+[16-Jun-2019 13:56:06 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:56:06 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:56:06 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 46
+[16-Jun-2019 13:56:39 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:56:39 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:56:39 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 44
+[16-Jun-2019 13:57:25 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:57:25 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:57:25 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 44
+[16-Jun-2019 13:57:32 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:57:32 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:57:32 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 44
+[16-Jun-2019 13:58:13 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:58:13 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:58:13 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 44
+[16-Jun-2019 13:58:30 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:58:30 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:58:30 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 44
+[16-Jun-2019 13:58:56 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:58:57 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:58:57 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 50
+[16-Jun-2019 13:59:06 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 13:59:07 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 13:59:07 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 52
+[16-Jun-2019 14:22:23 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:22:23 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:22:23 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:22:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:22:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:22:38 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 50
+[16-Jun-2019 14:22:49 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:22:49 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:22:49 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 45
+[16-Jun-2019 14:23:11 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:23:11 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:23:11 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:23:43 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:23:43 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:23:43 UTC] PHP Notice:  Undefined variable: results in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 45
+[16-Jun-2019 14:23:43 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:23:52 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:23:52 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:23:52 UTC] PHP Notice:  Undefined variable: results in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 45
+[16-Jun-2019 14:23:52 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:24:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:24:05 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:24:05 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:27:53 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:27:53 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:27:53 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:28:09 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:28:09 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:28:09 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.php on line 49
+[16-Jun-2019 14:28:49 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:28:49 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:28:52 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:28:52 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:30:25 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:30:25 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:30:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:30:42 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:32:01 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 14:32:01 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 14:56:02 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 100
+[16-Jun-2019 14:58:57 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/sqlExperiment.php on line 100
+[16-Jun-2019 14:59:15 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/PostWelcome.php on line 42
+[16-Jun-2019 15:00:37 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/ocollector/public_html/kitten/PostWelcome.php on line 42
+[16-Jun-2019 15:19:21 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 92
+[16-Jun-2019 15:19:21 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 99
+[16-Jun-2019 15:20:49 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 92
+[16-Jun-2019 15:20:49 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 99
+[16-Jun-2019 15:25:24 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 15:25:24 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 15:25:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 15:25:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 15:33:37 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 15:33:37 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 15:34:13 UTC] PHP Warning:  file_get_contents(../../simplekeys/iv-anthony.haffey@gmail.com--55cjyvdexbf.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/DecryptFiles.php on line 66
+[16-Jun-2019 15:34:13 UTC] PHP Warning:  file_get_contents(../../simplekeys/symmetric-anthony.haffey@gmail.com--55cjyvdexbf.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/DecryptFiles.php on line 69
+[16-Jun-2019 15:34:13 UTC] PHP Warning:  Creating default object from empty value in /home/ocollector/public_html/kitten/DecryptFiles.php on line 74
+[16-Jun-2019 16:46:41 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 109
+[16-Jun-2019 16:47:23 UTC] PHP Notice:  Undefined index: local_website in /home/ocollector/public_html/kitten/sqlExperiment.php on line 109
+[16-Jun-2019 16:54:35 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 92
+[16-Jun-2019 16:54:35 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 99
+[16-Jun-2019 17:13:05 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 84
+[16-Jun-2019 17:14:39 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 84
+[16-Jun-2019 17:15:38 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 84
+[16-Jun-2019 17:18:05 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 84
+[16-Jun-2019 17:21:09 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 104
+[16-Jun-2019 17:21:09 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 111
+[16-Jun-2019 17:23:02 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 83
+[16-Jun-2019 17:23:40 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 17:23:40 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:23:40 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:23:50 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 17:23:50 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:23:50 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:00 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 17:24:00 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:00 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:11 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 17:24:11 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:11 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:21 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/sqlExperiment.php on line 93
+[16-Jun-2019 17:24:22 UTC] PHP Notice:  Undefined index: location in /home/ocollector/public_html/kitten/emailData.php on line 52
+[16-Jun-2019 17:24:22 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:22 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:37 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:37 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:47 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:47 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:57 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:24:57 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:08 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:08 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:18 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:18 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:28 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:28 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:38 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:39 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:49 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:49 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:59 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:25:59 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:10 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:10 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:20 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:20 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:30 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:30 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:40 UTC] PHP Notice:  Undefined variable: conn in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:26:40 UTC] PHP Fatal error:  Call to a member function query() on null in /home/ocollector/public_html/kitten/emailData.php on line 88
+[16-Jun-2019 17:28:04 UTC] PHP Notice:  Undefined variable: row in /home/ocollector/public_html/kitten/emailData.php on line 100
+[16-Jun-2019 17:28:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 102
+[16-Jun-2019 17:28:04 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 110
+[16-Jun-2019 17:28:04 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 117
+[16-Jun-2019 17:28:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 118
+[16-Jun-2019 17:28:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 119
+[16-Jun-2019 17:28:04 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 120
+[16-Jun-2019 18:46:26 UTC] PHP Notice:  Undefined offset: 0 in /home/ocollector/public_html/kitten/emailData.php on line 107
+[16-Jun-2019 18:46:26 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 109
+[16-Jun-2019 18:46:26 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 117
+[16-Jun-2019 18:46:26 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 124
+[16-Jun-2019 18:46:26 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 125
+[16-Jun-2019 18:46:26 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 126
+[16-Jun-2019 18:46:26 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 127
+[16-Jun-2019 18:46:59 UTC] PHP Notice:  Undefined offset: 0 in /home/ocollector/public_html/kitten/emailData.php on line 107
+[16-Jun-2019 18:46:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 109
+[16-Jun-2019 18:46:59 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 117
+[16-Jun-2019 18:46:59 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 124
+[16-Jun-2019 18:46:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 125
+[16-Jun-2019 18:46:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 126
+[16-Jun-2019 18:46:59 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 127
+[16-Jun-2019 18:47:21 UTC] PHP Notice:  Undefined offset: 0 in /home/ocollector/public_html/kitten/emailData.php on line 108
+[16-Jun-2019 18:47:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 110
+[16-Jun-2019 18:47:21 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 118
+[16-Jun-2019 18:47:21 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 125
+[16-Jun-2019 18:47:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 126
+[16-Jun-2019 18:47:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 127
+[16-Jun-2019 18:47:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 128
+[16-Jun-2019 18:47:47 UTC] PHP Notice:  Undefined offset: 0 in /home/ocollector/public_html/kitten/emailData.php on line 108
+[16-Jun-2019 18:47:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 110
+[16-Jun-2019 18:47:47 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 118
+[16-Jun-2019 18:47:47 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 125
+[16-Jun-2019 18:47:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 126
+[16-Jun-2019 18:47:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 127
+[16-Jun-2019 18:47:47 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 128
+[16-Jun-2019 18:50:46 UTC] PHP Notice:  Undefined offset: 0 in /home/ocollector/public_html/kitten/emailData.php on line 108
+[16-Jun-2019 18:50:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 110
+[16-Jun-2019 18:50:46 UTC] PHP Warning:  file_get_contents(../../simplekeys/public_.txt): failed to open stream: No such file or directory in /home/ocollector/public_html/kitten/emailData.php on line 118
+[16-Jun-2019 18:50:46 UTC] PHP Warning:  openssl_public_encrypt(): key parameter is not a valid public key in /home/ocollector/public_html/kitten/emailData.php on line 125
+[16-Jun-2019 18:50:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 126
+[16-Jun-2019 18:50:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 127
+[16-Jun-2019 18:50:46 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 128
+[16-Jun-2019 18:54:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 118
+[16-Jun-2019 18:54:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 134
+[16-Jun-2019 18:54:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 135
+[16-Jun-2019 18:54:21 UTC] PHP Notice:  Undefined variable: experiment_id in /home/ocollector/public_html/kitten/emailData.php on line 136
+[16-Jun-2019 18:59:06 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 18:59:09 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:196) in /home/ocollector/public_html/kitten/login.php on line 225
+[16-Jun-2019 18:59:09 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 18:59:09 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 18:59:09 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/kitten/sqlExperiment.php on line 114
+[16-Jun-2019 19:01:35 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:01:35 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:01:35 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/kitten/sqlExperiment.php on line 114
+[16-Jun-2019 19:01:50 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:01:50 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:01:50 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/kitten/sqlExperiment.php on line 114
+[16-Jun-2019 19:03:13 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:196) in /home/ocollector/public_html/kitten/login.php on line 225
+[16-Jun-2019 19:03:15 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/ocollector/public_html/kitten/login.php:196) in /home/ocollector/public_html/kitten/login.php on line 225
+[16-Jun-2019 19:04:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:04:05 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:04:05 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/kitten/sqlExperiment.php on line 114
+[16-Jun-2019 19:21:03 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:21:03 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:21:03 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/kitten/sqlExperiment.php on line 119
+[16-Jun-2019 19:21:17 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:21:17 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:21:47 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:21:47 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:22:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:22:05 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:22:21 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:22:21 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:22:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:22:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:22:45 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:22:45 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:25:27 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:25:27 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:25:38 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:25:38 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:29:26 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:29:26 UTC] PHP Notice:  Undefined offset: 5 in /home/ocollector/public_html/logos/logo.php on line 6
+[16-Jun-2019 19:29:26 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:30:16 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:30:16 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:35:42 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:35:42 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:38:48 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:38:48 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:39:10 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:39:10 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18
+[16-Jun-2019 19:39:19 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/ocollector/public_html/kitten/index.php:29) in /home/ocollector/public_html/kitten/Code/initiateCollector.php on line 25
+[16-Jun-2019 19:39:19 UTC] PHP Notice:  Undefined variable: version in /home/ocollector/public_html/logos/logo.php on line 18

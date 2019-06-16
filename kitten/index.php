@@ -47,8 +47,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
     $_SESSION['version'] = $cwd[4];
 		$_SESSION['local_website'] = "https://www.ocollector.org";
 	}
-  $logo_string = explode(".",$_SESSION['version']);
-  $logo_string = $logo_string[0];
+  
 
 ?>
 <link rel="stylesheet" href="Style.css"></link>

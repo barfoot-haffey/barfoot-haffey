@@ -126,7 +126,7 @@ function save_csv (filename, data) {
 
 <?php
 $email = $_SESSION['user_email'];
-$sql = "SELECT * FROM `view_researcher_pps` WHERE `email` = '$email'";
+$sql = "SELECT * FROM `view_user_pps` WHERE `email` = '$email'";
 $result = $conn->query($sql);
 $data_array = [];
 while($row = $result->fetch_assoc()) {
