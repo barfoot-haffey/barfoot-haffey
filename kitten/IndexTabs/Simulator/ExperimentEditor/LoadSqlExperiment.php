@@ -45,31 +45,27 @@
 	
 ?>
 
-<div id="load_toolbar">
-	<!-- 				  
-		This example takes the user through Dropbox's API OAuth flow using <code>Dropbox.getAuthenticationUrl()</code> method [<a href="http://dropbox.github.io/dropbox-sdk-js/Dropbox.html#getAuthenticationUrl">docs</a>] and then uses the generated access token to list the contents of their root directory.				
-	-->				  
-		
+<div id="load_toolbar">	
 	<table>
 		<tr>
-			<td>				
+			<td>
 				<button type="button" id="new_experiment_button" class="btn btn-primary">New</button>
 			</td>
 			<td>
-				<span id="experiments"></span>				        
-			</td>      
+				<span id="experiments"></span>
+			</td>
 			<td>
 				<span id="dropbox_inputs" style="display:none">
-					<button id="save_btn" class="btn btn-primary">Save</button>					
+					<button id="save_btn" class="btn btn-primary">Save</button>
 					<button id="rename_exp_btn" class="btn btn-primary">Rename</button>
 					<button id="delete_exp_btn" class="btn btn-primary">Delete</button>
 					<button id="versions_btn" class="btn btn-primary">Versions</button>
 					<input  id='publish_link' type='text' readonly style='display:none'>
 					<input  id='preview_link' type='text' readonly style='display:none'>
 					<button id="run_btn"      class="btn btn-primary">Run</button>
-					<a id="run_link" style="display:none" href="" target="_blank"></a>					
-				</span>				
-			</td>			
+					<a id="run_link" style="display:none" href="" target="_blank"></a>
+				</span>
+			</td>
 		</tr>
 	</table>
 </div>
@@ -77,7 +73,7 @@
 <script> /* notifying of new shared experiments */
 
 var new_experiment_data = <?= $new_exp_json ?>;
-	
+
 </script>
 
 
@@ -88,14 +84,21 @@ $("#links_btn").on("click",function(){
 	participant_link = $("#publish_link").val();
 	preview_link = $("#preview_link").val();
 	iframe_code  = 	"<button class='btn btn-primary' data-toggle='collapse' data-target='#preview_"+experiment+"'> Show/Hide Preview </button>"+
-					"<button class='btn btn-primary' onclick='window.open(\""+preview_link+"\");'>Open in new tab</button>"+
-	"<div id='preview_"+experiment+"' class='collapse'> "+
-	"<table><tr><td align='right'>"+
-	"<button class='btn btn-primary' onclick='$(\"#iframe_"+experiment+"\").attr(\"src\",\""+preview_link+"\")'>Refresh</button></td></tr>"+
-	"<tr><td><iframe id='iframe_"+experiment+"' src='"+preview_link+"' style='width:800px; height:800px'></iframe></td></tr>"+
-	"</table>"+
-	"</div>";
-	
+                  "<button class='btn btn-primary' onclick='window.open(\""+preview_link+"\");'>Open in new tab</button>"+
+                  "<div id='preview_"+experiment+"' class='collapse'> "+
+                    "<table>"+
+                      "<tr>"+
+                        "<td align='right'>"+
+                          "<button class='btn btn-primary' onclick='$(\"#iframe_"+experiment+"\").attr(\"src\",\""+preview_link+"\")'>Refresh</button>"+
+                        "</td>"+
+                      "</tr>"+
+                      "<tr>"+
+                        "<td>"+
+                          "<iframe id='iframe_"+experiment+"' src='"+preview_link+"' style='width:800px; height:800px'></iframe>"+
+                        "</td>"+
+                      "</tr>"+
+                    "</table>"+
+                  "</div>";
 	
 	bootbox.dialog({
 		title:"Links",
@@ -340,8 +343,8 @@ function list_experiments(){
 			
 				var this_exp = megaUberJson.exp_mgmt.experiments[this.value];		
 				$("#dropbox_inputs").show();
-				$("#run_link").attr("href","https://www.open-collector.org/"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
-				$("#run_btn").attr("title","https://www.open-collector.org/"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
+				$("#run_link").attr("href","../"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
+				$("#run_btn").attr("title","../"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
 				update_handsontables();
 			});
 		})

@@ -154,7 +154,7 @@ if($action == "publish"){
 	
 	$release = explode("/",$_SERVER['REQUEST_URI'])[1]; //e.g. antelope/badger
 	
-	echo "https://www.open-collector.org/$release/sqlExperiment.php?experiment_id=$published_id|$exp_no";
+	echo "../$release/sqlExperiment.php?experiment_id=$published_id|$exp_no";
 	openssl_free_key($res);	// clear key	
 }
 

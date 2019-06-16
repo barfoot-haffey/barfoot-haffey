@@ -43,13 +43,13 @@ window.onbeforeunload = function() {
 	}		
 };
 </script>
+
 <nav class="navbar navbar-primary bg-white fixed-top fixed-top-2" id="sim_navbar">
 	<?php require("ExperimentEditor/LoadSqlExperiment.php"); ?>
   <span class='not_survey_cell_view_td' align="right">
     <?php require("SupportBars/interfaces.php"); ?>
   </span>
 </nav>
-
 
 <script>
 $(".collectorSwitch").on("click",function(){

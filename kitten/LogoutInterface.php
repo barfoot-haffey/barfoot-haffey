@@ -42,7 +42,7 @@ if(isset($_SESSION['user_email'])){
 		</td>
 		
 		<td>			
-			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="https://www.open-collector.org/logos/dbx.ico.png" id="dropbox_logo">
+			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/dbx.ico.png" id="dropbox_logo">
 		</td>
     <td>
       <span id="save_status" class="text-white"></span>
@@ -52,7 +52,7 @@ if(isset($_SESSION['user_email'])){
 		</td>
 		
 		<td>
-			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="https://www.open-collector.org/logos/collector.ico.png" id="collector_logo">
+			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/collector.ico.png" id="collector_logo">
 		</td>
     <td>
       <form action="login.php" method="post" style="padding:0px">	

@@ -221,7 +221,7 @@ if (isAuthenticated()) {
   // Set the login anchors href using dbx.getAuthenticationUrl()
   
   var dbx = new Dropbox({ clientId: CLIENT_ID });
-  var authUrl = dbx.getAuthenticationUrl('https://www.open-collector.org/<?= $_SESSION['version'] ?>/IndexTabs/Simulator/ExperimentEditor/stimList.php');
+  var authUrl = dbx.getAuthenticationUrl('../<?= $_SESSION['version'] ?>/IndexTabs/Simulator/ExperimentEditor/stimList.php');
   document.getElementById('authlink').href = authUrl;
   $("#authlink")[0].click();
 }

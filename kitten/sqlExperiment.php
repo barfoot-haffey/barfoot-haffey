@@ -1,4 +1,5 @@
-<!--
+<?php
+
 /*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
     A program for running experiments on the web
     Copyright 2012-2016 Mikey Garcia & Nate Kornell
@@ -18,50 +19,10 @@
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
--->
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
-</head>
-<script>
-  // Opera 8.0+
-  var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
-  // Firefox 1.0+
-  var isFirefox = typeof InstallTrigger !== 'undefined';
-
-  // Safari 3.0+ "[object HTMLElementConstructor]" 
-  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-  // Internet Explorer 6-11
-  var isIE = /*@cc_on!@*/false || !!document.documentMode;
-
-  // Edge 20+
-  var isEdge = !isIE && !!window.StyleMedia;
-
-  // Chrome 1+
-  var isChrome = !!window.chrome && !!window.chrome.webstore;
-
-  // Blink engine detection
-  var isBlink = (isChrome || isOpera) && !!window.CSS;
-
-  if(isIE){
-    alert("This website does not work reliably on Internet Explorer - Please use another browser, preferably Google Chrome.");
-  }
-
-
-	window.Papa || document.write('<script src="https://www.open-collector.org/libraries/papaparse.4.3.6.min.js"><\/script>');	
-	window.jQuery || document.write('<script src="https://www.open-collector.org/libraries/jquery-3.3.1.min.js"><\/script>');	
-	window.Popper || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"><\/script>');	
-	
-	
-	window.bootbox || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"><\/script>');
-	
-	window.bootstrap || document.write('<link rel="stylesheet" href="../libraries/bootstrapCollector.css"><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"><\/script>');
-  
-</script>
-
-<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $cipher = "aes-256-cbc";
 define('AES_256_CBC', 'aes-256-cbc');
@@ -105,7 +66,7 @@ if(isset($simulator_on)){
 	
 	// locate the experiment 
 	//////////////////////////
-	$sql = "SELECT * FROM experiments_beta WHERE `experiment_id` = '$experiment_id' AND `published` = true AND `published_id` = '$published_id'"; 
+	$sql = "SELECT * FROM experiments WHERE `experiment_id` = '$experiment_id' AND `published` = true AND `published_id` = '$published_id'"; 
 	$result = $conn->query($sql); 
 	$row = $result->fetch_assoc();
 	require("Welcome.php");
@@ -121,7 +82,44 @@ if(strpos($_SESSION['local_website'],"localhost") !== false){
 }
 
 ?>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
+</head>
+<script>
+  // Opera 8.0+
+  var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
+  // Firefox 1.0+
+  var isFirefox = typeof InstallTrigger !== 'undefined';
+
+  // Safari 3.0+ "[object HTMLElementConstructor]" 
+  var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+  // Internet Explorer 6-11
+  var isIE = /*@cc_on!@*/false || !!document.documentMode;
+
+  // Edge 20+
+  var isEdge = !isIE && !!window.StyleMedia;
+
+  // Chrome 1+
+  var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+  // Blink engine detection
+  var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+  if(isIE){
+    alert("This website does not work reliably on Internet Explorer - Please use another browser, preferably Google Chrome.");
+  }
+
+
+	window.Papa 	|| document.write('<script src="../libraries/papaparse.4.3.6.min.js"><\/script>');	
+	window.jQuery || document.write('<script src="../libraries/jquery-3.3.1.min.js"><\/script>');	
+	window.Popper || document.write('<script src="../libraries/popper.min.js"><\/script>');	
+	window.bootbox || document.write('<script src="../libraries/bootbox.4.4.0.min.js"><\/script>');	
+	window.bootstrap || document.write('<link rel="stylesheet" href="../libraries/bootstrapCollector.css"><script src="../libraries/bootstrap.3.3.7.min.js"><\/script>');
+  
+</script>
 <style>
 
 #experiment_div{
@@ -208,9 +206,8 @@ if(typeof(block_save) !== "undefined"){ //i.e. simulator
 
 </script>
 
-<script src="https://www.open-collector.org/<?= $_SESSION['version'] ?>/iframe_library.js"></script> 
-<script src="https://www.open-collector.org/<?= $_SESSION['version'] ?>/TrialFunctions.js"></script>
-
+<script src="../<?= $_SESSION['version'] ?>/iframe_library.js"></script> 
+<script src="../<?= $_SESSION['version'] ?>/TrialFunctions.js"></script>
 
 <script>
 function collectorPapaParsed(preparsed){
@@ -568,7 +565,7 @@ function create_exp_json_functions(){
 		    
 		//look through all variables and replace with the value
 		
-		this_trialtype =  "<scr" + "ipt> Trial = {}; Trial.trial_no = '"+trial_no+"'; Trial.post_no ='"+post_no+"' </scr" + "ipt>" + "<scr" + "ipt src = 'https://www.open-collector.org/<?= $_SESSION['version'] ?>/TrialFunctions.js' ></scr" + "ipt>" + this_trialtype ; //; trial_script +
+		this_trialtype =  "<scr" + "ipt> Trial = {}; Trial.trial_no = '"+trial_no+"'; Trial.post_no ='"+post_no+"' </scr" + "ipt>" + "<scr" + "ipt src = '../<?= $_SESSION['version'] ?>/TrialFunctions.js' ></scr" + "ipt>" + this_trialtype ; //; trial_script +
 		
 		
 		this_trialtype = this_trialtype.replace("[trial_no]",trial_no);

@@ -17,6 +17,14 @@
  		
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
 */
+
+
+#authorised_interface{
+	width:100%;
+}
+#exp_data > tbody > tr > td { 
+  text-align: center; padding: 15px; 
+}
 #ExperimentContainer {
 	height: 100%;
 	width: 10px;
@@ -47,6 +55,9 @@
 #help_area{
 	!display:none;	
 }
+#logout_table td{
+	padding:2px;
+}
 #Presentation{
 	height: 400px;  
 	width:  100%;
@@ -60,14 +71,32 @@
 }
 #run_stop_buttons{
 	text-align:center;
+	display:none;
+	margin:auto;
+}
+#sim_navbar{
+  padding: 0px;
 }
 #simulator_table,#simulator_table tr{
 	width:100%;
 }
+#survey_cell_view{
+	height:0px;
+}
 #trialtype_editor_td{
 	vertical-align:top;
 }
+#trial_type_data > div > div{
+  display:none;
+}
+#simulator_table{
+	margin-top: 0px;
+}
 
+
+.account_info {
+	!display:none;
+}
 .custom_table { display: none; border-collapse: collapse; }
 .custom_table > div { display: table-row; }
 .custom_table > div > div { display: table-cell; padding: 2px 4px; max-width: 320px; vertical-align: top; }
@@ -78,62 +107,24 @@
 	height: 20em; 
 }
 .custom_table > div > .textareaDiv > textarea {
-    padding: 5px;
-    width: 1300px;
-    height: 50em;
-    box-sizing: border-box;
-    border: 0; margin: 0;
-    vertical-align: bottom;
-    background-color: #E0E0E0;
+  padding: 5px;
+  width: 1300px;
+  height: 50em;
+  box-sizing: border-box;
+  border: 0; margin: 0;
+  vertical-align: bottom;
+  background-color: #E0E0E0;
 }
 .custom_table > div:not(.headers):hover { background-color: #CFC; }
 .custom_table > div.headers > div { text-align: center; font-weight: bold; }
-
+.fixed-top-2 {
+	margin-top: 50px;
+  height: 42px;
+}
 .help_class{
 	width:300px;
 }
 .logo{
 	height:20px;
 	width:20px;
-}
-
-
-
-#survey_cell_view"{
-	height:0px;
-}
-<!--   MAKE THIS ANIMATION WORK FOR SURVEYS AND SIMULATOR!!!! -->
-
-
-
-
-
-#logout_table td{
-	padding:2px;
-}
-#run_stop_buttons{
-	display:none;
-	margin:auto;
-}
-.account_info {
-	!display:none;
-}
-
-
-#authorised_interface{
-	width:100%;
-}
-
-.fixed-top-2 {
-	margin-top: 0px;
-}
-
-#exp_data > tbody > tr > td { text-align: center; padding: 15px; }
-#trial_type_selectors {
-  /* text-align:center; */
-  
-}
-
-#trial_type_data > div > div{
-  display:none;
 }

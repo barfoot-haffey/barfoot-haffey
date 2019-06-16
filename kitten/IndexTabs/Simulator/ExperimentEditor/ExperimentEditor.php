@@ -102,7 +102,7 @@ $(window).bind('keydown', function(event) {
 });
 
 $("#stim_list_button").on("click",function(){
-	var web_url = "https://www.open-collector.org/<?= $_SESSION['version'] ?>/IndexTabs/Simulator/ExperimentEditor/stimList.php";
+	var web_url = "../<?= $_SESSION['version'] ?>/IndexTabs/Simulator/ExperimentEditor/stimList.php";
 	window.open(web_url,"stimList",'height=800,width=800');
 });
 

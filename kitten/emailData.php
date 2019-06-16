@@ -58,6 +58,11 @@ require '../../PHPMailer/src/Exception.php';
 require '../../PHPMailer/src/PHPMailer.php';
 require '../../PHPMailer/src/SMTP.php';
 
+echo "hi";
+
+/*
+
+
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
   //Server settings
@@ -71,7 +76,7 @@ try {
   $mail->Port = 587;                                    // TCP port to connect to
 
   //Recipients
-  $mail->setFrom('no-reply@open-collector.org', 'Open-Collector.org');
+  $mail->setFrom('no-reply@ocollector.org', 'Open-Collector');
   
   $researcher = $_SESSION['researchers'][0];
   $mail->addAddress($researcher);     // Add a recipient	
@@ -101,7 +106,7 @@ try {
   $mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt"); //,$encoding,$type
   //$all_data
   
-  $body_alt_body = "A participant just completed your task! <br><br> Participant: $participant  <br>Completion Code: $completion_code <br><br> Go to <b>https://www.open-collector.org/".$_SESSION['version']."/</b> and click on the <b>Data</b> tab to decrypt this file.";
+  $body_alt_body = "A participant just completed your task! <br><br> Participant: $participant  <br>Completion Code: $completion_code <br><br> Go to <b>https://www.ocollector.org/".$_SESSION['version']."/</b> and click on the <b>Data</b> tab to decrypt this file.";
   
   //Content
   $mail->isHTML(true);                                  // Set email format to HTML
@@ -115,4 +120,5 @@ try {
 } catch (Exception $e) {
   echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
+*/
 ?>

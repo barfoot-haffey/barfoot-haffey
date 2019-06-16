@@ -51,7 +51,7 @@ function create_random_code($length){
 
 if($_POST["login_type"]=="register"){
     $_SESSION['login_error'] = 'hi there';
-    $sql="SELECT * FROM users_beta WHERE email='$user_email'"; // "WHERE email='".$user_email."' LIMIT 1;
+    $sql="SELECT * FROM users WHERE email='$user_email'"; // "WHERE email='".$user_email."' LIMIT 1;
     $result = $conn->query($sql);
     
     if($result->num_rows>0){
@@ -64,19 +64,19 @@ if($_POST["login_type"]=="register"){
 				$pepper = create_random_code(20);	
         $email_confirm_code = create_random_code(20);
 
-        $sql = "INSERT INTO `users_beta` (`email`, `password`, `email_confirm_code`, `salt`,`pepper`,`account_status`) VALUES('$user_email', '$hashed_password', '$email_confirm_code','$salt','$pepper','u')";
+        $sql = "INSERT INTO `users` (`email`, `password`, `email_confirm_code`, `salt`,`pepper`,`account_status`) VALUES('$user_email', '$hashed_password', '$email_confirm_code','$salt','$pepper','u')";
         if ($conn->query($sql) === TRUE) {			
 				
 			$success_fail = "fail";  //not really, but need to confirm with e-mail code first
 			$_SESSION['login_error'] = "Please check the e-mail address you registered with, and confirm. You cannot log in until you have done so."; 
 			
-			$msg = "Dear $user_email \n \nThank you for signing up to Open-Collector.org. Before you can use your new profile, we need to confirm this is a valid address. Please proceed to the following link to confirm: \n ".$_SESSION['local_website']."/".$_SESSION['version']."/confirm.php?email=$user_email&confirm_code=$email_confirm_code&page=$return_page'\nMany thanks, \nThe Open-Collector team";
+			$msg = "Dear $user_email \n \nThank you for registering with Open-Collector. Before you can use your new profile, we need to confirm this is a valid address. Please proceed to the following link to confirm: \n www.ocollector.org/".$_SESSION['version']."/confirm.php?email=$user_email&confirm_code=$email_confirm_code&page=$return_page'\nMany thanks, \nThe Open-Collector team";
 
 			// use wordwrap() if lines are longer than 70 characters
 			$msg = wordwrap($msg,70);
 
 			// send email
-			mail($user_email,"Confirmation code for Registering with Open-Collector.org",$msg);
+			mail($user_email,"Confirmation code for Registering with Open Collector",$msg);
 			
 						
         } else {
@@ -126,15 +126,15 @@ if($_POST["login_type"]=="forgot"){
             $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
             header("Location:$return_page");
         }
-        $msg = "Dear $user_email \n \nThere has been a request to reset the password for your account. Please go to the following link to set your new password: \n www.open-collector.org/UpdatePassword.php?email=$user_email&confirm_code=$email_confirm_code \nMany thanks, \nThe Open-Collector team";
+        $msg = "Dear $user_email \n \nThere has been a request to reset the password for your account. Please go to the following link to set your new password: \n www.ocollector.org/UpdatePassword.php?email=$user_email&confirm_code=$email_confirm_code \nMany thanks, \nThe Open-Collector team";
 
         $msg = wordwrap($msg,70); // use wordwrap() if lines are longer than 70 characters        
-        mail($user_email,"Resetting password with Open-Collector.org",$msg); // send email
+        mail($user_email,"Resetting password with Open-Collector",$msg); // send email
     }
 }
 
 if($_POST["login_type"]=="login"){		
-	$sql = "SELECT * FROM users_beta WHERE email='$user_email'";    
+	$sql = "SELECT * FROM users WHERE email='$user_email'";    
 	$result = $conn->query($sql);	
 	
 	if($result->num_rows > 1){
