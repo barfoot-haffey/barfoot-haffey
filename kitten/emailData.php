@@ -64,18 +64,39 @@ try {
   //Server settings
   $mail->SMTPDebug = 0;                                 // Enable verbose debug output
   $mail->isSMTP();                                      // Set mailer to use SMTP
-  $mail->Host = 'smtp.stackmail.com';  // smtp2.example.com, Specify main and backup SMTP servers
+  $mail->Host = 'ocollector.org';  											// smtp2.example.com, Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                               // Enable SMTP authentication
-  $mail->Username = "$mailer_user";				// SMTP username
-  $mail->Password = "$mailer_password";                        // SMTP password
+  $mail->Username = "$mailer_user";											// SMTP username
+  $mail->Password = "$mailer_password";                 // SMTP password
   $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 587;                                    // TCP port to connect to
 
-  //Recipients
+	
+	//Recipients
   $mail->setFrom('no-reply@ocollector.org', 'Open-Collector');
+    
+  $mail->addAddress("anthony.haffey@gmail.com");     // Add a recipient	
   
-  $researcher = $_SESSION['researchers'][0];
-  $mail->addAddress($researcher);     // Add a recipient	
+	//$researcher = $_SESSION['researchers'][0];
+  //$mail->addAddress($researcher);     // Add a recipient	
+  
+  //$mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
+  $body_alt_body = "The experiment_id is: $experiment_id <---";
+  
+  //Content
+  $mail->isHTML(true);                                  // Set email format to HTML
+  $mail->Subject = "Collector - completed with code:";
+  $mail->Body    = $body_alt_body;
+  $mail->AltBody = $body_alt_body;
+
+  $mail->send();
+	echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
+  //echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
+	
+	/*
+  //Recipients
+    
+  
   
   $public_key = file_get_contents("../../simplekeys/public_$researcher.txt");
   $cipher = "aes-256-cbc";
@@ -101,8 +122,8 @@ try {
   $mail->AltBody = $body_alt_body;
 
   $mail->send();
-  echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
-		
+  
+	*/	
 } catch (Exception $e) {
   echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }

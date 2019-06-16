@@ -59,7 +59,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 			<div id="page_selected"></div>
 		</ul>		    
 	</div>
-	<a href="https://github.com/anthonyhaffey/open-collector/issues" target="_blank" style="margin:2px">
+	<a href="https://github.com/open-collector/open-collector/issues" target="_blank" style="margin:2px">
 		<button class="btn btn-primary">Discuss</button>
 	</a>
 	<a href="http://www.uoropen.org/Workshops/Collector-Tutorial/" target="_blank" style="margin:2px">
