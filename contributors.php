@@ -14,44 +14,40 @@ while($row = $result->fetch_assoc()) {
 
 <style>
 .image-wrapper {
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    border-radius: 50%;
-    margin: 0;
-    padding: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	border-radius: 50%;
+	margin: 0;
+	padding: 0;
 }
 .ppimg {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
-    border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: block;
+	border-radius: 50%;
 }
 </style>
 
 <em>In Chronological order</em>
-<table class='table'> <!--table-striped-->
-	<!--
-	<thead class="thead-light">
-		
-		<tr>
-			<th scope="col">Name</th>
-			<th scope="col">Pic</th>
-			<th scope="col">Blurb</th>
-			<th scope="col">Contributions</th>
-		</tr>
-	</thead>
-	-->
+<table class='table'>	
 	<tbody>
 	<?php
 		for($i = 0; $i < count($contributors); $i ++){
 			$name   = $contributors[$i]['name'];
 			$pic    = $contributors[$i]['pic_address'];
 			$blurb  = $contributors[$i]['blurb'];
-		
-			?><tr>										
+			$current_contributors = ["Dr. Adam Blake","Dr. Anthony Haffey"];
+			
+			if(in_array($name,$current_contributors)){
+				$tr_class="class='bg-primary text-white'";
+			}	else {
+				$tr_class="";
+			}
+			echo "<tr $tr_class>";
+			?>
 					<?php 
 						if($pic == ''){
 							echo "<td></td>";
@@ -64,16 +60,9 @@ while($row = $result->fetch_assoc()) {
 					<td><?= $blurb ?></td>		
 					<!--
 					<td> Here is where we'll summarise contributions like trialtypes published, experiments published, etc. </td>
-					-->
-			  </tr>
+					-->			  
 		<?php } 
+		echo "</tr>";
 	?>
 	</tbody>
 </table>
-
-
-
-
-
-
-	

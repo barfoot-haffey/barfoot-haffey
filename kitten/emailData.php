@@ -54,13 +54,9 @@ require_once "../../mailerPassword.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../PHPMailer/src/Exception.php';
-require '../../PHPMailer/src/PHPMailer.php';
-require '../../PHPMailer/src/SMTP.php';
-
-echo "hi";
-
-/*
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 
 
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
@@ -95,17 +91,7 @@ try {
   file_put_contents("../../simplekeys/symmetric-$researcher-$experiment_id-$participant.txt",$encrypted_symmetric_key);
   file_put_contents("../../simplekeys/iv-$researcher-$experiment_id-$participant.txt",$this_iv);
   
-  #$mail->addAddress('ellen@example.com');               // Name is optional
-  #$mail->addReplyTo('info@example.com', 'Information');
-  #$mail->addCC('cc@example.com');
-  #$mail->addBCC('bcc@example.com');
-
-  //Attachments
-  #$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-  #$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-  $mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt"); //,$encoding,$type
-  //$all_data
-  
+  $mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
   $body_alt_body = "A participant just completed your task! <br><br> Participant: $participant  <br>Completion Code: $completion_code <br><br> Go to <b>https://www.ocollector.org/".$_SESSION['version']."/</b> and click on the <b>Data</b> tab to decrypt this file.";
   
   //Content
@@ -120,5 +106,6 @@ try {
 } catch (Exception $e) {
   echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
+/*
 */
 ?>

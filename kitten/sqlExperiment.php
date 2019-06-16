@@ -27,66 +27,14 @@ error_reporting(E_ALL);
 $cipher = "aes-256-cbc";
 define('AES_256_CBC', 'aes-256-cbc');
 
+
 require_once "Code/initiateCollector.php";
-require_once "../../sqlConnect.php";
-
-// Is the simulator on?
-///////////////////////
-
-if(isset($simulator_on)){
-	$exp_json	     = "'tbc'";
-	$experiment_id = false;
-	$iv  		       = false;
-	$location      = "";  
-	$published_id  = false;
-	$condition 		 = "";
-} else {
-	
-  $location									= $_GET['location'];
-	$published_id 						= $experiment_id[0];
-	$experiment_id						= $experiment_id[1];
-	$_SESSION['published_id'] = $published_id;	
-	
-	if(isset($_GET['name'])){
-		$condition = $_GET['name'];
-	} else {
-		$condition = "";
-	}
-	
-	
-	// get public keys of researchers 
-	///////////////////////////////////
-		
-	$public_key_owners = [];
-	$sql    					 = "SELECT * FROM `view_experiment_researchers` WHERE `location` = '$location'"; 
-	$result 					 = $conn->query($sql); 
-	while($row = $result->fetch_assoc()) {
-		array_push($public_key_owners,$row['email']);
-	}
-	
-	// locate the experiment 
-	//////////////////////////
-	$sql = "SELECT * FROM experiments WHERE `experiment_id` = '$experiment_id' AND `published` = true AND `published_id` = '$published_id'"; 
-	$result = $conn->query($sql); 
-	$row = $result->fetch_assoc();
-	require("Welcome.php");
-	
-}
-
-$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$url = explode("/",$url);
-if(strpos($_SESSION['local_website'],"localhost") !== false){
-	$_SESSION['version'] = $url[5];	
-} else {
-	$_SESSION['version'] = $url[3];	
-}
-
 ?>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
 </head>
-<script>
+<script>	
   // Opera 8.0+
   var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
@@ -120,6 +68,51 @@ if(strpos($_SESSION['local_website'],"localhost") !== false){
 	window.bootstrap || document.write('<link rel="stylesheet" href="../libraries/bootstrapCollector.css"><script src="../libraries/bootstrap.3.3.7.min.js"><\/script>');
   
 </script>
+<?php
+require_once "../../sqlConnect.php";
+
+// Is the simulator on?
+///////////////////////
+
+if(isset($simulator_on)){
+	$exp_json	     = "'tbc'";
+	$experiment_id = false;
+	$iv  		       = false;
+	$location      = "";  
+	$published_id  = false;
+	$condition 		 = "";
+} else {
+	
+	if(isset($_GET['name'])){
+		$condition = $_GET['name'];
+	} else {
+		$condition = "";
+	}
+	$location	= $_GET['location'];
+	
+	
+	// get public keys of researchers 
+	///////////////////////////////////
+		
+	$public_key_owners = [];
+	$sql    					 = "SELECT * FROM `view_experiment_researchers` WHERE `location` = '$location'"; 
+	$result 					 = $conn->query($sql); 
+	while($row = $result->fetch_assoc()) {
+		array_push($public_key_owners,$row['email']);
+	}
+	require("Welcome.php");
+}
+
+$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$url = explode("/",$url);
+if(strpos($_SESSION['local_website'],"localhost") !== false){
+	$_SESSION['version'] = $url[5];	
+} else {
+	$_SESSION['version'] = $url[3];	
+}
+
+?>
+
 <style>
 
 #experiment_div{
@@ -203,7 +196,6 @@ if(typeof(block_save) !== "undefined"){ //i.e. simulator
 } else {
   $("#experiment_div").hide(); //until calibrate shows it
 }
-
 </script>
 
 <script src="../<?= $_SESSION['version'] ?>/iframe_library.js"></script> 
