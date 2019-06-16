@@ -27,7 +27,7 @@ $location   = $_POST['location'];
 $experiment = $_POST['experiment'];
 $user_email = $_SESSION['user_email'];
 
-$sql = "UPDATE `view_experiment_researchers` SET `location`='$location' WHERE `name`='$experiment' AND `email` = '$user_email'";
+$sql = "UPDATE `view_experiment_users` SET `location`='$location' WHERE `name`='$experiment' AND `email` = '$user_email'";
 if ($conn->query($sql) === TRUE) {
 	echo "success";				
 } else {

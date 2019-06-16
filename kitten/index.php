@@ -83,6 +83,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
           $this_name = $names[$i];
           $this_page = $pages[$i];          
       ?>
+					
           <div class="collapse multi-collapse" style="width:100%" id="<?php echo "collapse_$this_name" ?>" >
             <?php require("IndexTabs/$this_page"); ?>		
           </div>	          

@@ -44,7 +44,7 @@ function encrypt_decrypt($action, $string,$local_key,$this_iv) {
 $all_data 	 		 = $_POST['all_data'];
 $participant 		 = $_SESSION['participant_code'];
 $completion_code = $_SESSION['completion_code'];
-$experiment_id	 = $_SESSION['experiment_id'];
+$location	 			 = $_SESSION['location'];
 
 // identify researchers here
 //mysql to find researchers who contributed to this experiment...?
@@ -82,44 +82,47 @@ try {
   
   //$mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
   $body_alt_body = "The experiment_id is: $experiment_id <---";
-  
+  	
   //Content
   $mail->isHTML(true);                                  // Set email format to HTML
-  $mail->Subject = "Collector - completed with code:";
+	$mail->Subject = "Collector - $participant completed with code: $completion_code";
   $mail->Body    = $body_alt_body;
   $mail->AltBody = $body_alt_body;
 
+	$public_key = file_get_contents("../../simplekeys/public_$researcher.txt");
+  $cipher = "aes-256-cbc";
+  $symmetric_key = openssl_random_pseudo_bytes(32);		
+  $this_iv			 = openssl_random_pseudo_bytes(16);
+  
+  $encrypted_data = encrypt_decrypt("encrypt",$all_data,$symmetric_key,$this_iv);
+  
+  openssl_public_encrypt ($symmetric_key, $encrypted_symmetric_key, $public_key); 
+  file_put_contents("../../simplekeys/symmetric-$researcher-$experiment_id-$participant.txt",$encrypted_symmetric_key);
+  file_put_contents("../../simplekeys/iv-$researcher-$experiment_id-$participant.txt",$this_iv);
+  $mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
+  
+	
   $mail->send();
 	echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
-  //echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
+  
+	
+	
 	
 	/*
   //Recipients
     
   
   
-  $public_key = file_get_contents("../../simplekeys/public_$researcher.txt");
-  $cipher = "aes-256-cbc";
   
   
-  $symmetric_key = openssl_random_pseudo_bytes(32);		
-  $this_iv			 =  openssl_random_pseudo_bytes(16);
   
-  $encrypted_data = encrypt_decrypt("encrypt",$all_data,$symmetric_key,$this_iv);
   
-  openssl_public_encrypt ($symmetric_key, $encrypted_symmetric_key, $public_key); 
-  
-  file_put_contents("../../simplekeys/symmetric-$researcher-$experiment_id-$participant.txt",$encrypted_symmetric_key);
-  file_put_contents("../../simplekeys/iv-$researcher-$experiment_id-$participant.txt",$this_iv);
-  
-  $mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
   $body_alt_body = "A participant just completed your task! <br><br> Participant: $participant  <br>Completion Code: $completion_code <br><br> Go to <b>https://www.ocollector.org/".$_SESSION['version']."/</b> and click on the <b>Data</b> tab to decrypt this file.";
   
   //Content
   $mail->isHTML(true);                                  // Set email format to HTML
-  $mail->Subject = "Collector - $participant completed with code: $completion_code";
-  $mail->Body    = $body_alt_body;
-  $mail->AltBody = $body_alt_body;
+  
+  
 
   $mail->send();
   

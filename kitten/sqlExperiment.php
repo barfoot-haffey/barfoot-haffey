@@ -95,11 +95,12 @@ if(isset($simulator_on)){
 	///////////////////////////////////
 		
 	$public_key_owners = [];
-	$sql    					 = "SELECT * FROM `view_experiment_researchers` WHERE `location` = '$location'"; 
+	$sql    					 = "SELECT * FROM `view_experiment_users` WHERE `location` = '$location'"; 
 	$result 					 = $conn->query($sql); 
 	while($row = $result->fetch_assoc()) {
 		array_push($public_key_owners,$row['email']);
 	}
+		
 	require("Welcome.php");
 }
 
@@ -289,11 +290,13 @@ function final_trial(){
         
         if(typeof(exp_json.this_condition.end_message) !== "undefined" && exp_json.this_condition.end_message !== ""){
           $("#experiment_div").html("<h3 class='text-primary'>"+exp_json.this_condition.end_message+"</h3>");
-        } 
+        } else {
+					$("#experiment_div").html("");
+				}
         $("#experiment_div").append("<div id='download_div'></div>");
         
 				if(download_at_end == "on"){
-          $("#download_div").html("<h1>"+message_data[0]+" <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
+          $("#download_div").html("<h1 class='text-primary'>"+message_data[0]+" <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
             
             $("#encrypt_click").on("click",function(){
               bootbox.prompt({

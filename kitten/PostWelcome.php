@@ -36,7 +36,7 @@ $location 		  	= $_POST['location'];
 $_SESSION['participant_code'] = $participant_code;
 
 //find the experiment_id of the $location
-$sql = "SELECT * FROM `view_experiment_researchers` WHERE  `location` = '$location'";
+$sql = "SELECT * FROM `view_experiment_users` WHERE  `location` = '$location'";
 $result = $conn -> query($sql);
 $researchers = array();
 while($row = $result->fetch_assoc()){

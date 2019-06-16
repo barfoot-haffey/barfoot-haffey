@@ -161,8 +161,6 @@ if($_POST["login_type"]=="login"){
 					openssl_pkey_export($res, $privKey); 		// Get private key
 					$pubKey = openssl_pkey_get_details($res); 	// Get public key
 					$pubKey = $pubKey["key"];
-						
-					array_push($public_key_owners,$user_email);            
 					
 					$saltpepper = create_random_code(40);
 					$salt 			= substr($saltpepper,0,20);

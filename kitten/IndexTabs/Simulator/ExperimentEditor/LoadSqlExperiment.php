@@ -17,24 +17,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>
  		
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
-*/  
+*/
+  
 	$new_exp_json = file_get_contents(__DIR__ . '/default_new_experiment.json');
 		
 	$user_email  = $_SESSION['user_email'];
 	$initial_sql = "Select * FROM `users` WHERE `email`='$user_email'";
 	$result 	 = $conn->query($initial_sql);
-	
-	
-	$user_data = mysqli_fetch_assoc($result);	
-	// prevent frequent exposure of user data by removing on server side	
+
+	$user_data = mysqli_fetch_assoc($result);
+	// prevent frequent exposure of user data by removing on server side
 	unset($user_data['password']);
 	unset($user_data['email_confirm_code']);
 	unset($user_data['pepper']);
-	unset($user_data['salt']);	
-	$user_data 	 = json_encode($user_data);	
-	$experiment_sql = "SELECT * FROM `view_experiment_researchers` WHERE `email`='$user_email'";	
-	$result 	 = $conn->query($experiment_sql);	
-	$experiments	=	[];	
+	unset($user_data['salt']);
+	$user_data 	 = json_encode($user_data);
+	
+	$experiment_sql = "SELECT * FROM `view_experiment_users` WHERE `email`='$user_email'";
+	$result 	 = $conn->query($experiment_sql);
+	$experiments			=	[];
 	$published_links  = [];
   
 	while($row = $result->fetch_assoc()) {
