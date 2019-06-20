@@ -4,8 +4,17 @@ import serial
 
 from selenium import webdriver
 
-driver = webdriver.Chrome("C:/Github/open-collector/arduino/chromedriver") #Ant's laptop location
-driver.get('https://www.open-collector.org/kitten/PsychoPhys.html');
+import os
+
+driver_location = os.path.dirname(os.path.abspath("chromedriver.exe")) + "\chromedriver.exe"
+
+print("driver_location")
+print(driver_location)
+
+#C:/Github/open-collector/arduino/
+
+driver = webdriver.Chrome(driver_location) #Ant's laptop location
+driver.get('https://www.open-collector.org/kitten/PsychoPhys.html')
 
 ser = serial.Serial("COM3",9600)
 
