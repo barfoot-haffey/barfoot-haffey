@@ -1,28 +1,32 @@
-from selenium import webdriver
-from time import sleep
 import serial
+import eel
 
-from selenium import webdriver
+# Set web files folder and optionally specify which file types to check for eel.expose()
+#   *Default allowed_extensions are: ['.js', '.html', '.txt', '.htm', '.xhtml']
+eel.init('web', allowed_extensions=['.js', '.html'])
 
-import os
-
-driver_location = os.path.dirname(os.path.abspath("chromedriver.exe")) + "\chromedriver.exe"
-
-print("driver_location")
-print(driver_location)
-
-#C:/Github/open-collector/arduino/
-
-driver = webdriver.Chrome(driver_location) #Ant's laptop location
-driver.get('https://www.open-collector.org/kitten/PsychoPhys.html')
+#eel.say_hello_js("hi")
 
 ser = serial.Serial("COM3",9600)
+print("hi")
+
+def my_other_thread():
+    while True:
+        eel.sleep(.001)
+
+        cc = str(ser.readline())
+        heart_val = cc[2:][:-5]
+        print(heart_val)
+        try:
+            eel.clean_heart_val(heart_val)
+        except:
+            print("it would have crashed here")
+
+eel.spawn(my_other_thread)
+
+
+eel.start('psychophys.html',block=False)
+
 
 while True:
-  sleep(.001)
-  cc = str(ser.readline())  
-  heart_val = cc[2:][:-5]  
-  try:
-    driver.execute_script("all_data.clean_heart_val('" +  str(int(cc))  + "')") #Aimie's line
-  except:
-    print("it would have crashed here")
+    eel.sleep(1.0)

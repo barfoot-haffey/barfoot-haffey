@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['arduinoHR.py'],
-             pathex=['C:\\Github\\open-collector\\arduino'],
+             pathex=['D:\\OneDrive - University of Reading\\Github\\open-collector\\arduino'],
              binaries=[],
              datas=[],
              hiddenimports=[],
