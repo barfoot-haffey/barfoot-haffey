@@ -20,3 +20,7 @@
 #survey_cell_view{
 	display:none;
 }
+.modal-header {
+	background-color: #286090;
+  color: white;
+}
