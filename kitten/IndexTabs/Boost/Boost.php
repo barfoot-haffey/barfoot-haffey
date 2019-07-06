@@ -177,7 +177,8 @@ $("#delete_boost_btn").on("click",function(){
 						no_valid_boost();
 						updateUberMegaFile();
 					})
-					.catch(function(error) {
+					.catch(function(error){
+						console.dir("hi 5");
 						report_error(error);
 					});      
 			}
@@ -221,6 +222,7 @@ $("#new_boost_btn").on("click",function(){
 						updateUberMegaFile();
 					})
 					.catch(function(error){
+						console.dir("hi 4");
 						report_error(error);
 					});					
 					
@@ -263,6 +265,7 @@ $("#rename_boost_btn").on("click",function(){
 						$('#posted_script option:contains("'+old_name+'")').text(new_name);updateUberMegaFile();						
 					})
 					.catch(function(error){
+						console.dir("hi 3");
 						report_error(error);
 					});
 			}
@@ -283,6 +286,7 @@ $("#save_boost_btn").on("click",function(){
 						megaUberJson.boosts[response].location = result.url;
 					})
 					.catch(function(error){
+						console.dir("hi 2");
 						report_error(error);
 					});
 			}
@@ -371,6 +375,7 @@ function list_boosts(){
 					}));
 				})
 				.catch(function(error){
+					console.dir("hi 1");
 					report_error(error);
 				});
 		} else {

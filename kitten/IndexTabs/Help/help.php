@@ -130,48 +130,10 @@ if(isAuthenticated()){
 		console.dir("Dropbox not logged in yet");
 		console.dir(error);	
 	});
-	
-  dbx.filesListFolder({path: '/experiments'})
-    .then(function(response) {		
-		// hack to deal with uneven loading of files
-		check_dbx_trialtypes = setInterval(function(){			
-			if(typeof(dbx_trialtypes_startup) !== "undefined"){
-				dbx_trialtypes_startup();
-				clearInterval(check_dbx_trialtypes)
-			}	 
-		},100);
-    })
-    .catch(function(error) {
-			report_error(error);
-    });
 		
-		$_GET = window.location.href.substr(1).split("&").reduce((o,i)=>(u=decodeURIComponent,[k,v]=i.split("="),o[u(k)]=v&&u(v),o),{});
+	$_GET = window.location.href.substr(1).split("&").reduce((o,i)=>(u=decodeURIComponent,[k,v]=i.split("="),o[u(k)]=v&&u(v),o),{});
 		
-		//detect mega_uber file
-		dbx.sharingCreateSharedLink({path:"/uberMegaFile.json"})
-			.then(function(link_created){
-				// load file if exists					
-				$.get(link_created.url.replace("www.","dl."),function(returned_data){
-					megaUberJson = JSON.parse(returned_data);
-					
-					$("#option_Edit").click();					
-					$("#startup_btn").fadeIn(500);
-					$("#startup_btn").on("click",function(){
-						startup_dialog.modal("hide");
-					});
-          // add boosts if not already present
-          //////////////////////////////////////
-          if(typeof(megaUberJson.boosts) == "undefined"){
-            megaUberJson.boosts = {};
-          }
-					renderItems();
-				});				
-			})
-			.catch(function(error){
-        
-        //if file doesn't exist - create it
-				new_dropbox_account();
-			});
+	initiate_uberMegaFile(); //detect mega_uber file
 			
 }	else {
 	// Set the login anchors href using dbx.getAuthenticationUrl()
