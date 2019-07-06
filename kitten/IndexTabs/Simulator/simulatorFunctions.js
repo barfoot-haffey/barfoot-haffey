@@ -23,40 +23,6 @@ function clean_conditions(){
 	exp_json.conditions = exp_json.conditions.filter(row => row.procedure !== "");  
 }
 
-dbx_obj = {
-	queing:false,
-	queue : [],	
-	new_upload : function(item,successFunction,failFunction){
-		dbx_obj.queue.push([item,successFunction,failFunction]);
-		if(dbx_obj.queing == false){
-			$("#save_status").html("Synching...");
-			$("#save_status").show(500);			
-			dbx_obj.queing = true;
-			dbx_obj.upload();
-		}
-	},	
-	upload:function(){
-		[item,successFunction,failFunction] = dbx_obj.queue.shift();
-		dbx.filesUpload(item)
-			.then(function(result){
-				successFunction(result);
-				if(dbx_obj.queue.length > 0){					
-					dbx_obj.queing = true;
-					dbx_obj.upload();					
-				}	else 	{										
-					dbx_obj.queing = false;
-					$("#save_status").html("Up to date");
-					setTimeout(function(){
-						$("#save_status").hide(500);
-					},500);
-				}
-			})
-			.catch(function(error){				
-				failFunction(error);
-			});
-	}	
-}
-
 function simulate_experiment() {    
 	clean_conditions();
 	

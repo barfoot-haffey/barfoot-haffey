@@ -133,7 +133,8 @@ function new_experiment(experiment){
 					});
 			},function(error){
 				report_error(error);				
-			});
+			},
+			"filesUpload");
 	}
 }
 

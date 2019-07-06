@@ -1,5 +1,5 @@
 <?php
-require("../sqlConnect.php");
+require("../../sqlConnect.php");
 //require("../cleanAJAX.php");
 
 $institute    = $_POST['institute'];

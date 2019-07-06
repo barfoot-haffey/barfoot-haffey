@@ -265,7 +265,8 @@ $("#save_btn").on("click", function(){
           //console.dir(result);
         },function(error){
           report_error(error);				
-        });			
+        },
+				"filesUpload");			
       }		
     });
     
@@ -290,7 +291,8 @@ $("#save_btn").on("click", function(){
                   },function(error){
                     custom_alert("check console for error saving location");
                     bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");;
-                  });								
+                  },
+									"filesUpload");								
                 }
               );
             })
@@ -302,7 +304,8 @@ $("#save_btn").on("click", function(){
         }
       },function(error){
         alert(error);
-      });
+      },
+			"filesUpload");
   }
 });
 $("#stim_select").on("change",function(){

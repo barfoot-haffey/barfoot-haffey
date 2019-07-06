@@ -112,7 +112,8 @@ trialtypes_obj = {
 			}					
 		},function(error){
 			bootbox.alert("error: "+error.error+"<br> try saving again after waiting a little");
-		});
+		},
+		"filesUpload");
 	},
 	synchTrialtypesFolder:function(){		
 		dbx.filesListFolder({path:"/trialtypes"})

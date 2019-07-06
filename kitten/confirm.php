@@ -25,36 +25,29 @@ $confirm_code   = $_GET['confirm_code'];
 
 require_once "../../sqlConnect.php";
 
-$sql 		= "SELECT * FROM `users_beta` WHERE email='$user_email'"; // "WHERE email='".$user_email."' LIMIT 1;
+$sql 		= "SELECT * FROM `users` WHERE email='$user_email'"; // "WHERE email='".$user_email."' LIMIT 1;
 $result = $conn->query($sql);
 
 //print_r($result);
 
 
 if($result->num_rows>1 | $result->num_rows == 0){
+	$_SESSION['login_error'] = "Something has gone wrong with your attempt to create a profile. Please confirm that you did not change the content of the link you were instructed to click on.";
+} else {        
+	$row = mysqli_fetch_array($result);
+	$actual_code = $row['email_confirm_code'];
+	
+	if($confirm_code == $actual_code){            
+		$sql = "UPDATE `users` SET `account_status` = 'V' WHERE email='$user_email'";
+		if ($conn->query($sql) === TRUE) {
+			$_SESSION['login_error'] = "You have succesfully registered. Click <a href='index.php'>here</a> to redirect to the main page.";
+		} else {
+			$_SESSION['login_error'] = "You have NOT confirmed registration. Please go back <a href='index.php'>here</a> to try again";
+		}
 
-    $_SESSION['login_error'] = "Something has gone wrong with your attempt to create a profile. Please confirm that you did not change the content of the link you were instructed to click on.";
-
-} else {
-        
-    $row = mysqli_fetch_array($result);
-    $actual_code = $row['email_confirm_code'];
-    
-    if($confirm_code == $actual_code){            
-        $sql = "UPDATE `users_beta` SET `account_status` = 'V' WHERE email='$user_email'";
-        if ($conn->query($sql) === TRUE) {
-            
-            
-            $_SESSION['login_error'] = "You have succesfully registered. Click <a href='index.php'>here</a> to redirect to the main page.";
-            
-            
-        } else {
-            $_SESSION['login_error'] = "You have NOT confirmed registration. Please go back <a href='index.php'>here</a> to try again";
-        }
-
-    } else {
-        $_SESSION['login_error'] = "You have failed to confirm your e-mail address. Please go back <a href='index.php'>here</a> to register again, or double check that nothing was changed in the link you were sent.";
-    }
+	} else {
+		$_SESSION['login_error'] = "You have failed to confirm your e-mail address. Please go back <a href='index.php'>here</a> to register again, or double check that nothing was changed in the link you were sent.";
+	}
 }
 header('Location: '.$page);
 ?>

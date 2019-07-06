@@ -120,7 +120,7 @@ if(isAuthenticated()){
       if(local_website.indexOf("localhost") !== -1){
         local_website += "/www";
       }
-      authUrl = dbx.getAuthenticationUrl(local_website+'/<?= $_SESSION['version'] ?>');
+      authUrl = dbx.getAuthenticationUrl(local_website + '/<?= $_SESSION['version'] ?>');
       authUrl += "&force_reauthentication=true";	
       document.getElementById('authlink').href = authUrl;
       $("#authlink")[0].click();
@@ -170,33 +170,7 @@ if(isAuthenticated()){
 			.catch(function(error){
         
         //if file doesn't exist - create it
-				megaUberJson = {
-          boosts:    {},
-					exp_mgmt:  {	
-						user_data: 				'tbc', //JSON.parse(' < ?= $user_data  ?> '),
-						any_loaded: 	 		false, 
-						authenticated:   	false,
-						current_manager: 	'',	
-						experiment:      	'',	
-						experiments:     	{},	
-						incomp_process:  	false,	
-						pipe_position: 	 	0,
-						pipe_direction:  	'',
-						versions :		 		[],
-					},
-					surveys:     {},
-					trialtypes:  {
-						default_trialtypes	: {},
-						trialtype 			: '',
-						filetype  			: '',
-						version   			: 0,
-						user_trialtypes		: {},
-						
-					}						
-				}
-				updateUberMegaFile("new");
-				initiate_actions();
-        
+				new_dropbox_account();
 			});
 			
 }	else {
@@ -215,8 +189,6 @@ if(isAuthenticated()){
 		}
 	});
 }
-
-
 
 
 function helperActivate(help_title, cellValue,help_type){	

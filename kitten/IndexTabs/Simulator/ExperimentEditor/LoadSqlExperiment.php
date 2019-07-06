@@ -476,33 +476,15 @@ function update_trial_json(){
 		});
 	});	
 }
-function updateUberMegaFile(new_old){
-	if(typeof(new_old) !== "undefined" && typeof(new_old) == "new"){		
-		message = "Your uberMegaFile has been created. Enjoy creating experiments for free!";
-		var dialog = bootbox.dialog({
-			title: 'Creating your uberMegaFile',
-			message: '<p><i class="fa fa-spin fa-spinner"></i> Loading...</p>'
-		});
-		dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},function(result){			
-				dialog.find('.bootbox-body').html(message);
-				setTimeout(function(){
-					dialog.modal("hide");
-				},10000);				
-				if($("#simulator_table").is(":hidden")){			
-					$("#option_Edit").click();				
-				}
-			},function(error){
-				bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");;
-			});			
-	} else {
-		dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},function(result){			
-			if($("#simulator_table").is(":hidden")){				
-				$("#option_Edit").click();				
-			}
-		},function(error){
-			bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");
-		});		
-	} 
+function updateUberMegaFile(){			
+	dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},function(result){			
+		if($("#simulator_table").is(":hidden")){				
+			$("#option_Edit").click();				
+		}
+	},function(error){
+		bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");
+	},
+	"filesUpload");
 };
 
 if(typeof(user_data.received_experiments) !== "undefined"){

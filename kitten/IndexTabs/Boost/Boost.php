@@ -227,7 +227,8 @@ $("#new_boost_btn").on("click",function(){
 			},function(error){
 				custom_alert("Error saving boost - please check your console.");
 				console.dir(error);
-			});
+			},
+			"filesUpload");
     }		
   });
 });
@@ -306,7 +307,8 @@ $("#save_boost_btn").on("click",function(){
     },function(error){
       custom_alert("Error saving boost - please check your console.");
       console.dir(error);
-    });    
+    },
+		"filesUpload");
   }
 });
 

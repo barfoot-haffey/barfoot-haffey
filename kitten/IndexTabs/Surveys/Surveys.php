@@ -346,8 +346,8 @@ $("#save_survey_btn").on("click",function(){
 		},function(error){
 			custom_alert("error - check console!");
 			console.dir(error);
-		});		
-		
+		},
+		"filesUpload");		
 	}
 });
 

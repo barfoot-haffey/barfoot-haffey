@@ -37,17 +37,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
   require_once "../../sqlConnect.php";  
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-	$cwd = explode("/",getcwd ());
-	if(count($cwd) == 1){ //then developing on local host
-		$cwd = explode("\\",getcwd ());
-		$_SESSION['version'] = $cwd[5];
-		$_SESSION['local_website'] = "http://localhost/collector_local";
-	} else {
-    $_SESSION['version'] = $cwd[4];
-		$_SESSION['local_website'] = "https://www.ocollector.org";
-	}
-  
+	error_reporting(E_ALL);	  
 
 ?>
 <link rel="stylesheet" href="Style.css"></link>
@@ -99,7 +89,6 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
 		</td>
 	</tr>
 </table>
-
 
 <script>
 

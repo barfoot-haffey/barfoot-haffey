@@ -160,7 +160,11 @@ if(isset($simulator_on)){
 	</div>
 </div>
 <div id="participant_country" style="display:none">
-  <?php require ("ParticipantCountry.html"); ?>
+  <?php 
+		if(isset($simulator_on) == FALSE){
+			require ("ParticipantCountry.html");
+		}		
+	?>
 </div>
 <script>
 
