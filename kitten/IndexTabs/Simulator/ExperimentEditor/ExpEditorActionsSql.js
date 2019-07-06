@@ -44,6 +44,21 @@ $("#delete_exp_btn").on("click",function(){
 		});
 	}
 });
+$("#download_experiment_button").on("click",function(){
+	var experiment = megaUberJson.exp_mgmt.experiment;
+	var exp_json = megaUberJson.exp_mgmt.experiments[experiment];	
+	var default_filename = experiment + ".json";
+	bootbox.prompt({
+		title: "What do you want to save this file as?",
+		value: default_filename, //"data.csv",
+		callback:function(result){
+			if(result){
+				download_collector_file(result,JSON.stringify(exp_json),"json");
+			}
+		}
+	});
+	
+});
 $("#new_proc_button").on("click",function(){
   var proc_template = new_experiment_data["Procedure"]["Procedure.csv"];
   
@@ -313,7 +328,24 @@ $("#stim_select").on("change",function(){
 	var this_exp   = megaUberJson.exp_mgmt.experiments[experiment];		
 	createExpEditorHoT(this_exp.all_stims[this.value], "stimuli", this.value);
 });
-
+$("#upload_experiment_button").on("click",function(){	
+	if($("#show_hide_upload").is(":visible")){
+		$("#show_hide_upload").hide(500);
+	} else {
+		$("#show_hide_upload").show(500);
+	}	
+});
+$("#upload_experiment_input").on("change",function(){	
+	if (this.files && this.files[0]) {
+		var myFile = this.files[0];
+		var reader = new FileReader();
+		var this_filename	= this.files[0].name;
+		reader.addEventListener('load', function (e) {
+			upload_exp_contents(e.target.result,this_filename);
+		});		
+		reader.readAsBinaryString(myFile);
+	}   	
+});
 function survey_cell_view_activate(this_value){	
 	$("#survey_cell_view").val(this_value);	
 	$(".survey_cell_view_td").show();

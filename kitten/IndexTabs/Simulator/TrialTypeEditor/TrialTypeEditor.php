@@ -67,7 +67,7 @@
 
 <script>
 $("#community_trialtypes_btn").on("click",function(){
-	var win = window.open('https://github.com/open-collector/open-collector/issues/2', '_blank');
+	var win = window.open('https://collectalk.com/categories/trialtypes', '_blank');
 });
 
 $("#view_trialtype_backups").on("click",function(){

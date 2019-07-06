@@ -51,12 +51,14 @@
 		<tr>
 			<td>
 				<button type="button" id="new_experiment_button" class="btn btn-primary">New</button>
+				<button type="file" id="upload_experiment_button" class="btn btn-primary">↑</button>				
 			</td>
 			<td>
 				<span id="experiments"></span>
 			</td>
 			<td>
 				<span id="dropbox_inputs" style="display:none">
+					<button type="button" id="download_experiment_button" class="btn btn-primary">↓</button>
 					<button id="save_btn" class="btn btn-primary">Save</button>
 					<button id="rename_exp_btn" class="btn btn-primary">Rename</button>
 					<button id="delete_exp_btn" class="btn btn-primary">Delete</button>
@@ -66,6 +68,14 @@
 					<button id="run_btn"      class="btn btn-primary">Run</button>
 					<a id="run_link" style="display:none" href="" target="_blank"></a>
 				</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="custom-file" id="show_hide_upload">
+					<input type="file" class="custom-file-input" id="upload_experiment_input" aria-describedby="upload_experiment_input_addon">
+					<label class="custom-file-label" for="upload_experiment_input">Upload experiment</label>
+				</div>
 			</td>
 		</tr>
 	</table>

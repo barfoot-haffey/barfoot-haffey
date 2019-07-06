@@ -67,34 +67,6 @@ function get_HoT_data(current_sheet) { // needs to be adjusted for
 }
 
 
-function update_spreadsheet_selection() {
-	var current_experiment = $("#experiment_name").val();
-  
-	var exp_data = experiment_files[current_experiment];
-  
-	var select_html = '<option class="condOption" value="Conditions.csv">Conditions</option>';
-  
-	select_html += '<optgroup label="Stimuli" class="stimOptions">';
-  
-	for (var i=0; i<exp_data['Stimuli'].length; ++i) {
-		var file = exp_data['Stimuli'][i];
-		select_html += '<option value="Stimuli/' + file + '">' + file + '</option>';
-	}
-  
-	select_html += '</optgroup>';
-  
-	select_html += '<optgroup label="Procedures" class="procOptions">';
-  
-	for (var i=0; i<exp_data['Procedures'].length; ++i) {
-		var file = exp_data['Procedures'][i];
-		select_html += '<option value="Procedure/' + file + '">' + file + '</option>';
-	}
-  
-	select_html += '</optgroup>';
-  
-	//$("#spreadsheet_selection").html(select_html);
-}
-
 function new_experiment(experiment){
 	if($("#experiment_list").text().indexOf(experiment) !== -1){			
 		bootbox.alert("Name already exists. Please try again.");		
@@ -138,8 +110,6 @@ function new_experiment(experiment){
 	}
 }
 
-
-
 function remove_from_list(experiment){	
 	var x = document.getElementById("experiment_list");
 	x.remove(experiment);
@@ -149,12 +119,11 @@ function remove_from_list(experiment){
 	}
 }
 
-//solution on  https://stackoverflow.com/questions/46155/how-can-you-validate-an-email-address-in-javascript
-function validateEmail(email) { 
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email.toLowerCase());
+function show_run_stop_buttons(){
+  if(simulator_on_off == "on"){
+    $("#run_stop_buttons").show();
+  }
 }
-
 
 function stim_proc_selection(stim_proc,sheet_selected){
 	var experiment = megaUberJson.exp_mgmt.experiment;
@@ -162,8 +131,85 @@ function stim_proc_selection(stim_proc,sheet_selected){
 	createExpEditorHoT(this_exp.all_stims[sheet_selected],stim_proc,sheet_selected);	//sheet_name
 }
 
-function show_run_stop_buttons(){
-    if(simulator_on_off == "on"){
-        $("#run_stop_buttons").show();
-    }
+function update_spreadsheet_selection() {
+	var current_experiment = $("#experiment_name").val();
+  
+	var exp_data = experiment_files[current_experiment];
+  
+	var select_html = '<option class="condOption" value="Conditions.csv">Conditions</option>';
+  
+	select_html += '<optgroup label="Stimuli" class="stimOptions">';
+  
+	for (var i=0; i<exp_data['Stimuli'].length; ++i) {
+		var file = exp_data['Stimuli'][i];
+		select_html += '<option value="Stimuli/' + file + '">' + file + '</option>';
+	}
+  
+	select_html += '</optgroup>';
+  
+	select_html += '<optgroup label="Procedures" class="procOptions">';
+  
+	for (var i=0; i<exp_data['Procedures'].length; ++i) {
+		var file = exp_data['Procedures'][i];
+		select_html += '<option value="Procedure/' + file + '">' + file + '</option>';
+	}
+  
+	select_html += '</optgroup>';
+  
+	//$("#spreadsheet_selection").html(select_html);
 }
+
+function upload_exp_contents(these_contents,this_filename){	
+	parsed_contents  = JSON.parse(these_contents)
+	cleaned_filename = this_filename.toLowerCase().replace(".json","");
+	
+	// note that this is a local function. right?
+	function upload_to_megaUberJson(exp_name,this_content) {
+		megaUberJson.exp_mgmt.experiment = exp_name;
+		megaUberJson.exp_mgmt.experiments[exp_name] = this_content;
+		list_experiments();
+		upload_trialtypes(this_content);
+	}
+	
+	function upload_trialtypes(this_content){
+		console.dir("this_content.trialtypes");
+		console.dir(this_content.trialtypes);
+		var trialtypes = Object.keys(this_content.trialtypes);
+		trialtypes.forEach(function(trialtype){
+			
+			
+			// ask the user if they want to replace the trialtype
+			
+			
+		});
+	}
+	
+	bootbox.prompt({
+		title: "Save experiment?",
+		message: "Please confirm that you would like to upload this experiment and if so, what you would like to call it?",
+		value: cleaned_filename,
+		
+		callback: function(exp_name){
+			if(typeof(megaUberJson.exp_mgmt.experiments[exp_name]) == "undefined"){
+				upload_to_megaUberJson(exp_name,parsed_contents);				
+			} else {				
+				bootbox.confirm("This experiment_name already exists, would you like to overwrite it?",function(result){
+					if(result){
+						upload_to_megaUberJson(exp_name,parsed_contents);
+					} 
+				});				
+			}			
+		}		
+	});
+}
+
+
+
+
+//solution on  https://stackoverflow.com/questions/46155/how-can-you-validate-an-email-address-in-javascript
+function validateEmail(email) { 
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email.toLowerCase());
+}
+
+
