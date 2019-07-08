@@ -1,0 +1,1 @@
+jasmine spec/jsFunctionsTests.js
