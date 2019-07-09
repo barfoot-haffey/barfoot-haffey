@@ -29,8 +29,8 @@ if(isset($_SESSION['version']) == FALSE){
 	$cwd = explode("/",getcwd ());
 	if(count($cwd) == 1){ //then developing on local host
 		$cwd = explode("\\",getcwd ());
-		$_SESSION['version'] = $cwd[5];
-		$_SESSION['local_website'] = "http://localhost/collector_local";
+		$_SESSION['version'] = $cwd[4];
+		$_SESSION['local_website'] = "http://localhost/open-collector";
 	} else {
     $_SESSION['version'] = $cwd[4];
 		$_SESSION['local_website'] = "https://www.ocollector.org";

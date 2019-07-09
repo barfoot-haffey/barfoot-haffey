@@ -160,7 +160,9 @@ if(window.mobilecheck() == false) {
 };
 
 </script>
+
 <?php
+  require("dropboxInitiate.html");
 	mysqli_close($conn);
 } else {
   require "LoginInterface.php";
