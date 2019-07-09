@@ -20,7 +20,13 @@
 */
 
 $simulator_on = "true";
-require 'initiateTool.html';    
+?>
+
+<?php
+  
+require 'initiateTool.html'; 
+
+   
 ?>
 
 <!-- Scripts needed for simulator -->
@@ -158,7 +164,3 @@ $(document).keyup(function(e) {
 	}
 });
 </script>
-
-<?php 
-}
-?>

@@ -31,11 +31,14 @@ require_once 'Code/initiateCollector.php';
 require_once("libraries.html");
 require "Code/nojs.php";
 
+?>
+
+<?php
 if(isset($_SESSION['user_email'])){    	
   require_once "../../sqlConnect.php";  
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	error_reporting(E_ALL);	  
 
 ?>
 <link rel="stylesheet" href="Style.css"></link>
@@ -69,14 +72,14 @@ if(isset($_SESSION['user_email'])){
       <?php 
         $names = array("Simulator","Surveys","Boost","Data");
         $pages = ["Simulator/simulator.php","Surveys/Surveys.php","Boost/Boost.php","Data/data.php"];
+        
         for($i = 0; $i < count($pages); $i++){
           $this_name = $names[$i];
-          $this_page = $pages[$i];          
+          $this_page = $pages[$i];
       ?>
-					
           <div class="collapse multi-collapse" style="width:100%" id="<?php echo "collapse_$this_name" ?>" >
             <?php require("IndexTabs/$this_page"); ?>		
-          </div>	          
+          </div>
       <?php
         }
 ?>
@@ -84,13 +87,13 @@ if(isset($_SESSION['user_email'])){
 		<td id="help_area" class="help_class">
 			<?php 
         require("IndexTabs/Help/help.php");
+				
 			?>
 		</td>
 	</tr>
 </table>
 
 <script>
-
 navbar_names  = <?= json_encode($names) ?>;
 navbar_html = "";
 navbar_colors = ["primary","primary","primary","primary"];
