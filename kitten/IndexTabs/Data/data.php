@@ -18,7 +18,7 @@
  		
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
 */
-if($_SESSION['user_email'] == "guest"){
+if(isset($_SESSION['user_email'] == false){
 	echo "Please log in to access your data.";
 } else {
 

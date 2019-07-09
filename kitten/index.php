@@ -30,14 +30,12 @@
 require_once 'Code/initiateCollector.php';
 require_once("libraries.html");
 require "Code/nojs.php";
-?>
 
-<?php
-if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    	
+if(isset($_SESSION['user_email'])){    	
   require_once "../../sqlConnect.php";  
 	ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);	  
+	error_reporting(E_ALL);
 
 ?>
 <link rel="stylesheet" href="Style.css"></link>
@@ -85,9 +83,7 @@ if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){
     </td>		
 		<td id="help_area" class="help_class">
 			<?php 
-				if($_SESSION['user_email'] !== "guest"){
-					require("IndexTabs/Help/help.php");
-				}
+        require("IndexTabs/Help/help.php");
 			?>
 		</td>
 	</tr>
@@ -135,7 +131,7 @@ $(".select_page").on("click",function(){
 		},300);		
 	}
 });	
-if($("#collector_account_email").html() == "--undefined--" | $("#collector_account_email").html() == "guest"){
+if($("#collector_account_email").html() == "--undefined--"){
 	highlight_account("dropbox_account_email");
 	highlight_account("collector_account_email");	
 }

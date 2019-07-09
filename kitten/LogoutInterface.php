@@ -19,6 +19,9 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
+require_once ("cleanRequests.php");
+
+
 if(isset($_SESSION['user_email'])){
 	$user_email = $_SESSION['user_email'];
 } else {
@@ -56,7 +59,8 @@ if(isset($_SESSION['user_email'])){
 		</td>
     <td>
       <form action="login.php" method="post" style="padding:0px">	
-        <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>        
+        <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
+        <input type="hidden" name="return_page" value="index.php"/>
       </form>
     </td>
 	</tr>

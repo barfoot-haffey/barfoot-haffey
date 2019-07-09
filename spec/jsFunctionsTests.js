@@ -1,7 +1,5 @@
-
-// <script src="open-collector\libraries"></script>
 fs = require('fs')
-myCode = fs.readFileSync('libraries/jsFunctions.js','utf-8') // depends on the file encoding
+myCode = fs.readFileSync('kitten/jsFunctions.js','utf-8') // depends on the file encoding
 eval(myCode)
 
 describe("Cleaning object keys", function() {

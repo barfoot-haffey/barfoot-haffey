@@ -2,6 +2,9 @@
 require("../../sqlConnect.php");
 //require("../cleanAJAX.php");
 
+require_once "cleanRequests.php";
+
+
 $institute    = $_POST['institute'];
 $country_id   = $_POST['country_id'];
 $country_name = $_POST['country_name'];

@@ -20,7 +20,7 @@
 function isTrialTypeHeader(colHeader) {
 	var isTrialTypeCol = false;
   if (colHeader === 'trial type') isTrialTypeCol = true;
-  if (   colHeader.substr(0, 5) === 'Post '
+  if (   colHeader.substr(0, 5).toLowerCase() === 'post '
 		&& colHeader.substr(-11)  === ' trial type'
 	) {
 		postN = colHeader.substr(5, colHeader.length - 16);
@@ -33,14 +33,14 @@ function isTrialTypeHeader(colHeader) {
 }
 function isNumericHeader(colHeader) {
 	var isNum = false;
-	if (colHeader.substr(-4) === 'Item')     isNum = true;
-	if (colHeader.substr(-8) === 'Max Time') isNum = true;
-	if (colHeader.substr(-8) === 'Min Time') isNum = true;
+	if (colHeader.toLowerCase().substr(-4) === 'item')     isNum = true;
+	if (colHeader.toLowerCase().substr(-8) === 'max time') isNum = true;
+	if (colHeader.toLowerCase().substr(-8) === 'min time') isNum = true;
 	return isNum;
 }
 function isShuffleHeader(colHeader) {
 	var isShuffle = false;
-	if (colHeader.indexOf('Shuffle') !== -1) isShuffle = true;
+	if (colHeader.toLowerCase().indexOf('shuffle') !== -1) isShuffle = true;
 	return isShuffle;
 }
 function firstRowRenderer(instance, td, row, col, prop, value, cellProperties) {
@@ -265,9 +265,11 @@ function createHoT(container, data,sheet_name) {
 	return table;    
 }
 
+/*
 $(window).resize(function() {
 	resizeTimer = window.setTimeout(function() {
 		updateDimensions(stimTable);
 	}, 100);
 	window.clearTimeout(resizeTimer);        
 });
+*/

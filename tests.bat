@@ -1,1 +1,1 @@
-jasmine spec/jsFunctionsTests.js
+jasmine spec/allSpec.js

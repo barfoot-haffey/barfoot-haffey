@@ -18,11 +18,9 @@
  		
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
 */
-if($_SESSION['user_email'] == "guest"){
-	echo "You cannot create a study unless you are logged in. Please log in or register.";
-} else {
-	$simulator_on = "true";
-	require 'initiateTool.html';    
+
+$simulator_on = "true";
+require 'initiateTool.html';    
 ?>
 
 <!-- Scripts needed for simulator -->

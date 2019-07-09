@@ -1,6 +1,7 @@
 <?php
 
 require("../sqlConnect.php");
+require_once "cleanRequests.php";
 
 //print_r($_POST);
 

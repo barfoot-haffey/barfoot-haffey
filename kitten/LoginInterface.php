@@ -18,16 +18,16 @@
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
+require_once ("cleanRequests.php");
 
 require_once("libraries.html");
 
-if(isset($_SESSION['user_email']) && $_SESSION['user_email'] !== 'guest'){    
+if(isset($_SESSION['user_email'])){    
   $login_style = "display:none";
   $logout_style = '';
 } else {
   $login_style = "";
-	$logout_style = "display:none";
-	$_SESSION['user_email'] = 'guest';    
+	$logout_style = "display:none";    
 }
 if(isset($_SESSION['user_email'])){
 	$user_email = $_SESSION['user_email'];
@@ -73,9 +73,11 @@ if(error_message !== ""){
 	}
 </style>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <form action="login.php" method="post" style="padding:0px">	
-	<span id="logout_span" style="<?= $logout_style ?>">			
-		<button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
+	<span id="logout_span" style="<?= $logout_style ?>">
+    <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
 	</span>	
     <input type='hidden' name='return_page' value='<?= $url ?>' />
     <div id="login_register_span"  style="<?= $login_style ?>; height:90%">
@@ -90,6 +92,9 @@ if(error_message !== ""){
 					<div class="row">
 							<input id="password_input" name="user_password" type="password" class="form-control" placeholder="password">
 					</div>
+          <div class="row">  
+            <div class="g-recaptcha" data-sitekey="6Lcg0awUAAAAAL5nO7Kp-IJ7IEdARN9z1ryYCNi6"></div>
+          </div>
 					<div class="row">
 						<input class="btn btn-primary" type="button" style="margin:3px" id="login_button" 		value="login">										
             <button type="button" class="btn btn-primary" style="display:none" data-toggle="modal" data-target="#institute_div" onclick="list_institutes()" id="register_map_button"> Register </button>
@@ -106,7 +111,7 @@ if(error_message !== ""){
 					</div>
 				</div>
 			</div>
-    </div>			
+    </div>
 </form>
 
 <div id="institute_div" class="modal" tabindex="-1" role="dialog">

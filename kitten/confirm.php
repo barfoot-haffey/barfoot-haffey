@@ -19,6 +19,8 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
+require_once ("cleanRequests.php");
+
 $page           = $_GET['page'];
 $user_email     = $_GET['email'];
 $confirm_code   = $_GET['confirm_code'];

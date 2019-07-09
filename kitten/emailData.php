@@ -26,6 +26,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'Code/initiateCollector.php';
+require_once ("cleanRequests.php");
+
+
 
 function encrypt_decrypt($action, $string,$local_key,$this_iv) {
   $output = false;

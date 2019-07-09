@@ -22,6 +22,7 @@
 
 require 'Code/initiateCollector.php';
 require_once "../../sqlConnect.php";
+require_once "cleanRequests.php";
 
 $location   = $_POST['location'];
 $experiment = $_POST['experiment'];

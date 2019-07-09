@@ -21,6 +21,9 @@
 
 require 'Code/initiateCollector.php';
 require 'libraries.html';
+require_once ("cleanRequests.php");
+
+
 
 function encrypt_decrypt($action, $string,$local_key,$this_iv) {
 	$output = false;

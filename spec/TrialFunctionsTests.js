@@ -7,12 +7,16 @@ eval(myCode)
 describe("Downloading of precrypted data", function() {
   it("takes the .responses from a data object and formats them to be csv readable", function() {
     exemplar_object = {
-      "responses":{
-        "row_1": ["header_1", "header_2"]
+      "responses":
+        [["header_1", "header_2"],
+         ["value_1","value_2"]]
       },
     }
-    expect(clean_obj_keys(exemplar_object)).toEqual({
-      "key":"value"
+    expect(precrypted_data(exemplar_object)).toEqual({
+      {
+        "header_1":["value_1"],
+        "header_2":["value_2"]
+      }
     });
   });
 });
