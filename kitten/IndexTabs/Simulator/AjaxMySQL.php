@@ -23,10 +23,10 @@
 - make sure researcher ID cannot be null in contributers_beta 
 
 */
-$experiment_folder = "../../../../experiments";
 
 require_once '../../Code/initiateCollector.php';
 require_once "../../../../sqlConnect.php";
+require_once "../../cleanRequests.php";
 
 function generateRandomString($length = 10) {
 	return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
@@ -47,20 +47,6 @@ function unique_published_id($conn){
 	} else {
 		unique_published_id($conn);
 	}	
-}
-
-if($action == "delete"){
-	//run a mysql function that does
-		//remove from contributers_beta
-		//remove from experiments_beta
-}
-
-if($action == "load"){	
-	$sql 	= "SELECT `location` FROM `view_experiment_researchers` WHERE `name` ='$experiment' AND `email` = '$user_email'";
-	$result = $conn->query($sql);
-	$row 	= mysqli_fetch_assoc($result);
-	$location = $row['location'];
-	echo file_get_contents("$experiment_folder/$location/experiment.json"); //note the relative location difference	
 }
 
 if($action == "new"){
@@ -173,56 +159,6 @@ if($action == "rename"){
 	}
 	
 }
-	
-
-if($action == "retrieve commits"){
-	$sql = "SELECT `location` FROM `view_experiment_researchers` WHERE `name`='$experiment' AND `email` = '$user_email'";
-	$result = $conn->query($sql);	
-	$row = mysqli_fetch_assoc($result);
-	$location = $row['location'];
-	
-	$versions = glob("$experiment_folder/$location/v*.json");
-	$versions_json = [];
-	foreach($versions as $version){
-		array_push($versions_json,json_decode(file_get_contents($version)));
-	}
-	echo json_encode($versions_json);	
-}
-
-
-
-if($action == "save"){		
-	$content = $_POST['content'];	
-	//print_r(json_decode($content));
-	
-	
-	$check_exists_sql = "SELECT COUNT(*) experiment_count FROM `view_experiment_researchers` WHERE `name`='$experiment' AND `email` = '$user_email'";	
-	
-	
-
-	$result 	= $conn->query($check_exists_sql);
-	$row 		= mysqli_fetch_assoc($result);
-	$exp_exists = $row['experiment_count'];
-
-	echo "hello - now you have a choice - exp_exists: echo name = '$experiment' and email = '$user_email' therefore: $exp_exists";
-	
-	if($exp_exists == 1){ // that's what's expected
-		// add or replace latest version
-		$sql 	  = "SELECT * FROM `view_experiment_researchers` WHERE `name`='$experiment' AND `email` = '$user_email'";
-		$result   = $conn->query($sql);
-		$row 	  = mysqli_fetch_assoc($result);
-		$location = $row['location'];
-		echo "location = $location";		
-		file_put_contents("$experiment_folder/$location/experiment.json",json_encode(json_decode($content)));
-		echo "success";
-			
-	} else if($exp_exists > 1){
-		echo "error: more than 1 experiment with this name!";
-	}
-	
-	$result->close();
-
-}
 
 if($action == "unpublish"){	 
 	$sql = "SELECT `experiment_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
@@ -245,11 +181,5 @@ if($action == "unpublish"){
 		echo  $conn->error;
 	};	
 }
-
-
-
-
-
 mysqli_close($conn);
-
 ?>
