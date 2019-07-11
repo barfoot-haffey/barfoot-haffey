@@ -1,1 +1,0 @@
-jasmine spec/allSpec.js
