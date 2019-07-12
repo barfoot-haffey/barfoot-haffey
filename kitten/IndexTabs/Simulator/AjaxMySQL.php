@@ -51,7 +51,7 @@ function unique_published_id($conn){
 
 if($action == "new"){
 	
-	$check_exists_sql = "SELECT COUNT(*) experiment_count FROM `view_experiment_researchers` WHERE `name`='$experiment' AND `email` = '$user_email'";
+	$check_exists_sql = "SELECT COUNT(*) experiment_count FROM `view_experiment_users` WHERE `name`='$experiment' AND `email` = '$user_email'";
 	$result = $conn->query($check_exists_sql);
 	
 	$row = mysqli_fetch_assoc($result);
@@ -64,16 +64,16 @@ if($action == "new"){
 		$location = $_POST['location'];
 				
 		// create experiment in beta
-		$sql = "INSERT INTO `experiments_beta`(`name`, `location`) VALUES ('$experiment','$location');";
+		$sql = "INSERT INTO `experiments`(`name`, `location`) VALUES ('$experiment','$location');";
 		
 		if ($conn->query($sql) === TRUE) {
 			
 			$sql = "INSERT INTO `contributors` (`experiment_id`,`user_id`) VALUES(
-				(SELECT `experiment_id` FROM `experiments_beta` WHERE `location` = '$location'), 
-				(SELECT `user_id` FROM `users_beta` WHERE `email`='$user_email'));";
+				(SELECT `experiment_id` FROM `experiments` WHERE `location` = '$location'), 
+				(SELECT `user_id` FROM `users` WHERE `email`='$user_email'));";
 			
 			if ($conn->query($sql) === TRUE) {
-				echo "success";				
+				echo "success hi ho";				
 			} else {
 				echo  $conn->error;;
 			}			
@@ -110,7 +110,7 @@ if($action == "publish"){
 	
 	$encrypted_privKey = openssl_encrypt ($privkey, $cipher, $local_key, true);
 	
-	$sql = "SELECT `experiment_id`,`published_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
+	$sql = "SELECT `experiment_id`,`published_id` FROM `experiments` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users` where `email` = '$user_email')))";
 	 
 	// need to change published to true;
 	
@@ -130,7 +130,7 @@ if($action == "publish"){
 	
 	
 	$exp_no = $row['experiment_id'];	
-	$sql = "UPDATE `experiments_beta` SET `published` = '1',`published_id` = '$published_id' WHERE `experiment_id` = '$exp_no'"; 
+	$sql = "UPDATE `experiments` SET `published` = '1',`published_id` = '$published_id' WHERE `experiment_id` = '$exp_no'"; 
 	
 	if($conn->query($sql) === TRUE){
 		echo "success";
@@ -161,7 +161,7 @@ if($action == "rename"){
 }
 
 if($action == "unpublish"){	 
-	$sql = "SELECT `experiment_id` FROM `experiments_beta` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users_beta` where `email` = '$user_email')))";
+	$sql = "SELECT `experiment_id` FROM `experiments` where `name` ='$experiment' AND `experiment_id` in (SELECT `experiment_id` from `contributors` where `researcher_id` in  (SELECT `researcher_id` from `researchers_beta` where `user_id` in (SELECT `user_id` FROM `users` where `email` = '$user_email')))";
 	
 	// need to change published to true;
 		
@@ -173,7 +173,7 @@ if($action == "unpublish"){
 	
 	// published_id = random code combined with exp_no; 
 	
-	$sql = "UPDATE `experiments_beta` SET `published`=false, `published_id`='' WHERE `experiment_id`=$exp_no"; 
+	$sql = "UPDATE `experiments` SET `published`=false, `published_id`='' WHERE `experiment_id`=$exp_no"; 
 	
 	if($conn->query($sql) === TRUE){
 		echo "success";

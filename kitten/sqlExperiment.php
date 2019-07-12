@@ -66,7 +66,7 @@ require_once "Code/initiateCollector.php";
 	window.jQuery || document.write('<script src="../libraries/jquery-3.3.1.min.js"><\/script>');	
 	window.Popper || document.write('<script src="../libraries/popper.min.js"><\/script>');	
 	window.bootbox || document.write('<script src="../libraries/bootbox.4.4.0.min.js"><\/script>');	
-	window.bootstrap || document.write('<link rel="stylesheet" href="../libraries/bootstrapCollector.css"><script src="../libraries/bootstrap.3.3.7.min.js"><\/script>');
+	window.bootstrap || document.write('<link rel="stylesheet" href="../libraries/bootstrapCollector.css"><script src="../libraries/bootstrap.4.0.min.js"><\/script>');
   
 </script>
 <?php
@@ -282,7 +282,7 @@ function final_trial(){
         $("#experiment_div").append("<div id='download_div'></div>");
         
 				if(download_at_end == "on"){
-          $("#download_div").html("<h1 class='text-primary'>"+message_data[0]+" <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
+          $("#download_div").html("<h1 class='text-primary'>" + message_data[0] + " <br><br> You can download the encrypted version of your data <span id='encrypt_click' class='text-success'>here</span> <br><br>or an unencrypted version <span id='raw_click' class='text-success'>here</span></h1>");	
             
             $("#encrypt_click").on("click",function(){
               bootbox.prompt({
@@ -315,9 +315,6 @@ function final_trial(){
         experiment_finished_and_emailed = true;
 			}
 		});
-		
-		
-		
 	} else {
 		$("#experiment_div").html("<h1>You have finished. You can download the data by clicking <b><span id='download_json'>here</span></b>.</h1>");
 	}
@@ -345,21 +342,14 @@ function initiate_experiment(){
   create_exp_json_variables();
 	parse_sheets("stimuli");	
 	parse_sheets("procedure");
-	create_exp_json_functions();	
-	parse_current_proc();	
+  create_exp_json_functions();
+  parse_current_proc();	
+  insert_start();
 	shuffle_start_exp();  
 	process_welcome();
 }
 
 
-function full_screen(){
-  if(typeof(exp_json.this_condition.fullscreen) !== "undefined"){
-    if(exp_json.this_condition.fullscreen == "on"){
-      var elem = document.getElementById("experiment_div");
-      requestFullScreen(elem);    
-    }
-  }
-}
 
 
 function clean_var(this_variable,default_value){
@@ -378,6 +368,40 @@ function clean_this_condition(this_cond){
 		this_cond.buffer = 5;
 	}
 	return this_cond;
+}
+
+function full_screen(){
+  if(typeof(exp_json.this_condition.fullscreen) !== "undefined"){
+    if(exp_json.this_condition.fullscreen == "on"){
+      var elem = $(document.body);
+      bootbox.confirm("The researcher would like to run this in full screen, are you okay with that?",function(response){
+        if(response){
+          requestFullScreen(document.documentElement);    
+        }
+      });
+    }
+  }
+}
+
+function insert_start(){
+  // update the procedure to have a "start" trial, which is blank
+  ///////////////////////////////////////////////////////////////
+  var this_proc  = exp_json.parsed_proc;
+  
+  var this_proc_start = {
+    item:0,
+    max_time:"",
+    shuffle_1:"off",
+    text:"",
+    "trial type":"start_experiment"
+  }    
+  this_proc = this_proc.unshift(this_proc_start);
+  
+  // update trialtypes to have a "start" trial
+  ////////////////////////////////////////////
+  if(typeof(exp_json.trialtypes) !== "undefined"){
+    exp_json.trialtypes.start_experiment = "<" + "script>Trial.submit()</" + "script>";
+  }
 }
 
 function process_welcome(){
@@ -552,26 +576,18 @@ function create_exp_json_functions(){
 		this_trialtype = this_trialtype.replace("[trial_no]",trial_no);
 		this_trialtype = this_trialtype.replace("[post_no]",post_no);
 		
-		if(this_proc["item"] !== "0"){
+		if(this_proc["item"].toString() !== "0"){
 			
 			if(typeof(this_proc["stimuli"]) !== "undefined" && this_proc["stimuli"] !== ""){
 				this_stim = exp_json.parsed_stims[this_proc["stimuli"]][this_proc["item"]];
 			} else {
-        if(typeof(exp_json.this_condition) !== "undefined" && typeof(exp_json.this_condition.stimuli) !== "undefined"){
-          
-          
-          
-          
-        } else {
-          
-          
-          
-          
-        }
         this_stim = exp_json.parsed_stims[exp_json.this_condition.stimuli][this_proc["item"]];
  
 			}
+      console.dir(this_proc);
+      
       variable_list = Object.keys(this_proc).concat(Object.keys(this_stim));	
+      console.dir("broken before here?");
 			
 		} else {
 			variable_list = Object.keys(this_proc);	

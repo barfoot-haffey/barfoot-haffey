@@ -25,17 +25,16 @@ if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
 
-if(isset($_SESSION['version']) == FALSE){
-	$cwd = explode("/",getcwd ());
-	if(count($cwd) == 1){ //then developing on local host
-		$cwd = explode("\\",getcwd ());
-		$_SESSION['version'] = $cwd[4];
-		$_SESSION['local_website'] = "http://localhost/open-collector";
-	} else {
-    $_SESSION['version'] = $cwd[4];
-		$_SESSION['local_website'] = "https://www.ocollector.org";
-	}
+$cwd = explode("/",getcwd ());
+if(count($cwd) == 1){ //then developing on local host
+  $cwd = explode("\\",getcwd ());
+  $_SESSION['version'] = $cwd[5];
+  $_SESSION['local_website'] = "http://localhost/open-collector-server/open-collector";
+} else {
+  $_SESSION['version'] = $cwd[4];
+  $_SESSION['local_website'] = "https://www.ocollector.org";
 }
+
 
 // timeout session
 //////////////////
@@ -47,6 +46,15 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
+//store the hashed password locally if it is available in the session
 
+if(isset($_SESSION['local_key'])){
+  ?>
+  <script>
+    window.localStorage.setItem("local_key", "<?= $_SESSION['local_key'] ?>");
+  </script>
+  <?php 
+  unset($_SESSION['local_key']);
+}
 
 ?>

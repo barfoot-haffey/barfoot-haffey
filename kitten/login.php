@@ -125,114 +125,112 @@ function validate_captcha($captcha_secret, $captcha_response){
 }
 
 //use switch statement instead??
-switch ($_POST["login_type"]) {
-  case "register":
-    $_SESSION['login_error'] = 'Welcome to open-collector.org';
-    $sql="SELECT * FROM users WHERE email='$user_email'";
-    $result = $conn->query($sql);    
-    if($result->num_rows>0){
-      $_SESSION['login_error'] = "user already exists";
-    } else {
-      // create random string as confirm code
-      $hashed_password = password_hash($user_password, PASSWORD_BCRYPT);
-      $salt = create_random_code(20);
-      $pepper = create_random_code(20);	
-      $email_confirm_code = create_random_code(20);
+if($_POST["login_type"] == "register") {
+  $_SESSION['login_error'] = 'Welcome to open-collector.org';
+  $sql="SELECT * FROM users WHERE email='$user_email'";
+  $result = $conn->query($sql);    
+  if($result->num_rows>0){
+    $_SESSION['login_error'] = "user already exists";
+  } else {
+    // create random string as confirm code
+    $hashed_password = password_hash($user_password, PASSWORD_BCRYPT);
+    $salt = create_random_code(20);
+    $pepper = create_random_code(20);	
+    $email_confirm_code = create_random_code(20);
 
-      $sql = "INSERT INTO `users` (`email`, `password`, `email_confirm_code`, `salt`,`pepper`,`account_status`) VALUES('$user_email', '$hashed_password', '$email_confirm_code','$salt','$pepper','u')";
-      if ($conn->query($sql) === TRUE) {			
-        if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
-          $success_fail = "fail";  //not really, but need to confirm with e-mail code first
-          $_SESSION['login_error'] = "Please check the e-mail address you registered with, and confirm. You cannot log in until you have done so."; 
-          
-          registration_email("registration");
-        } else {
-          $_SESSION['login_error'] = 'Robot verification failed, please try again.';
-        }
+    $sql = "INSERT INTO `users` (`email`, `password`, `email_confirm_code`, `salt`,`pepper`,`account_status`) VALUES('$user_email', '$hashed_password', '$email_confirm_code','$salt','$pepper','u')";
+    if ($conn->query($sql) === TRUE) {			
+      if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
+        $success_fail = "fail";  //not really, but need to confirm with e-mail code first
+        $_SESSION['login_error'] = "Please check the e-mail address you registered with, and confirm. You cannot log in until you have done so."; 
+        
+        registration_email("registration");
+      } else {
+        $_SESSION['login_error'] = 'Robot verification failed, please try again.';
+      }
+    } else {
+      $success_fail = "fail";
+      $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
+    }
+  }
+}
+if($_POST["login_type"] == "forgot") {
+  $sql="SELECT * FROM users WHERE email='$user_email'";     
+  $result = $conn->query($sql);
+  if($result->num_rows == 0){
+    $success_fail = "fail"; 
+    $_SESSION['login_error'] = "This account is not registered - please double check that you typed it in correctly.";
+  } else {
+    
+    if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
+      $email_confirm_code = create_random_code(20);
+      $sql = "UPDATE `users` SET `email_confirm_code`  = '$email_confirm_code' WHERE `email` = '$user_email'";
+      if ($conn->query($sql) === TRUE) {
+        $success_fail = "fail";  //not really, but need to confirm with e-mail code first
+        $_SESSION['login_error'] = "You have just been given an e-mail to reset your password. Please click on the link included.";
+        email_user("forgot");
       } else {
         $success_fail = "fail";
         $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
       }
-    }
-    break;
-  case "forgot":
-    $sql="SELECT * FROM users WHERE email='$user_email'";     
-    $result = $conn->query($sql);
-    if($result->num_rows == 0){
-      $success_fail = "fail"; 
-      $_SESSION['login_error'] = "This account is not registered - please double check that you typed it in correctly.";
     } else {
-      
-      if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
-        $email_confirm_code = create_random_code(20);
-        $sql = "UPDATE `users` SET `email_confirm_code`  = '$email_confirm_code' WHERE `email` = '$user_email'";
-        if ($conn->query($sql) === TRUE) {
-          $success_fail = "fail";  //not really, but need to confirm with e-mail code first
-          $_SESSION['login_error'] = "You have just been given an e-mail to reset your password. Please click on the link included.";
-          email_user("forgot");
-        } else {
-          $success_fail = "fail";
-          $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
+      $success_fail = "fail";
+      $_SESSION['login_error'] = 'Robot verification failed, please try again.';
+    }
+  }
+}    
+if($_POST["login_type"] == "login"){ 
+  $sql = "SELECT * FROM users WHERE email='$user_email'";    
+  $result = $conn->query($sql);
+    
+  if($result->num_rows > 1){
+    $success_fail = "fail";
+    $_SESSION['login_error'] = "Please contact a.haffey@reading.ac.uk -  there are multiple instances of this e-mail address registered.";
+  } else if($result->num_rows == 1){
+    $row = mysqli_fetch_array($result);	
+    
+    if($row['account_status'] == 'V'){			
+  
+      if (password_verify($user_password, $row['password'])) {
+        $cipher = "aes-128-cbc";//"aes-256-gcm";	//do not use CBC ciphers				
+        if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
+          if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
+            $_SESSION['user_email'] = "$user_email";
+            $success_fail = "success";              
+          } else {
+            $_SESSION['login_error'] = 'Robot verification failed, please try again.';
+          }             
+        } else { 
+          $_SESSION['login_error'] = 'Please check on the reCAPTCHA box.'; 
+        } 
+        if(!file_exists("../../simplekeys/public_$user_email.txt")){
+          //create public and private keys if they don't yet exist.
+          create_user_keys($user_password);
+        } else { 
+          //need to retrieve salt and pepper				
+          $saltpepper 					= file_get_contents("../../simplekeys/saltpepper_$user_email.txt");
+          $salt 								= substr($saltpepper,0,20);
+          $pepper 							= substr($saltpepper,21,40);
+          $hashed_password_key 	= hash('sha512', $salt.$user_password.$pepper);
         }
+        $_SESSION['local_key'] = $hashed_password_key;
+        //below code doesn't appear to store the key locally (at least when hosted by xampp)
+?>
+        <script>
+          window.localStorage.setItem("local_key", "<?= $hashed_password_key ?>");
+        </script>
+<?php
       } else {
-        $success_fail = "fail";
-        $_SESSION['login_error'] = 'Robot verification failed, please try again.';
-      }
-    }
-    
-    break;
-  case "login":
-    $sql = "SELECT * FROM users WHERE email='$user_email'";    
-    $result = $conn->query($sql);	
-    
-    if($result->num_rows > 1){
-      $success_fail = "fail";
-      $_SESSION['login_error'] = "Please contact a.haffey@reading.ac.uk -  there are multiple instances of this e-mail address registered.";
-    } else if($result->num_rows == 1){
-      $row = mysqli_fetch_array($result);	
-      
-      if($row['account_status'] == 'V'){			
-    
-        if (password_verify($user_password, $row['password'])) {
-          $cipher = "aes-128-cbc";//"aes-256-gcm";	//do not use CBC ciphers				
-          if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
-            if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
-              $_SESSION['user_email'] = "$user_email";
-              $success_fail = "success";              
-            } else {
-              $_SESSION['login_error'] = 'Robot verification failed, please try again.';
-            }             
-          } else { 
-            $_SESSION['login_error'] = 'Please check on the reCAPTCHA box.'; 
-          } 
-          if(!file_exists("../../simplekeys/public_$user_email.txt")){
-            //create public and private keys if they don't yet exist.
-            create_user_keys($user_password);
-          } else { 
-            //need to retrieve salt and pepper				
-            $saltpepper 					= file_get_contents("../../simplekeys/saltpepper_$user_email.txt");
-            $salt 								= substr($saltpepper,0,20);
-            $pepper 							= substr($saltpepper,21,40);
-            $hashed_password_key 	= hash('sha512', $salt.$user_password.$pepper);
-          }
-  ?>
-          <script>
-            window.localStorage.setItem("local_key", "<?= $hashed_password_key ?>");
-            document.location.href = "<?= $return_page ?>";
-          </script>
-  <?php
-        } else {
-          $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
-        }			
-      } else {
-        $success_fail = "fail";
-        $_SESSION['login_error'] = "This account has been locked out. Please check your e-mails for a code to log you back in.";
-      }		
+        $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
+      }			
     } else {
       $success_fail = "fail";
-      $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
-    }
-    break;
+      $_SESSION['login_error'] = "This account has been locked out. Please check your e-mails for a code to log you back in.";
+    }		
+  } else {
+    $success_fail = "fail";
+    $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
+  }
 }
 
 

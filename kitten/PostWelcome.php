@@ -21,11 +21,6 @@
 
 require_once ("cleanRequests.php");
 
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 $cipher = "aes-256-cbc";
 define('AES_256_CBC', 'aes-256-cbc');
 
@@ -36,8 +31,9 @@ function generateRandomString($length = 10) {
 	return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
 }
 
-$participant_code = $_POST['participant_code'];
-$location 		  	= $_POST['location'];
+$participant_code     = $_POST['participant_code'];
+$_SESSION['location'] = $_POST['location'];
+$location             = $_SESSION['location'];
 //identify the data by location and participant_code
 
 $_SESSION['participant_code'] = $participant_code;

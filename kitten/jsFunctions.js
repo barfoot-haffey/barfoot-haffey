@@ -157,7 +157,10 @@ function new_dropbox_account(dropbox_dialog){
 											},"filesUpload");
 		
 }
-function report_error(error){
+function report_error(error,collector_error_message){
 	console.dir(error);
+  if(typeof(collector_error_message) !== "undefined"){
+    bootbox.alert(collector_error_message);
+  }
 	bootbox.alert("<b>error:</b> " + error.error.error_summary + "<br> Perhaps wait a bit and save (again)?");
 };

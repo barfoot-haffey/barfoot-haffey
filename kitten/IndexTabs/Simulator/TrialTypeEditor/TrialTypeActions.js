@@ -27,10 +27,6 @@ function initiate_actions(){
 				files : {}
 			}
 		}
-		if(megaUberJson.trialtypes.user_trialtypes[trialtype].commit_message !== ''){		
-			megaUberJson.trialtypes.user_trialtypes[trialtype]=JSON.parse(JSON.stringify(megaUberJson.trialtypes.user_trialtypes[trialtype]));
-			megaUberJson.trialtypes.user_trialtypes[trialtype].commit_message = '';
-		}
 		megaUberJson.trialtypes.user_trialtypes[trialtype].updated = true;
 		megaUberJson.trialtypes.user_trialtypes[trialtype]= ace_content;		
 	});

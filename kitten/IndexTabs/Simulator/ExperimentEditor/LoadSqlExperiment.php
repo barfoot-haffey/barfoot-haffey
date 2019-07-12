@@ -537,7 +537,6 @@ $(window).bind('keyup', function(event) {
 //////////////////////
 
 experiment_template = {
-  "commit_message":"Original commit",
   "procedure": "Procedure.csv",
   "stimuli": "Stimuli.csv",
   "cond_array": [

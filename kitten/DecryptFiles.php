@@ -21,7 +21,10 @@
 
 require 'Code/initiateCollector.php';
 require 'libraries.html';
-require_once ("cleanRequests.php");
+
+////////////////////////////////////////////////////////////////////
+// Do not implement below at the moment, it breaks the decryption //
+////////////////////////////////////////////////////////////////////
 
 
 
@@ -70,7 +73,7 @@ for($i = 0; $i < count($_FILES['filesToUpload']['tmp_name']); $i++){
 	$decrypted_privKey 	= encrypt_decrypt("decrypt",$encrypted_privKey,$local_key,$researcher_iv); 
 	$decrypted_privKey 	= "-----BEGIN PRIVA".substr($decrypted_privKey,16); 																									//what is this about...?
 	$encrypted_symmetric_key = file_get_contents("../../simplekeys/symmetric-$user_email-$experiment_id-$participant.txt");
-	openssl_private_decrypt ($encrypted_symmetric_key, $decrypted_symmetric_key, $decrypted_privKey); 
+  openssl_private_decrypt ($encrypted_symmetric_key, $decrypted_symmetric_key, $decrypted_privKey); 
 	$decrypted_data = encrypt_decrypt("decrypt",$encrypted_content,$decrypted_symmetric_key,$participant_iv);
 	$decrypted_data = json_decode($decrypted_data);
 	unset($decrypted_data->trialtypes); //otherwise the page tries to draw the trialtypes :-/	

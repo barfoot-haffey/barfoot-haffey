@@ -68,7 +68,15 @@ function get_HoT_data(current_sheet) { // needs to be adjusted for
 
 
 function new_experiment(experiment){
-	if($("#experiment_list").text().indexOf(experiment) !== -1){			
+  
+  
+  $("#run_button").prop('disabled', true);
+  $("#run_button").prop('title', "Loading your new experiment, please wait a moment before previewing");
+  
+	
+  
+  
+  if($("#experiment_list").text().indexOf(experiment) !== -1){			
 		bootbox.alert("Name already exists. Please try again.");		
 	} else {		
 	
@@ -90,21 +98,23 @@ function new_experiment(experiment){
 								experiment: experiment,
 								location:returned_link.url								
 							},
-							function(returned_data){
-								console.dir(returned_data);				
+							function(returned_data){				
 								$('#experiment_list').append($('<option>', {         
 									text : experiment 
 								}));
 								$("#experiment_list").val(experiment);
-								
+								$("#save_btn").click();
+                $("#run_button").prop('disabled', false);
+                $("#run_button").prop('title', "");
+                
 							}							
 						);
 					})
 					.catch(function(error){
-						report_error(error);
+						report_error(error,"new_experiment trying to share link");
 					});
 			},function(error){
-				report_error(error);				
+				report_error(error,"new_experiment trying to upload template to dropbox");				
 			},
 			"filesUpload");
 	}
@@ -202,14 +212,3 @@ function upload_exp_contents(these_contents,this_filename){
 		}		
 	});
 }
-
-
-
-
-//solution on  https://stackoverflow.com/questions/46155/how-can-you-validate-an-email-address-in-javascript
-function validateEmail(email) { 
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email.toLowerCase());
-}
-
-

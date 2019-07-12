@@ -28,10 +28,43 @@ $location   = $_POST['location'];
 $experiment = $_POST['experiment'];
 $user_email = $_SESSION['user_email'];
 
-$sql = "UPDATE `view_experiment_users` SET `location`='$location' WHERE `name`='$experiment' AND `email` = '$user_email'";
-if ($conn->query($sql) === TRUE) {
-	echo "success";				
+
+$check_exists_sql = "SELECT COUNT(*) experiment_count FROM `view_experiment_users` WHERE `name`='$experiment' AND `email` = '$user_email'";
+$result = $conn->query($check_exists_sql);
+
+$row = mysqli_fetch_assoc($result);
+//$row = $result[0]->fetch_row());
+
+$exp_exists = $row['experiment_count'];
+if ($exp_exists == 0){
+      
+  $location = $_POST['location'];
+      
+  // create experiment in beta
+  $sql = "INSERT INTO `experiments`(`name`, `location`) VALUES ('$experiment','$location');";
+  
+  if ($conn->query($sql) === TRUE) {
+    
+    $sql = "INSERT INTO `contributors` (`experiment_id`,`user_id`) VALUES(
+      (SELECT `experiment_id` FROM `experiments` WHERE `location` = '$location'), 
+      (SELECT `user_id` FROM `users` WHERE `email`='$user_email'));";
+    
+    if ($conn->query($sql) === TRUE) {
+      echo "success";				
+    } else {
+      echo  $conn->error;;
+    }			
+    
+  } else {
+    echo  $conn->error;;
+  }					
 } else {
-	echo  $conn->error;;
+  $sql = "UPDATE `view_experiment_users` SET `location`='$location' WHERE `name`='$experiment' AND `email` = '$user_email'";
+  if ($conn->query($sql) === TRUE) {
+    echo "success";				
+  } else {
+    echo  $conn->error;;
+  }
 }
+
 ?>
