@@ -344,13 +344,22 @@ function initiate_experiment(){
 	parse_sheets("procedure");
   create_exp_json_functions();
   parse_current_proc();	
+  clean_trialtypes();
   insert_start();
 	shuffle_start_exp();  
 	process_welcome();
 }
 
 
-
+function clean_trialtypes(){
+  exp_json.parsed_proc.forEach(function(row,row_index){
+    //identify trial type columns
+    var tt_cols = Object.keys(row).filter(this_key => this_key.indexOf("trial type") !== -1);
+    tt_cols.forEach(function(tt_col){
+      exp_json.parsed_proc[row_index][tt_col] = exp_json.parsed_proc[row_index][tt_col].toLowerCase();
+    });    
+  });
+}
 
 function clean_var(this_variable,default_value){
 	if(typeof(this_variable) == "undefined"){

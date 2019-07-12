@@ -67,8 +67,6 @@ function create_user_keys($user_password){
   $encrypted_privKey = encrypt_decrypt("encrypt", $privKey,$hashed_password_key,$this_iv);
   
   file_put_contents("../../simplekeys/iv-$user_email.txt",$this_iv);
-  file_put_contents("../../simplekeys/local_key.txt",$hashed_password_key);
-  file_put_contents("../../simplekeys/local_key.txt",$hashed_password_key);
   file_put_contents("../../simplekeys/priv_$user_email.txt",$encrypted_privKey);
   file_put_contents("../../simplekeys/public_$user_email.txt",$pubKey);
   file_put_contents("../../simplekeys/saltpepper_$user_email.txt",$saltpepper);
