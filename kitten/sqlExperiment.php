@@ -400,7 +400,10 @@ function insert_start(){
   // update trialtypes to have a "start" trial
   ////////////////////////////////////////////
   if(typeof(exp_json.trialtypes) !== "undefined"){
-    exp_json.trialtypes.start_experiment = "<" + "script>Trial.submit()</" + "script>";
+    exp_json.trialtypes.start_experiment = 
+      "<h1>Before starting the experiment</h1>" +
+      "<div>Please be careful about what details you give when participating in this experiment. If you feel that any inappropriate details are being asked, please contact the researcher before proceeding.</div>" +
+      "<button class='btn btn-primary' onclick='Trial.submit()'>Start</button>";
   }
 }
 
