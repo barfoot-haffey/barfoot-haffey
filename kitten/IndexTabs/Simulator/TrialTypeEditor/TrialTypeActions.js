@@ -18,7 +18,26 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
 */
 function initiate_actions(){
-	$("#ACE_editor").on("keyup input",function(){
+	function protected_name_check(this_name){
+    protected_names = ["start_experiment"];
+    if(protected_names.indexOf(this_name) == -1){
+      return true;
+    } else {
+      bootbox.alert("Please do not use <b>" + this_name + "</b>, it is protected");
+    }
+  }
+  function valid_new_name(this_name){
+    var current_trialtypes = Object.keys(megaUberJson.trialtypes.user_trialtypes)
+                     .concat(Object.keys(megaUberJson.trialtypes.default_trialtypes));
+    current_trialtypes = Array.from(new Set(current_trialtypes));
+    if(current_trialtypes.indexOf(this_name.toLowerCase()) == -1){
+      return true;
+    } else {
+      bootbox.alert("There is a trialtype with the name <b>" + this_name + "</b> - please choose a unique name");
+      return false;
+    }
+  }
+  $("#ACE_editor").on("keyup input",function(){
 		var ace_content = editor.getValue();
 		var trialtype 	= megaUberJson.trialtypes.trialtype;
 		var filetype 		= megaUberJson.trialtypes.filetype;
@@ -54,14 +73,14 @@ function initiate_actions(){
 					callback: function(){									
 						var new_name = $("#new_trialtype_name").val().toLowerCase();
 						content = "";
-						if(typeof(megaUberJson.trialtypes.user_trialtypes[new_name]) !== "undefined"){
-							bootbox.alert("There is a trialtype with the name <b>" + new_name + "</b> - please choose a unique name");
-						} else {
-							megaUberJson.trialtypes.user_trialtypes[new_name] = content;
-							megaUberJson.trialtypes.trialtype = new_name;
-							trialtypes_obj.save_trialtype(content,new_name,"new","code");
-							editor.textInput.getElement().onkeydown = "";
-						}
+            if(protected_name_check(new_name)){
+              if(valid_new_name(new_name)){
+                megaUberJson.trialtypes.user_trialtypes[new_name] = content;
+                megaUberJson.trialtypes.trialtype = new_name;
+                trialtypes_obj.save_trialtype(content,new_name,"new","code");
+                editor.textInput.getElement().onkeydown = "";
+              } 
+            } 
 					}
 				},
 				graphic: {
@@ -69,31 +88,32 @@ function initiate_actions(){
 					className: 'btn-primary',
 					callback: function(){									
 						var new_name = $("#new_trialtype_name").val().toLowerCase();
-						if(typeof(megaUberJson.trialtypes.user_trialtypes[new_name]) !== "undefined"){
-							bootbox.alert("There is a trialtype with the name <b>" + new_name + "</b> - please choose a unique name");
-						} else {
-							content = "";
-							megaUberJson.trialtypes.user_trialtypes[new_name] = content;
-							megaUberJson.trialtypes.trialtype = new_name;
-							trialtypes_obj.save_trialtype(content,new_name,"new","graphic");
-							$("#graphic_editor").show();
-							editor.setOption("readOnly",true);
-							editor.textInput.getElement().onkeydown = graphic_editor_obj.graphic_warning;
-							megaUberJson.trialtypes.graphic.trialtypes[new_name] = {
-								elements: {}
-							};
-							megaUberJson.trialtypes.graphic.trialtypes[new_name].width = "600";
-							megaUberJson.trialtypes.graphic.trialtypes[new_name].height = "600";
-							megaUberJson.trialtypes.graphic.trialtypes[new_name]["background-color"] = "white";
-							megaUberJson.trialtypes.graphic.trialtypes[new_name].mouse_visible = true;
-							megaUberJson.trialtypes.graphic.trialtypes[new_name].keyboard = {				
-								valid_keys: '',
-								end_press: true
-							};												
-							megaUberJson.trialtypes.trialtype = new_name;						
-							graphic_editor_obj.update_main_settings();
-							graphic_editor_obj.clean_canvas();
-						}
+            if(protected_name_check(new_name)){
+              if(valid_new_name(new_name)){
+                content = "";
+                megaUberJson.trialtypes.user_trialtypes[new_name] = content;
+                megaUberJson.trialtypes.trialtype = new_name;
+                trialtypes_obj.save_trialtype(content,new_name,"new","graphic");
+                $("#graphic_editor").show();
+                editor.setOption("readOnly",true);
+                editor.textInput.getElement().onkeydown = graphic_editor_obj.graphic_warning;
+                megaUberJson.trialtypes.graphic.trialtypes[new_name] = {
+                  elements: {}
+                };
+                megaUberJson.trialtypes.graphic.trialtypes[new_name].width = "600";
+                megaUberJson.trialtypes.graphic.trialtypes[new_name].height = "600";
+                megaUberJson.trialtypes.graphic.trialtypes[new_name]["background-color"] = "white";
+                megaUberJson.trialtypes.graphic.trialtypes[new_name].mouse_visible = true;
+                megaUberJson.trialtypes.graphic.trialtypes[new_name].keyboard = {				
+                  valid_keys: '',
+                  end_press: true
+                };												
+                megaUberJson.trialtypes.trialtype = new_name;						
+                graphic_editor_obj.update_main_settings();
+                graphic_editor_obj.clean_canvas();
+                
+              }
+            }
 					}
 				}
 			}
