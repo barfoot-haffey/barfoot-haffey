@@ -40,9 +40,9 @@ if(count($cwd) == 1){ //then developing on local host
 //////////////////
 // solution by Gumbo at https://stackoverflow.com/questions/520237/how-do-i-expire-a-php-session-after-30-minutes
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
-    // last request was more than 30 minutes ago
-    session_unset();     // unset $_SESSION variable for the run-time 
-    session_destroy();   // destroy session data in storage
+  // last request was more than 30 minutes ago
+  session_unset();     // unset $_SESSION variable for the run-time 
+  session_destroy();   // destroy session data in storage
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
@@ -55,6 +55,11 @@ if(isset($_SESSION['local_key'])){
   </script>
   <?php 
   unset($_SESSION['local_key']);
+  ?>
+  <script>
+  //document.location.href = "index.php";
+  </script>  
+  <?php
 }
 
 ?>

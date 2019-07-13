@@ -1,3 +1,9 @@
+<?php
+require_once 'Code/initiateCollector.php';
+require_once("libraries.html");
+require "Code/nojs.php";
+
+?>
 <!-- 
 /*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
     A program for running experiments on the web
@@ -23,23 +29,10 @@
 	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
 	<meta charset="utf-8">
 </head>
-
-
 <script src="browserCheck.js"></script>
 <?php
-require_once 'Code/initiateCollector.php';
-require_once("libraries.html");
-require "Code/nojs.php";
-
-?>
-
-<?php
 if(isset($_SESSION['user_email'])){    	
-  require_once "../../sqlConnect.php";  
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);	  
-
+  require_once "../../sqlConnect.php";
 ?>
 <link rel="stylesheet" href="Style.css"></link>
 <nav class="navbar fixed-top navbar-light bg-primary navbar-expand-lg" id="top_navbar" style="height:50px; padding:5px">

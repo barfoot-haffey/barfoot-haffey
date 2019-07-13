@@ -19,6 +19,7 @@
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
+
 require_once "cleanRequests.php";
 require_once "Code/initiateCollector.php";
 require_once "../../sqlConnect.php";
@@ -213,11 +214,6 @@ if($_POST["login_type"] == "login"){
         }
         $_SESSION['local_key'] = $hashed_password_key;
         //below code doesn't appear to store the key locally (at least when hosted by xampp)
-?>
-        <script>
-          window.localStorage.setItem("local_key", "<?= $hashed_password_key ?>");
-        </script>
-<?php
       } else {
         $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
       }			
