@@ -1,12 +1,3 @@
-<?php
-
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-?>
-
 <!--
 /*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
     A program for running experiments on the web
@@ -66,7 +57,7 @@ body, html {
 		<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#navs-home" role="tab" aria-controls="pills-home" aria-selected="true">Versions</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#navs-contributors" role="tab" aria-controls="pills-profile" aria-selected="false">Contributors</a>
+		<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#navs-contributors" role="tab" aria-controls="pills-profile" aria-selected="false">Contribute!</a>
 	</li>
 	<li class="nav-item"  id="researchers_map_tab">
 		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-map" role="tab" aria-controls="pills-contact" aria-selected="false">Researcher map</a>
@@ -77,9 +68,8 @@ body, html {
   <li class="nav-item"  id="security_tab">
 		<a class="nav-link" id="pills-security-tab" data-toggle="pill" href="#navs-security" role="tab" aria-controls="pills-security" aria-selected="false">Security</a>
 	</li>
-	<li class="nav-item"  id="contact_tab">
-		<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#navs-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-	</li>
+  <div style="width:5px"></div> <!-- just to create a gap between the buttons" -->
+  <a class="btn btn-primary" href='https://collectalk.com' target="_blank">Community</a>
 </ul>
 <div class="tab-content" id="pills-tabContent">
 	<div class="tab-pane fade show active" id="navs-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -93,6 +83,8 @@ body, html {
 		</div>
 	</div>
 	<div class="tab-pane fade" id="navs-contributors" role="tabpanel" aria-labelledby="pills-profile-tab">
+    If you'd like to contribute, please clone the repository <a class="btn btn-primary" href='https://github.com/open-collector/open-collector' target="_blank">here</a> and make pull requests with improvements! <br><br>
+  
 		<?php require("contributors.php") ?>	
 	</div>
 	<div class="tab-pane fade" id="navs-map" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -105,21 +97,6 @@ body, html {
 	</div>
   <div class="tab-pane fade" id="navs-security" role="tabpanel" aria-labelledby="pills-security-tab">
 		<?php require("security.html") ?>	
-	</div>
-	<div class="tab-pane fade" id="navs-contact" role="tabpanel" aria-labelledby="pills-contact-tab">			
-			<table class="table">
-				<tr>
-					<th> Query type </th>
-					<th> Person </th>
-					<th> Role </th>
-					<th> Email </th>
-				<tr>
-					<td> General </td>
-					<td> Dr Anthony Haffey </td>
-					<td> Lead Developer </td>
-					<td> anthony dot haffey at gmail dot com </td>
-				</tr>
-			</table>
 	</div>
 </div>
 
