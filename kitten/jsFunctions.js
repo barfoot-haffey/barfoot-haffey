@@ -62,8 +62,7 @@ function initiate_uberMegaFile(){
 		.catch(function(error){ //i.e. this is the first login
 			dropbox_dialog = bootbox.dialog({
 				title: "Your first login",
-				message: '<p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> Welcome to Collector! We are just setting up your dropbox files, <br><div id="dropbox_prog_div"></div><br> Please wait while these are created ready for your use!</p>',
-				closeButton: false
+				message: '<p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> Welcome to Collector! We are just setting up your dropbox files, <br><div id="dropbox_prog_div"></div><br> Please wait while these are created ready for your use!</p>'
 			});
 									
 			// do something in the background			
@@ -142,14 +141,21 @@ function new_dropbox_account(dropbox_dialog){
 													//do nothing, all is well
 												},
 												function(error){
+                          console.dir(this_folder);
 													console.dir("Initial folder causing error");
-													report_error(error);				
+													//report_error(error);
+                          bootbox.confirm("It looks like you need to confirm the link between your google account and dropbox. If this is the case, please confirm and you will be directed back to dropbox to select your gmail account to do this with. If not, then this might be an issue that you want to raise by clicking on the Discuss button in the top right, and then either discuss in the group forum or on the github issues page",function(result){
+                            if(result){
+                              force_reauth_dbx(); //risk of infinite loop if this doesn't work :-/
+                            }
+                          });
 												},"filesCreateFolder");	
 	});	
 	dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},
 											function(result){												
 												dropbox_dialog.modal('hide');
-												initiate_uberMegaFile();
+												//location.reload();
+                        initiate_uberMegaFile();
 											},
 											function(error){
 												console.dir("Initial file causing error");

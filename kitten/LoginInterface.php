@@ -66,12 +66,16 @@ if(error_message !== ""){
 </script>
 
 <style>
+  #institute_div > .modal-body{
+    height:80%;
+    overflow-y: auto;
+  }
 	#login_register_card{
 		margin: 0 auto; /* Added */
 		float: none; /* Added */
 		margin-bottom: 10px; /* Added */
-		
 	}
+		
 </style>
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -118,7 +122,7 @@ if(error_message !== ""){
 <div id="institute_div" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">      
-      <div class="modal-body">
+      <div class="modal-body" style="overflow:auto; height:500px">
         <?php
           require("ResearcherInstitution.html");
         ?>

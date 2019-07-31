@@ -274,11 +274,6 @@ $("#versions_btn").on("click",function(){
 })(window);
 
 
-// get dropbox token for user
-var CLIENT_ID = '6xumb4iloq9sz1u';
-
-
-
 function check_trialtypes_in_proc(procedure,post_trialtype){
 	var experiment 		= megaUberJson.exp_mgmt.experiment;
 	var this_exp   		= megaUberJson.exp_mgmt.experiments[experiment];
@@ -345,7 +340,7 @@ function list_experiments(){
 				if(first_load == false){
 					megaUberJson.exp_mgmt.any_loaded = true;
 					$("#save_btn").click();
-				} else {						
+				} else {
 					remove_from_list("Select a dropbox experiment");
 					first_load = false;
 				}				

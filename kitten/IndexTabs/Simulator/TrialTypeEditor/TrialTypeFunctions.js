@@ -21,6 +21,7 @@ $.ajaxSetup({ cache: false }); // prevents caching, which disrupts $.get calls
 
 trialtypes_obj = {
 	delete_trialtype:function(){
+    megaUberJson.trialtypes.trialtype = $("#trial_type_select").val();
 		var this_loc = "/trialtypes/"+megaUberJson.trialtypes.trialtype;
 		bootbox.confirm("Are you sure you want to delete this "+this_loc+"?",function(result){
 			if(result == true){
@@ -49,6 +50,8 @@ trialtypes_obj = {
 		$("#rename_trial_type_button").show();
 		if(user_default == "default_trialtype"){
 			$("#delete_trial_type_button").hide();
+      $("#default_user_trialtype_span").html("default_trialtype");
+      $("#trial_type_select")[0].className = $("#trial_type_select")[0].className.replace("user_","default_");
 		} else {
 			$("#delete_trial_type_button").show();
 		}
@@ -86,6 +89,7 @@ trialtypes_obj = {
 	save_trialtype:function(content,name,new_old,graphic_code){	
 		if(new_old == "new"){
 			graphic_editor_obj.clean_canvas();
+      editor.setValue("");
 		}
 		dbx_obj.new_upload({path:"/trialtypes/"+name+".html",contents:content,mode:"overwrite"},function(result){
 			if($('#trial_type_select option').filter(function(){ 
@@ -97,6 +101,7 @@ trialtypes_obj = {
 					class: "user_trialtype"
 				}));			
 				$("#trial_type_select").val(name);
+        $("#trial_type_select")[0].className = $("#trial_type_select")[0].className.replace("default_","user_");
 				
 				if(graphic_code == "code"){
 					$("#ACE_editor").show();
@@ -105,8 +110,7 @@ trialtypes_obj = {
 				}
 				$("#trial_type_file_select").show();
 				$("#default_user_trialtype_span").html("user_trialtype");
-				editor.setValue("");
-				custom_alert("success - " + name + " created");        
+        custom_alert("success - " + name + " created");        
 			} else {
 				custom_alert("success - " + name + " updated");
 			}					
@@ -124,7 +128,6 @@ trialtypes_obj = {
 					if(typeof(megaUberJson.trialtypes.user_trialtypes[trialtype.name]) == "undefined"){
 						dbx.sharingCreateSharedLink({path:trialtype.path_lower})
 							.then(function(returned_path_info){
-								console.dir(returned_path_info);
 								$.get(returned_path_info.url.replace("www.","dl."),function(content){
 									megaUberJson.trialtypes.user_trialtypes[trialtype.name] = content;
 									$("#trial_type_select").append("<option class='user_trialtype'>"+trialtype.name+"</option>");
@@ -141,7 +144,7 @@ function list_trialtypes(){
 		action:'initiate',
 	},
 	function(returned_data){
-		default_trialtypes = JSON.parse(returned_data);		
+    default_trialtypes = JSON.parse(returned_data);		
 		user_trialtypes 	 = megaUberJson.trialtypes.user_trialtypes;
 		
 		megaUberJson.trialtypes.default_trialtypes = default_trialtypes;

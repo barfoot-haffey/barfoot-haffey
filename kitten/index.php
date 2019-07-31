@@ -2,9 +2,6 @@
 require_once 'Code/initiateCollector.php';
 require_once("libraries.html");
 require "Code/nojs.php";
-
-?>
-<!-- 
 /*  Collector (Garcia, Kornell, Kerr, Blake & Haffey)
     A program for running experiments on the web
     Copyright 2012-2016 Mikey Garcia & Nate Kornell
@@ -24,11 +21,8 @@ require "Code/nojs.php";
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
--->
-<head>
-	<link rel="shortcut icon" type="image/x-icon" href="../logos/collector.ico.png" />
-	<meta charset="utf-8">
-</head>
+
+?>
 <script src="browserCheck.js"></script>
 <?php
 if(isset($_SESSION['user_email'])){    	

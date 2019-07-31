@@ -118,7 +118,6 @@ function post_welcome(participant_code,id_error){
 		participant_code : participant_code,
 		location: exp_json.location
 	},function(returned_data){
-		console.dir(returned_data);
 		if(returned_data.indexOf("error") !== -1){
 			if(id_error == "skip"){ 
 				$("#welcome_div").hide();

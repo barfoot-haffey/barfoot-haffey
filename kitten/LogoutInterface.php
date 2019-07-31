@@ -134,14 +134,7 @@ $("#dropbox_logo").on("click", function(){
 			label: "Select Account",
 			className: 'btn-info',
 			callback: function(){
-				dbx.setClientId(CLIENT_ID); // i think is necessary				
-				if(local_website.indexOf("localhost") !== -1){
-					local_website += "/www";
-				}
-				authUrl = dbx.getAuthenticationUrl(local_website+'/<?= $_SESSION['version'] ?>');
-				authUrl += "&force_reauthentication=true";	
-				document.getElementById('authlink').href = authUrl;
-				$("#authlink")[0].click();
+				force_reauth_dbx();
 			}
 		},
 		ok: {
@@ -151,4 +144,14 @@ $("#dropbox_logo").on("click", function(){
 	}
 	});
 });
+function force_reauth_dbx(){
+  dbx.setClientId(CLIENT_ID); // i think is necessary				
+  if(local_website.indexOf("localhost") !== -1){
+    local_website += "/www";
+  }
+  authUrl = dbx.getAuthenticationUrl(local_website+'/<?= $_SESSION['version'] ?>');
+  authUrl += "&force_reauthentication=true";	
+  document.getElementById('authlink').href = authUrl;
+  $("#authlink")[0].click();
+}
 </script>

@@ -191,22 +191,8 @@ function initiate_actions(){
 				editor.setValue(sql_content);
 				
 			} else if (typeof(megaUberJson.trialtypes.default_trialtypes[megaUberJson.trialtypes.trialtype]) !== "undefined"){		
-				// resume here when save is done properly (i.e. in versions, with dates for each version);
-				//detect which is most recently saved here //
-				var these_versions = megaUberJson.trialtypes.default_trialtypes[megaUberJson.trialtypes.trialtype].versions;
-				// get index of whichever has highest value 
-				var max_value = 0;
-				var max_index = 0;
-				these_versions.forEach(function(element,index){
-					if(element.last_modified>max_value){
-						max_value = element.last_modified;
-						max_index = index;
-					}
-				});
-				megaUberJson.trialtypes.version = max_index;
-				var version = megaUberJson.trialtypes.version;
-				var sql_content = megaUberJson.trialtypes.default_trialtypes[megaUberJson.trialtypes.trialtype];				
-				editor.setValue(sql_content);				
+				var sql_content = megaUberJson.trialtypes.default_trialtypes[megaUberJson.trialtypes.trialtype];
+				editor.setValue(sql_content);
 			}
 		}
 	});
@@ -214,7 +200,15 @@ function initiate_actions(){
 		if($("#trial_type_select").val() !== null){
 			var content = editor.getValue()
 			var name 	= $("#trial_type_select").val();
-			trialtypes_obj.save_trialtype(content,name,"old");	
+      if(typeof(megaUberJson.trialtypes.default_trialtypes[name]) == "undefined"){
+        trialtypes_obj.save_trialtype(content,name,"old");
+      } else {
+        bootbox.prompt("You cannot overwrite default trialtypes. Would you like to create a new trialtype?",function(new_name){
+          if(new_name){
+            trialtypes_obj.save_trialtype(content,new_name,"old","code");
+          }
+        });
+      }
 		}
 	});
 }

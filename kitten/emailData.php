@@ -19,16 +19,12 @@
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
-
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'Code/initiateCollector.php';
 //require_once ("cleanRequests.php");
-
-
 
 function encrypt_decrypt($action, $string,$local_key,$this_iv) {
   $output = false;
@@ -66,7 +62,6 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
-
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
   //Server settings
@@ -78,30 +73,15 @@ try {
   $mail->Password = "$mailer_password";                 // SMTP password
   $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 587;                                    // TCP port to connect to
-
-	
-	//Recipients
   $mail->setFrom('no-reply@ocollector.org', 'Open-Collector');    
-  $mail->addAddress("anthony.haffey@gmail.com");     // Add a recipient	
   
-	
-	//sql here for identifying the users to e-mail
-	
+  
 	require("../../sqlConnect.php");
 	
-	//Bug below vvv
-	
 	$sql = "SELECT * FROM `view_experiment_users` WHERE `location`='$location'";
-	
-	
-	//Bug above ^^^
-	
 	$user_array = [];	
-	
 	$result 					 = $conn->query($sql); 
 	while($row = $result->fetch_assoc()) {
-		
-		
 		$user = $row['email'];
 		$experiment_id = $row['experiment_id'];
 		$body_alt_body = "Hello, <br><br> You have just had participant $participant complete the task. <br><br> Their completion code was $completion_code. <br><br> To decrypt the data, please go to www.ocollector.org/".$_SESSION['version']."/index.php and dupload the attached file using the 'data' tab. <br><br> Best wishes, <br><br> The open-collector team.";
@@ -123,12 +103,9 @@ try {
 		file_put_contents("../../simplekeys/symmetric-$user-$experiment_id-$participant.txt",$encrypted_symmetric_key);
 		file_put_contents("../../simplekeys/iv-$user-$experiment_id-$participant.txt",$this_iv);
 		$mail->AddStringAttachment($encrypted_data,"encrypted_$experiment_id-$participant.txt");
-		
+		$mail->addAddress($user);     // Add a recipient	
 		$mail->send();
-		
-		
 	}
-		
 	
 	echo "Your encrypted data has been emailed to the researcher(s). Completion code is: <br><br><b> $completion_code </b><br><br> Warning - completion codes may get muddled if you try to do multiple experiments at the same time. Please don't. encrypted data = $encrypted_data";
 	
@@ -137,6 +114,4 @@ try {
 } catch (Exception $e) {
   echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
-/*
-*/
 ?>

@@ -125,7 +125,6 @@ function createHoT(container, data,sheet_name) {
 				topRow[k]=this.getDataAtCell(0,k);
 				for (l=0; l<k; l++){
 					if (this.getDataAtCell(0,k)==this.getDataAtCell(0,l)){
-						alert ('repetition has occurred!');
 						this.setDataAtCell(0,k,this.getDataAtCell(0,k)+'*');
 					}
 				}
@@ -135,7 +134,7 @@ function createHoT(container, data,sheet_name) {
 				if(this.getDataAtCell(0,k).toLowerCase()=="item"){
 					for(m=0;m<this.countRows();m++){
 						if(this.getDataAtCell(m,k)==1){
-							alert("Warning v1: 1 does not refer to any row in the Stimuli sheet! The first row is row 2 (as row 1 is the header). Fix row "+(m+1)+" in your Procedure's Item column.");
+							bootbox.alert("Warning v1: 1 does not refer to any row in the Stimuli sheet! The first row is row 2 (as row 1 is the header). Fix row "+(m+1)+" in your Procedure's Item column.");
 						}
 					}
 				}
@@ -147,8 +146,7 @@ function createHoT(container, data,sheet_name) {
 					}
 				}            
 				if (!this.isEmptyCol(k) & middleColEmpty==1){
-					postEmptyCol =1;
-					alert ("You have an empty column in the middle - Being removed from table!");
+					postEmptyCol = 1;
 					this.alter("remove_col",k-1); //delete column that is empty 
 					middleColEmpty=0;
 				}            

@@ -21,13 +21,8 @@
 */
 require_once ("cleanRequests.php");
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 $cipher = "aes-256-cbc";
 define('AES_256_CBC', 'aes-256-cbc');
-
 
 require_once "Code/initiateCollector.php";
 ?>
@@ -98,7 +93,7 @@ if(isset($simulator_on)){
 <style>
 
 #experiment_div{
-	display:none;
+	display: none;
 	width  : 100%;
 	margin : auto;	
 }
@@ -127,7 +122,7 @@ if(isset($simulator_on)){
 
 
 <div id="post_welcome">
-	<div class="progress" style="height: 1px;">
+	<div class="progress" style="height: 1px; position:fixed;">
 		<div id="experiment_progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
 	</div>
 
@@ -258,15 +253,10 @@ function final_trial(){
 		$.post("emailData.php",{
 			all_data   : JSON.stringify(exp_json),
 		},function(returned_data){
-			console.dir(returned_data);
-			
 			message_data = returned_data.split(" encrypted data = ");
-      
       if(message_data.length == 1){
         //retrieve researcher e-mail address
-        
         precrypted_data(exp_json,"Problem encrypting: <b>"+ message_data +"</b>, we'll try again every 10 seconds, but in case it fails, please download and e-mail this file. What do you want to save this file as? (you will get this message each time we fail to e-mail your data to the researcher)");
-        
         setTimeout(function(){
           final_trial();  
         },10000);        
@@ -570,9 +560,7 @@ function create_exp_json_functions(){
 	};
 	
 	exp_json.generate_trial = function(trial_no,post_no){
-    console.dir("trial_no");
-    console.dir(trial_no);
-		if(typeof(exp_json.parsed_proc[trial_no]) == "undefined"){
+    if(typeof(exp_json.parsed_proc[trial_no]) == "undefined"){
 			return false;
 		}
 
@@ -594,13 +582,8 @@ function create_exp_json_functions(){
 				this_stim = exp_json.parsed_stims[this_proc["stimuli"]][this_proc["item"]];
 			} else {
         this_stim = exp_json.parsed_stims[exp_json.this_condition.stimuli][this_proc["item"]];
- 
-			}
-      console.dir(this_proc);
-      
-      variable_list = Object.keys(this_proc).concat(Object.keys(this_stim));	
-      console.dir("broken before here?");
-			
+			}      
+      variable_list = Object.keys(this_proc).concat(Object.keys(this_stim));
 		} else {
 			variable_list = Object.keys(this_proc);	
 		}
@@ -629,7 +612,7 @@ function create_exp_json_functions(){
           //bootbox.alert("serious bug, please contact researcher about missing variable");          
         }
 			}			
-			this_trialtype = this_trialtype.replaceAll("{{"+variable+"}}",variable_val);
+			this_trialtype = this_trialtype.replaceAll("{{" + variable + "}}", variable_val);
 		});    
     this_trialtype = this_trialtype.replaceAll("www.dropbox","dl.dropbox"); // in case user forgets    
 		return this_trialtype;

@@ -29,9 +29,8 @@ $user_email    = isset($_POST['user_email'])    ? $_POST['user_email']    : '';
 $user_password = isset($_POST['user_password']) ? $_POST['user_password'] : '';
 $return_page 	 = isset($_POST['return_page']) 	? $_POST['return_page']   : '';
 
-if($_POST["login_type"]=="logout"){
-  unset($_SESSION['user_email']);	
-}
+
+//print_r($_POST);
 
 function create_random_code($length){
   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -42,7 +41,7 @@ function create_random_code($length){
   }
   return $new_code;
 }
-function create_user_keys($user_password){
+function create_user_keys($user_password,$user_email){
   $config = array(
     "digest_alg" 		=> "sha512",
     "private_key_bits" 	=> 4096,
@@ -72,7 +71,10 @@ function create_user_keys($user_password){
   file_put_contents("../../simplekeys/public_$user_email.txt",$pubKey);
   file_put_contents("../../simplekeys/saltpepper_$user_email.txt",$saltpepper);
 }
-function email_user($email_type){
+function email_user($email_type,
+                    $user_email,
+                    $email_confirm_code,
+                    $return_page){
   switch($email_type){
     case "registration":
       $msg = "Dear $user_email \n \nThank you for registering with Open-Collector. Before you can use your new profile, we need to confirm this is a valid address. Please proceed to the following link to confirm: \n www.ocollector.org/".$_SESSION['version']."/confirm.php?email=$user_email&confirm_code=$email_confirm_code&page=$return_page'\nMany thanks, \nThe Open-Collector team";
@@ -81,13 +83,15 @@ function email_user($email_type){
       $msg = wordwrap($msg,70);
 
       // send email
-      mail($user_email,"Confirmation code for Registering with Open Collector",$msg);      
+      mail($user_email,"Confirmation code for Registering with Open Collector",$msg);
+      $_SESSION['login_error'] = "Please check the e-mail address you registered with, and confirm. You cannot log in until you have done so.";
       break;
     case "forgot": 
       $msg = "Dear $user_email \n \nThere has been a request to reset the password for your account. Please go to the following link to set your new password: \n www.ocollector.org/UpdatePassword.php?email=$user_email&confirm_code=$email_confirm_code \nMany thanks, \nThe Open-Collector team";
 
       $msg = wordwrap($msg,70); // use wordwrap() if lines are longer than 70 characters        
       mail($user_email,"Resetting password with Open-Collector",$msg); // send email
+      $_SESSION['login_error'] = "You have just been given an e-mail to reset your password. Please click on the link included.";
       break;
   }
 }
@@ -109,6 +113,17 @@ function encrypt_decrypt($action, $string,$local_key,$this_iv) {
   }
   return $output;
 }
+
+function redirect_page(){
+  if(isset($success_fail) && $success_fail == "success"){	
+    $_SESSION['user_email'] = $user_email;
+  } 
+  if(isset($return_page) && $return_page !== ""){		
+    header("Location:$return_page");
+  } else {		
+    header("Location:index.php");
+  }
+}
 function validate_captcha($captcha_secret, $captcha_response){
   $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$captcha_secret.'&response='.$captcha_response); 
    
@@ -122,6 +137,12 @@ function validate_captcha($captcha_secret, $captcha_response){
     return false;
   }
 }
+
+if($_POST["login_type"]=="logout"){
+  unset($_SESSION['user_email']);	
+  redirect_page();
+}
+
 
 //use switch statement instead??
 if($_POST["login_type"] == "register") {
@@ -141,15 +162,21 @@ if($_POST["login_type"] == "register") {
     if ($conn->query($sql) === TRUE) {			
       if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
         $success_fail = "fail";  //not really, but need to confirm with e-mail code first
-        $_SESSION['login_error'] = "Please check the e-mail address you registered with, and confirm. You cannot log in until you have done so."; 
-        
-        registration_email("registration");
+        $_SESSION['login_error'] = "E-mail not sent. Please contact anthony dot haffey @ gmail dot com."; 
+
+        email_user( "registration",
+                    $user_email,
+                    $email_confirm_code,
+                    $return_page);
+        redirect_page();
       } else {
         $_SESSION['login_error'] = 'Robot verification failed, please try again.';
+        redirect_page();
       }
     } else {
       $success_fail = "fail";
       $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
+      redirect_page();
     }
   }
 }
@@ -159,6 +186,7 @@ if($_POST["login_type"] == "forgot") {
   if($result->num_rows == 0){
     $success_fail = "fail"; 
     $_SESSION['login_error'] = "This account is not registered - please double check that you typed it in correctly.";
+    redirect_page();
   } else {
     
     if(validate_captcha($captcha_secret, $_POST['g-recaptcha-response'])){
@@ -166,15 +194,21 @@ if($_POST["login_type"] == "forgot") {
       $sql = "UPDATE `users` SET `email_confirm_code`  = '$email_confirm_code' WHERE `email` = '$user_email'";
       if ($conn->query($sql) === TRUE) {
         $success_fail = "fail";  //not really, but need to confirm with e-mail code first
-        $_SESSION['login_error'] = "You have just been given an e-mail to reset your password. Please click on the link included.";
-        email_user("forgot");
+        $_SESSION['login_error'] = "E-Mail not sent,, please contact anthony dot haffey at gmail dot com.";
+        email_user( "forgot",
+                    $user_email,
+                    $email_confirm_code,
+                    $return_page);
+        redirect_page();
       } else {
         $success_fail = "fail";
         $_SESSION['login_error'] = "Error adding user: $result " . $conn->error;
+        redirect_page();
       }
     } else {
       $success_fail = "fail";
       $_SESSION['login_error'] = 'Robot verification failed, please try again.';
+      redirect_page();
     }
   }
 }    
@@ -185,6 +219,7 @@ if($_POST["login_type"] == "login"){
   if($result->num_rows > 1){
     $success_fail = "fail";
     $_SESSION['login_error'] = "Please contact a.haffey@reading.ac.uk -  there are multiple instances of this e-mail address registered.";
+    redirect_page();
   } else if($result->num_rows == 1){
     $row = mysqli_fetch_array($result);	
     
@@ -204,7 +239,7 @@ if($_POST["login_type"] == "login"){
         } 
         if(!file_exists("../../simplekeys/public_$user_email.txt")){
           //create public and private keys if they don't yet exist.
-          create_user_keys($user_password);
+          create_user_keys($user_password,$user_email);
         } else { 
           //need to retrieve salt and pepper				
           $saltpepper 					= file_get_contents("../../simplekeys/saltpepper_$user_email.txt");
@@ -221,19 +256,11 @@ if($_POST["login_type"] == "login"){
       $success_fail = "fail";
       $_SESSION['login_error'] = "This account has been locked out. Please check your e-mails for a code to log you back in.";
     }		
+    redirect_page();
   } else {
     $success_fail = "fail";
     $_SESSION['login_error'] = 'Invalid e-mail address and/or password.';
+    redirect_page();
   }
-}
-
-
-if(isset($success_fail) && $success_fail == "success"){	
-  $_SESSION['user_email'] = $user_email;
-} 
-if(isset($return_page) && $return_page !== ""){		
-  header("Location:$return_page");
-} else {		
-  header("Location:index.php");
 }
 ?>

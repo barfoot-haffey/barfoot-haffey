@@ -22,13 +22,13 @@
 <style>
 #instruct_text{
   margin:auto;
-  width:600px;
-  height:600px;
+  width:500px;
+  padding:50px;
+  max-height:600px;
   text-align: center;  
 }
 #proceed_button{
   position:absolute;
-  top:600px;
   right: 20px;
 }
 #trial_contents{
@@ -44,5 +44,7 @@
 </style>
 <div id="trial_contents">
   <div id="instruct_text">{{text}}</div>
-  <button class="btn btn-primary" id="proceed_button" onclick="Trial.submit()">Proceed</button>  
+  <div>
+    <button class="btn btn-primary" id="proceed_button" onclick="Trial.submit()">Proceed</button>
+  </div>
 </div>
