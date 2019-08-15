@@ -25,12 +25,6 @@
 #exp_data > tbody > tr > td { 
   text-align: center; padding: 15px; 
 }
-#ExperimentContainer {
-	height: 100%;
-	width: 10px;
-	border-width: 2px 0 2px;    
-	margin:auto;
-}
 #ExperimentContainer:-moz-full-screen {
   background-color: white;
 }
@@ -45,7 +39,7 @@
 	height: 100%;	
 }
 #ExperimentContainer, #ExperimentContainer > iframe {
-	width: 100%;
+	width: 1050px;
 	height:100%;
 	margin: 0;
 	padding: 0;

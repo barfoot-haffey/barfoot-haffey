@@ -18,11 +18,11 @@
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
-
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
+*/
 require_once 'Code/initiateCollector.php';
 //require_once ("cleanRequests.php");
 
@@ -84,7 +84,7 @@ try {
 	while($row = $result->fetch_assoc()) {
 		$user = $row['email'];
 		$experiment_id = $row['experiment_id'];
-		$body_alt_body = "Hello, <br><br> You have just had participant $participant complete the task. <br><br> Their completion code was $completion_code. <br><br> To decrypt the data, please go to www.ocollector.org/".$_SESSION['version']."/index.php and dupload the attached file using the 'data' tab. <br><br> Best wishes, <br><br> The open-collector team.";
+		$body_alt_body = "Hello, <br><br> Participant $participant has just completed the task. <br><br> Their completion code was $completion_code. <br><br> To decrypt the data, please go to www.ocollector.org/".$_SESSION['version']."/index.php and upload the attached file using the 'data' tab. <br><br> Best wishes, <br><br> The open-collector team.";
 
 		//Content
 		$mail->isHTML(true);                                  // Set email format to HTML

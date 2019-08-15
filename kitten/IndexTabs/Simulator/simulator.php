@@ -26,7 +26,6 @@ $simulator_on = "true";
   
 require 'initiateTool.html'; 
 
-   
 ?>
 
 <!-- Scripts needed for simulator -->
