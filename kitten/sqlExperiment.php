@@ -19,6 +19,8 @@
  
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
+
+
 require_once ("cleanRequests.php");
 
 $cipher = "aes-256-cbc";
@@ -400,8 +402,8 @@ function insert_start(){
   ////////////////////////////////////////////
   if(typeof(exp_json.trialtypes) !== "undefined"){
     exp_json.trialtypes.start_experiment = 
-      "<h1>Before starting the experiment</h1>" +
-      "<div>Please be careful about what details you give when participating in this experiment. If you feel that any inappropriate details are being asked, please contact the researcher before proceeding.</div>" +
+      "<h1>Before starting</h1>" +
+      "<div>Please be careful about what details you give. If you feel that any inappropriate details are being asked, please contact whoever asked you to participate.</div>" +
       "<button class='btn btn-primary' onclick='Trial.submit()'>Start</button>";
   }
 }

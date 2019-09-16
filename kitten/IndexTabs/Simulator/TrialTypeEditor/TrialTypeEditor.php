@@ -78,6 +78,7 @@ var editor = ace.edit("ACE_editor");
 editor.getSession().setUseWorker(false);
 editor.setTheme("ace/theme/chrome");
 editor.getSession().setMode("ace/mode/html");
+editor.$blockScrolling = Infinity;
 
 editor.setOptions({
 	enableBasicAutocompletion: true,
