@@ -34,13 +34,6 @@ if(isset($_SESSION['user_email'])){
 	$user_email = $_SESSION['user_email'];
 } 
 
-if(isset($_POST['skin'])){
-  $_SESSION['skin'] = $_POST['skin']; 
-}
-
-if(!isset($_SESSION['skin'])){
-  $_SESSION['skin'] = "Collector";
-}
 
 $error_message = '';
 if(isset($_SESSION['login_error'])){

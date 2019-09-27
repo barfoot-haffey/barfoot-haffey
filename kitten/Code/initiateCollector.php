@@ -48,7 +48,11 @@ $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
 //store the hashed password locally if it is available in the session
 
+
+
 if(isset($_SESSION['local_key'])){
+  echo $_SESSION['local_key'];
+
   ?>
   <script>
     window.localStorage.setItem("local_key", "<?= $_SESSION['local_key'] ?>");
@@ -60,6 +64,7 @@ if(isset($_SESSION['local_key'])){
   //document.location.href = "index.php";
   </script>  
   <?php
+} else {
+  echo "no-key";
 }
-
 ?>
