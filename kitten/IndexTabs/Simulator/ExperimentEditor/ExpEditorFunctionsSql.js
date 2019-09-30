@@ -82,13 +82,13 @@ function new_experiment(experiment){
 	
 		//create it first in dropbox, THEN update table with location - duh
 		megaUberJson.exp_mgmt.experiment 			  			= experiment;
-		megaUberJson.exp_mgmt.experiments[experiment] = experiment_template;
+		megaUberJson.exp_mgmt.experiments[experiment] = new_experiment_data;
 			
 		update_handsontables();
 		updateUberMegaFile();								
 		var this_path = "/Experiments/"+experiment+".json";
 		
-		dbx_obj.new_upload({path:this_path,contents:JSON.stringify(experiment_template)},function(result){
+		dbx_obj.new_upload({path:this_path,contents:JSON.stringify(new_experiment_data)},function(result){
 				dbx.sharingCreateSharedLink({path:this_path})
 					.then(function(returned_link){
 						$.post(

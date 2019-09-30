@@ -26,7 +26,7 @@ developer_obj.similulator_on = true;
 </script>
 <div id="initiate_tool_div"></div>
 <script>
-$("#initiate_tool_div").load("initiateTool.html");
+$("#initiate_tool_div").load("IndexTabs/Simulator/initiateTool.html");
 </script>
 
 
@@ -87,9 +87,10 @@ block_save = true;
         <tr>
           <td id="Presentation">            
             <div id="ExperimentContainer" style="text-align:center; margin:auto">
-              <?php 
-                require(__DIR__ ."/../../sqlExperiment.php");
-              ?>			
+              <div id="sql_experiment_div"></div>
+              <script>
+              $("#sql_experiment_div").load("sqlExperiment.html");
+              </script>
               <div id="preview_message">Select an experiment to be able to start a preview. Once you press start the experiment will buffer to the level of trials you've selected.</div>
             </div>
           </td>        
@@ -108,8 +109,12 @@ block_save = true;
   <tr>
     <td>
       <div id="authorised_interface">
-			  <?php require ("ExperimentEditor/ExperimentEditor.php"); ?>
-				<?php require ("TrialTypeEditor/TrialTypeEditor.php"); ?>
+        <div id="experiment_editor_div"></div>
+        <div id="trialtype_editor_div"></div>
+        <script>
+        $("#experiment_editor_div").load(collector_map["ExperimentEditor.html"]);
+        $("#experiment_editor_div").load(collector_map["ExperimentEditor.html"]);
+        </script>
 			</div>
     </td>
   </tr>

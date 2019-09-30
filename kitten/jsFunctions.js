@@ -101,67 +101,44 @@ function load_uberMegaFile(link_created){
 	});	
 }
 function new_dropbox_account(dropbox_dialog){
-	megaUberJson = {
-		boosts:    {},
-		exp_mgmt:  {	
-			user_data: 				'tbcant', //JSON.parse(' < ?= $user_data  ?> '),
-			any_loaded: 	 		false, 
-			authenticated:   	false,
-			current_manager: 	'',	
-			experiment:      	'',	
-			experiments:     	{},	
-			incomp_process:  	false,	
-			pipe_position: 	 	0,
-			pipe_direction:  	'',
-			versions :		 		[],
-		},
-		surveys:     {},
-		trialtypes:  {
-			default_trialtypes	: {},
-			trialtype 			: '',
-			filetype  			: '',
-			version   			: 0,
-			user_trialtypes		: {},
-			
-		}						
-	}
-	
-	//create more general dropbox update function that queues any dropbox request?
-	
-	var these_folders = ["boosts",
-											 "experiments",											 
-											 "stimuli",
-											 "surveys",
-											 "trialtypes"];
-	
-	these_folders.forEach(function(this_folder){
-		dbx_obj.new_upload({path:"/" + this_folder},
-												function(result){
-													$("#dropbox_prog_div").html("<b>" + this_folder + "</b> created");
-													//do nothing, all is well
-												},
-												function(error){
-                          console.dir(this_folder);
-													console.dir("Initial folder causing error");
-													//report_error(error);
-                          bootbox.confirm("It looks like you need to confirm the link between your google account and dropbox. If this is the case, please confirm and you will be directed back to dropbox to select your gmail account to do this with. If not, then this might be an issue that you want to raise by clicking on the Discuss button in the top right, and then either discuss in the group forum or on the github issues page",function(result){
-                            if(result){
-                              force_reauth_dbx(); //risk of infinite loop if this doesn't work :-/
-                            }
-                          });
-												},"filesCreateFolder");	
-	});	
-	dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},
-											function(result){												
-												dropbox_dialog.modal('hide');
-												//location.reload();
-                        initiate_uberMegaFile();
-											},
-											function(error){
-												console.dir("Initial file causing error");
-												report_error(error);				
-											},"filesUpload");
-		
+  $.get("uberMega.json",function(uberMega){
+    megaUberJson = uberMega;
+    //create more general dropbox update function that queues any dropbox request?
+    var these_folders = ["boosts",
+                         "experiments",											 
+                         "stimuli",
+                         "surveys",
+                         "trialtypes"];
+    
+    these_folders.forEach(function(this_folder){
+      dbx_obj.new_upload({path:"/" + this_folder},
+                          function(result){
+                            $("#dropbox_prog_div").html("<b>" + this_folder + "</b> created");
+                            //do nothing, all is well
+                          },
+                          function(error){
+                            console.dir(this_folder);
+                            console.dir("Initial folder causing error");
+                            //report_error(error);
+                            bootbox.confirm("It looks like you need to confirm the link between your google account and dropbox. If this is the case, please confirm and you will be directed back to dropbox to select your gmail account to do this with. If not, then this might be an issue that you want to raise by clicking on the Discuss button in the top right, and then either discuss in the group forum or on the github issues page",function(result){
+                              if(result){
+                                force_reauth_dbx(); //risk of infinite loop if this doesn't work :-/
+                              }
+                            });
+                          },"filesCreateFolder");	
+    });	
+    dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},
+                        function(result){												
+                          dropbox_dialog.modal('hide');
+                          //location.reload();
+                          initiate_uberMegaFile();
+                        },
+                        function(error){
+                          console.dir("Initial file causing error");
+                          report_error(error);				
+                        },"filesUpload");
+      
+  }		
 }
 function report_error(error,collector_error_message){
 	console.dir(error);

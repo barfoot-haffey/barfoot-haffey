@@ -22,62 +22,65 @@
 
 <script>
 
+// Load template default experiment
+///////////////////////////////////
 
-// use a post for the following php:
-
-var new_experiment_data = <?= $new_exp_json ?>; 
-
-
-$.post("newExperiment.php",{
-
-
-
-
-
-// NEED TO WRITE THIS FILE!!!!
-
-
-
-
-
-
-
-},function(new_experiment_json){
-  new_experiment_data = new_experiment_json;
+var new_experiment_data; 
+$.get(collector_map["default_experiment.json"],function(new_experiment_json){
+ new_experiment_data = new_experiment_json;
 });
 
-console.dir("new experiment:");
-console.dir(new_experiment_json);
+/*
+
+I'm unclear whether the following does anything
+
+
+//List experiment functionality here
+switch(developer_obj.context){
+  case "github":
+    $.post("GOOGLE/DROPBOX/OTHER LINK",function(experiments){
+      megaUberJson.exp_mgmt.experiments = experiments;
+      list_experiments();
+      });
+      break;
+  case "localhost":
+    $.post("LocalExperiments.php",function(experiments){
+      megaUberJson.exp_mgmt.experiments = experiments;
+      list_experiments();
+    });
+    break;
+  case "ocollector":
+    $.post("oCollectorExperiments.php",function(experiments){
+      megaUberJson.exp_mgmt.experiments = experiments;
+      list_experiments();
+    });
+    break;
+}
+
+*/
+
+//List published experiments info
+switch(developer_obj.context){
+  case "github":
+    $.post("GOOGLE/DROPBOX/OTHER LINK",function(experiments){
+      megaUberJson.exp_mgmt.experiments = experiments;
+      list_experiments();
+      });
+      break;
+  case "localhost":
+    $.post("LocalExperiments.php",function(published_links){
+      developer_obj.published_links = published_links;
+    });
+    break;
+  case "ocollector":
+    $.post("oCollectorExperiments.php",function(experiments){
+      megaUberJson.exp_mgmt.experiments = experiments;
+      list_experiments();
+    });
+    break;
+}
 
 </script>
-
-<?php  
-	
-		
-	$user_email  = $_SESSION['user_email'];
-	$initial_sql = "Select * FROM `users` WHERE `email`='$user_email'";
-	$result 	 = $conn->query($initial_sql);
-
-	$user_data = mysqli_fetch_assoc($result);
-	// prevent frequent exposure of user data by removing on server side
-	unset($user_data['password']);
-	unset($user_data['email_confirm_code']);
-	unset($user_data['pepper']);
-	unset($user_data['salt']);
-	$user_data 	 = json_encode($user_data);
-	
-	$experiment_sql = "SELECT * FROM `view_experiment_users` WHERE `email`='$user_email'";
-	$result 	 = $conn->query($experiment_sql);
-	$experiments			=	[];
-	$published_links  = [];
-  
-	while($row = $result->fetch_assoc()) {
-		array_push($experiments,  	$row['name']);	
-		array_push($published_links, $row['published_id']."|".$row['experiment_id']);		
-	}
-  
-	
-?>
 
 <div id="load_toolbar">	
 	<table>
@@ -402,14 +405,13 @@ function renderItems() {
 	first_load = true;
 	
 	
-	var published_list = <?= json_encode($published_links) ?>;
+	var published_list = developer_obj.published_links;
 	megaUberJson.exp_mgmt.published_ids = {};
 	for(var i = 0; i< name_list.length; i++){
 		megaUberJson.exp_mgmt.published_ids[name_list[i]] = published_list[i];
 	}
 	megaUberJson.exp_mgmt.version = "<?= $_SESSION['version'] ?>";
 	initiate_actions();	
-	user_data = megaUberJson.exp_mgmt.user_data;
   
   autoload_boosts();  
 }
@@ -519,17 +521,6 @@ function updateUberMegaFile(){
 	"filesUpload");
 };
 
-if(typeof(user_data.received_experiments) !== "undefined"){
-	user_data.received_experiments 	 = user_data.received_experiments.split("||");	
-} else {
-	user_data.received_experiments 	 = [];	
-}
-
-if(typeof(user_data.accepted_experiments) !== "undefined"){
-	user_data.accepted_experiments 	 = user_data.accepted_experiments.split("||");	
-} else {
-	user_data.accepted_experiments 	 = [];	
-}
 
 
 
@@ -554,77 +545,4 @@ $(window).bind('keydown', function(event) {
 $(window).bind('keyup', function(event) {
   delete keys[event.which];
 });
-
-// Experiment Template
-//////////////////////
-
-experiment_template = {
-  "procedure": "Procedure.csv",
-  "stimuli": "Stimuli.csv",
-  "cond_array": [
-    [
-      "name",
-      "notes",
-      "stimuli",
-      "procedure",
-			"login",
-			"download_at_end",
-			"participant_id",
-			"completion_code",
-			"start_message",
-			"end_message",
-			"fullscreen",
-			"buffer"
-    ],
-    [
-      "Condition1",
-      "You can put more detailed notes in this field",
-      "Stimuli.csv",
-      "Procedure.csv",
-			"on",
-			"on",
-			"on",
-			"on",
-			"",
-			"",
-			"on",
-			5
-    ]
-  ],
-  "cond_loc": "https://dl.dropbox.com/s/tmg3e80od7avxxl/Conditions.csv?dl=0",
-  "all_procs": {
-    "Procedure.csv": [
-      [
-        "Item",
-        "trial type",
-        "Max Time",
-        "Text",
-        "Shuffle 1"
-      ],
-      [
-        "0",
-        "instruct",
-        "user",
-        "Thank you for participating in this experiment. The task will begin during the next trial.",
-        "off"
-      ]
-    ]
-  },
-  "all_stims": {
-    "Stimuli.csv": [
-      [
-        "Cue",
-        "Answer"
-      ],
-      [
-        "A",
-        "Apple"
-      ],
-      [
-        "B",
-        "Banana"
-      ],
-    ]
-  }
-}
 </script>
