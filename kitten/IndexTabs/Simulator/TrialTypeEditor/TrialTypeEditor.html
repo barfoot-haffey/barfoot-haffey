@@ -15,8 +15,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 		
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
+
+		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 -->
 <style>
@@ -25,7 +25,7 @@
 		width:300px;
 	}
     .user_trialtype{
-        background-color:PaleGreen ;        
+        background-color:PaleGreen ;
     }
     .default_trialtype{
         background-color:LightSkyBlue ;
@@ -36,34 +36,36 @@
 	}
 </style>
 <br><br>
-<div id="trial_progress_span"></div>	    
+<div id="trial_progress_span"></div>
 
 <div id="TrialTypes" class="hide_show_elements">
-  
+
 <div id="trial_type_selectors">
 	<button class="btn btn-primary" id="community_trialtypes_btn">Community</button>
 	<select id="trial_type_select">
 		<option hidden disabled selected>Select a Trial Type</option>
-	</select>	
+	</select>
 	<span id="default_user_trialtype_span"></span>
 	<button id="new_trial_type_button" 		class="btn btn-primary">New</button>
 	<button id="rename_trial_type_button" class="btn btn-primary" style="display:none">Rename</button>
 	<button id="delete_trial_type_button" class="btn btn-primary" style="display:none">Delete</button>
 	<button id="save_trial_type_button" class="btn btn-primary">Save</button>
-	<button id="view_trialtype_backups" class="btn btn-primary">Revert to backup</button>	
+	<button id="view_trialtype_backups" class="btn btn-primary">Revert to backup</button>
 	<button class="btn btn-outline-primary" id="view_code_btn">Code</button>
-	<button class="btn btn-outline-primary" id="view_graphic_btn">Graphic</button>	
+	<button class="btn btn-outline-primary" id="view_graphic_btn">Graphic</button>
 </div>
 
 <style type="text/css" media="screen">
-	#ACE_editor { 
+	#ACE_editor {
 		/* height:50%; */
 	}
 </style>
-<h6><em>ACE (https://ace.c9.io/)</em> is used for editing code</h6>  
+<h6><em>ACE (https://ace.c9.io/)</em> is used for editing code</h6>
 <div id="ACE_editor" 			style="display:none;max-width:1000px"></div>
-<div id="graphic_editor" 	style="display:none"><?php require("graphic.html") ?></div>
-
+<div id="graphic_editor" 	style="display:none"></div>
+<script>
+$("#graphic_editor").load(collector_map["Graphic.html"]);
+</script>
 
 <script>
 $("#community_trialtypes_btn").on("click",function(){
@@ -95,20 +97,20 @@ editor.on("focus",function(){
 	helperActivate("Trialtype Code", "","trialtype_code");
 });
 
-langTools = ace.require('ace/ext/language_tools'); 
+langTools = ace.require('ace/ext/language_tools');
 
 editor.completers.push({
 	getCompletions: function(editor, session, pos, prefix, callback) {
 		callback(null, [
-			{value: "Trial.submit()", score: 1000, meta: "end trial - C"},
-			{value: "Trial.elapsed()", score: 1000, meta: "since trial start - C"},
+			{value: "Trial.submit()",    score: 1000, meta: "end trial - C"},
+			{value: "Trial.elapsed()",   score: 1000, meta: "since trial start - C"},
 			{value: "Trial.set_timer()", score: 1000, meta: "at trial start - C"},
+      {value: "Trial.store()",     score: 1000, meta: "keep for another trial -C"},
+      {value: "Trial.retrieve()",  score: 1000, meta: "retrieve from an earlier trial -C"}
 		]);
 	}
 });
-</script>  
-
+</script>
 <script type="text/javascript" src="IndexTabs/Simulator/TrialTypeEditor/TrialTypeFunctions.js"></script>
 <script type="text/javascript" src="IndexTabs/Simulator/TrialTypeEditor/TrialTypeActions.js"></script>
-
 </div>

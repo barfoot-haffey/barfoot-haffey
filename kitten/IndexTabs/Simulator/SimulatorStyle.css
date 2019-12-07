@@ -74,9 +74,6 @@
 #simulator_table,#simulator_table tr{
 	width:100%;
 }
-#survey_cell_view{
-	height:0px;
-}
 #trialtype_editor_td{
 	vertical-align:top;
 }

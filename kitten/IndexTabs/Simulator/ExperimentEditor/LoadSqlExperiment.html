@@ -15,8 +15,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 		
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
+
+		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 -->
 
@@ -24,8 +24,7 @@
 
 // Load template default experiment
 ///////////////////////////////////
-
-var new_experiment_data; 
+var new_experiment_data;
 $.get(collector_map["default_experiment.json"],function(new_experiment_json){
  new_experiment_data = new_experiment_json;
 });
@@ -35,44 +34,28 @@ $.get(collector_map["default_experiment.json"],function(new_experiment_json){
 I'm unclear whether the following does anything
 
 
-//List experiment functionality here
-switch(developer_obj.context){
-  case "github":
-    $.post("GOOGLE/DROPBOX/OTHER LINK",function(experiments){
-      megaUberJson.exp_mgmt.experiments = experiments;
-      list_experiments();
-      });
-      break;
-  case "localhost":
-    $.post("LocalExperiments.php",function(experiments){
-      megaUberJson.exp_mgmt.experiments = experiments;
-      list_experiments();
-    });
-    break;
-  case "ocollector":
-    $.post("oCollectorExperiments.php",function(experiments){
-      megaUberJson.exp_mgmt.experiments = experiments;
-      list_experiments();
-    });
-    break;
-}
-
 */
 
 //List published experiments info
-switch(developer_obj.context){
+switch(dev_obj.context){
   case "github":
+    /*
+
+    I don't think I need the below
+
     $.post("GOOGLE/DROPBOX/OTHER LINK",function(experiments){
       megaUberJson.exp_mgmt.experiments = experiments;
       list_experiments();
       });
       break;
+    */
+      break;
   case "localhost":
     $.post("LocalExperiments.php",function(published_links){
-      developer_obj.published_links = published_links;
+      dev_obj.published_links = published_links;
     });
     break;
-  case "ocollector":
+  case "server":
     $.post("oCollectorExperiments.php",function(experiments){
       megaUberJson.exp_mgmt.experiments = experiments;
       list_experiments();
@@ -82,12 +65,12 @@ switch(developer_obj.context){
 
 </script>
 
-<div id="load_toolbar">	
+<div id="load_toolbar">
 	<table>
 		<tr>
 			<td>
 				<button type="button" id="new_experiment_button" class="btn btn-primary">New</button>
-				<button type="file" id="upload_experiment_button" class="btn btn-primary">↑</button>				
+				<button type="file" id="upload_experiment_button" class="btn btn-primary">↑</button>
 			</td>
 			<td>
 				<span id="experiments"></span>
@@ -121,7 +104,7 @@ switch(developer_obj.context){
 <script> /* authenticating dropbox account */
 $("#links_btn").on("click",function(){
 	var experiment = megaUberJson.exp_mgmt.experiment.replaceAll(" ","");
-	
+
 	participant_link = $("#publish_link").val();
 	preview_link = $("#preview_link").val();
 	iframe_code  = 	"<button class='btn btn-primary' data-toggle='collapse' data-target='#preview_"+experiment+"'> Show/Hide Preview </button>"+
@@ -140,7 +123,7 @@ $("#links_btn").on("click",function(){
                       "</tr>"+
                     "</table>"+
                   "</div>";
-	
+
 	bootbox.dialog({
 		title:"Links",
 		message:"Send these links to participants or collaborators:<br><br>"+
@@ -158,7 +141,7 @@ $("#links_btn").on("click",function(){
 						"<td><textarea style='width:300px;height:250px;' onfocus='this.select();' readonly>"+iframe_code+"</textarea></td>"+
 					"</tr>"+
 				"</table>",
-	});		
+	});
 });
 
 $("#rename_exp_btn").on("click",function(){
@@ -169,7 +152,7 @@ $("#rename_exp_btn").on("click",function(){
 			var original_name = $("#experiment_list").val();
 			dbx.filesMove({from_path:"/Experiments/"+original_name+".json",to_path:"/Experiments/"+new_name+".json"})
 				.then(function(result){
-					megaUberJson.exp_mgmt.experiments[new_name] = 
+					megaUberJson.exp_mgmt.experiments[new_name] =
 					megaUberJson.exp_mgmt.experiments[original_name];
 					delete(megaUberJson.exp_mgmt.experiments[original_name]);
 					$.post("IndexTabs/Simulator/AjaxMySQL.php",{
@@ -179,7 +162,7 @@ $("#rename_exp_btn").on("click",function(){
 					}, function(returned_result){
 						updateUberMegaFile();
 						list_experiments();
-						$("#experiment_list").val(new_name);						
+						$("#experiment_list").val(new_name);
 					});
 				})
 				.catch(function(error){
@@ -187,27 +170,27 @@ $("#rename_exp_btn").on("click",function(){
 				});
 		}
 		//confirm that there isn't another experiment with that name
-		
+
 	});
 });
 
 $("#run_btn").on("click",function(){
 	var select_html = '<select id="select_condition" class="custom-select">';
-	clean_conditions();  
+	clean_conditions();
   exp_json.conditions.forEach(function(condition){
 		select_html += "<option>" + condition.name + "</option>";
 	});
 	select_html += "</select>";
-	
+
 	bootbox.dialog({
 		title:"Select a Condition",
-		message:"The multiple conditions functionality <b>HAS ONLY</b> just been finalised. Please pilot this carefully when using it in your own research. <br><br> Which condition would you like to run? <br><br>" + select_html, 
+		message:"The multiple conditions functionality <b>HAS ONLY</b> just been finalised. Please pilot this carefully when using it in your own research. <br><br> Which condition would you like to run? <br><br>" + select_html,
 		buttons: {
 			start: {
 				label: "Start",
 				className: 'btn-primary',
 				callback: function(){
-					var selected_cond_name = $("#select_condition").val();					
+					var selected_cond_name = $("#select_condition").val();
 					exp_condition = selected_cond_name;
 					var link_old = $("#run_link")[0].href;
 							link_old = link_old.split("&");
@@ -224,20 +207,20 @@ $("#run_btn").on("click",function(){
 				}
 			}
 		}
-	});	
+	});
 });
 
-$("#versions_btn").on("click",function(){	
+$("#versions_btn").on("click",function(){
 	if(typeof($_GET) == "undefined" || typeof($_GET.uid) == "undefined"){
 		bootbox.alert("If you login a dropbox account, it'll automatically backup your experiment files");
 	} else {
 		experiment = megaUberJson.exp_mgmt.experiment;
 		var version_address = "https://www.dropbox.com/history/Apps/Open-Collector/experiments/"+experiment+".json?_subject_uid="+ $_GET.uid +"&undelete=1";
-		
+
 		$("#synch_btn").on("click",function(){
 			alert("hi there");
 		});
-		
+
 		var dialog = bootbox.dialog({
 			title: 'Revert back to an earlier version',
 			message: "<p>Click <a href='"+version_address+"' target='_blank'>here</a> to see version history of this file in dropbox<br><br>If you've reverted the current experiment '"+experiment+"' to an earlier version, click on the 'synch' button to load the reverted version of the experiment.</p>",
@@ -265,45 +248,6 @@ $("#versions_btn").on("click",function(){
 	}
 });
 
-(function(window){
-	window.utils = {
-		parseQueryString: function(str) {
-			var ret = Object.create(null);
-			if (typeof str !== 'string') {
-				return ret;
-			}
-			str = str.trim().replace(/^(\?|#|&)/, '');
-			if (!str) {
-				return ret;
-			}
-			str.split('&').forEach(function (param) {
-			var parts = param.replace(/\+/g, ' ').split('=');
-			// Firefox (pre 40) decodes `%3D` to `=`
-			// https://github.com/sindresorhus/query-string/pull/37
-			var key = parts.shift();
-			var val = parts.length > 0 ? parts.join('=') : undefined;
-
-			key = decodeURIComponent(key);
-
-			// missing `=` should be `null`:
-			// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
-			val = val === undefined ? null : decodeURIComponent(val);
-
-			if (ret[key] === undefined) {
-			  ret[key] = val;
-			} else if (Array.isArray(ret[key])) {
-			  ret[key].push(val);
-			} else {
-			  ret[key] = [ret[key], val];
-			}
-			});
-
-			return ret;
-		}
-	};
-})(window);
-
-
 function check_trialtypes_in_proc(procedure,post_trialtype){
 	var experiment 		= megaUberJson.exp_mgmt.experiment;
 	var this_exp   		= megaUberJson.exp_mgmt.experiments[experiment];
@@ -312,21 +256,21 @@ function check_trialtypes_in_proc(procedure,post_trialtype){
 	var trial_type_col  = this_proc[0].map(function(element){
 		if(element !== null){
 			return element.toLowerCase();
-		}		
-	}).indexOf(post_trialtype);	
+		}
+	}).indexOf(post_trialtype);
 	for(var i in this_proc){
 		if(i > 0) {
-			if(this_proc[i][trial_type_col] !== null){				
+			if(this_proc[i][trial_type_col] !== null){
 				trialtypes.push(this_proc[i][trial_type_col].toLowerCase());
 			}
 		}
-	}		
+	}
 	trialtypes = trialtypes.filter(n => n);
 	console.dir(trialtypes);
 	if(typeof(megaUberJson.exp_mgmt.experiments[experiment].trialtypes) == "undefined"){
 		megaUberJson.exp_mgmt.experiments[experiment].trialtypes = {};
 	}
-	trialtypes.forEach(function(trialtype){				
+	trialtypes.forEach(function(trialtype){
 		if(typeof(megaUberJson.trialtypes.user_trialtypes[trialtype]) !== "undefined"){
 			megaUberJson.exp_mgmt.experiments[experiment].trialtypes[trialtype] = megaUberJson.trialtypes.user_trialtypes[trialtype];
 		} else if(typeof(megaUberJson.trialtypes.default_trialtypes[trialtype]) !== "undefined"){
@@ -334,16 +278,11 @@ function check_trialtypes_in_proc(procedure,post_trialtype){
 		} else {
 			custom_alert("Invalid trialtype <b>"+trialtype+"</b> in at least one of your procedure sheets. The file will save, but the experiment won't run until you use a valid trialtype.",4000);
 		}
-	});	
+	});
 }
-function getAccessTokenFromUrl() { // Parses the url and gets the access token if it is in the urls hash
- return utils.parseQueryString(window.location.hash).access_token;
-}
-function isAuthenticated() { // If the user was just redirected from authenticating, the urls hash will contain the access token.
-  return !!getAccessTokenFromUrl();
-}
-function list_experiments(){	
-	name_list = Object.keys(megaUberJson.exp_mgmt.experiments);	
+
+function list_experiments(){
+	name_list = Object.keys(megaUberJson.exp_mgmt.experiments);
 	//synch with dropbox
 	dbx.filesListFolder({path:"/experiments"})
 		.then(function(experiments){
@@ -351,11 +290,11 @@ function list_experiments(){
 				if(entry[".tag"] == "file" && entry.name.indexOf(".json") !== -1 ){
 					var entry_name = entry.name.toLowerCase().replace(".json","");
 					//do not write over uberMegaFile for now if there is an experiment json with the same name
-					if(name_list.indexOf(entry_name) == -1){					
+					if(name_list.indexOf(entry_name) == -1){
 						name_list.push(entry_name);
-						synch_experiment(entry_name);						
+						synch_experiment(entry_name);
 					}
-				}				
+				}
 			});
 			var select_html = "<select id='experiment_list'  class='custom-select'><option hidden disabled selected>Select an experiment</option>";
 			name_list.sort(function(a,b){
@@ -373,14 +312,14 @@ function list_experiments(){
 				} else {
 					remove_from_list("Select a dropbox experiment");
 					first_load = false;
-				}				
+				}
 				megaUberJson.exp_mgmt.experiment = this.value;
-				exp_json = megaUberJson.exp_mgmt.experiments[megaUberJson.exp_mgmt.experiment];	
-			
-				var this_exp = megaUberJson.exp_mgmt.experiments[this.value];		
+				exp_json = megaUberJson.exp_mgmt.experiments[megaUberJson.exp_mgmt.experiment];
+
+				var this_exp = megaUberJson.exp_mgmt.experiments[this.value];
 				$("#dropbox_inputs").show();
-				$("#run_link").attr("href","../"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
-				$("#run_btn").attr("title","../"+ megaUberJson.exp_mgmt.version + "/sqlExperiment.php?location="+this_exp.location);		
+				$("#run_link").attr("href","../"+ dev_obj.version + "/RunStudy.html?location="+this_exp.location);
+				$("#run_btn").attr("title","../"+ dev_obj.version + "/RunStudy.html?location="+this_exp.location);
 				update_handsontables();
 			});
 		})
@@ -395,25 +334,21 @@ function renderItems() {
   highlight_account("dropbox_account_email");
   highlight_account("collector_account_email");
 
+  first_load = true;
+
   list_experiments();
 	list_boosts();
   list_surveys();
 	list_trialtypes();
 	list_graphics();
 
-	
-	first_load = true;
-	
-	
-	var published_list = developer_obj.published_links;
+	var published_list = dev_obj.published_links;
 	megaUberJson.exp_mgmt.published_ids = {};
 	for(var i = 0; i< name_list.length; i++){
 		megaUberJson.exp_mgmt.published_ids[name_list[i]] = published_list[i];
 	}
-	megaUberJson.exp_mgmt.version = "<?= $_SESSION['version'] ?>";
-	initiate_actions();	
-  
-  autoload_boosts();  
+	initiate_actions();
+  autoload_boosts();
 }
 function synch_experiment(entry_name){
 	dbx.sharingCreateSharedLink({path:"/experiments/" + entry_name + ".json"})
@@ -430,8 +365,8 @@ function synch_experiment(entry_name){
 function stim_proc_defaults(proc_values,stim_values){
 	var experiment = megaUberJson.exp_mgmt.experiment;
 	var this_exp   = megaUberJson.exp_mgmt.experiments[experiment];
-	
-	// selecting Stimuli.csv and Procedure.csv as default	
+
+	// selecting Stimuli.csv and Procedure.csv as default
 	if(proc_values.indexOf("Procedure.csv") !== -1){
 		$('#proc_select').val("Procedure.csv");
 		this_exp.procedure = "Procedure.csv";
@@ -445,18 +380,18 @@ function stim_proc_defaults(proc_values,stim_values){
 		this_exp.stimuli = this_exp[stim_values[0]];
 	}
 }
-function update_dropdown_lists(){	
+function update_dropdown_lists(){
 	var experiment = megaUberJson.exp_mgmt.experiment;
 	var this_exp   = megaUberJson.exp_mgmt.experiments[experiment];
 	var stim_values = [];
 	var proc_values = [];
-  
+
   //wipe the stimuli list
   $('#proc_select').find('option').remove();
   $('#stim_select').find('option').remove();
-  
+
   //wipe the procedure list
-  
+
 	Object.keys(this_exp.all_procs).forEach(function(this_proc){
 		proc_values.push(this_proc);
 		$('#proc_select').append($('<option>', {
@@ -476,11 +411,11 @@ function update_dropdown_lists(){
 function update_handsontables(){
 	var experiment = megaUberJson.exp_mgmt.experiment;
 	var this_exp   = megaUberJson.exp_mgmt.experiments[experiment];
-	
+
 	update_dropdown_lists();
 	var stim_file = this_exp.stimuli; //location_to_filename(this_exp.stimuli);
 	var proc_file = this_exp.procedure; //location_to_filename(this_exp.procedure);
-	
+
 	if(typeof(stim_file) == "undefined"){
 		stim_file = Object.keys(this_exp.all_stims)[0];
 		proc_file = Object.keys(this_exp.all_procs)[0];
@@ -488,9 +423,9 @@ function update_handsontables(){
 	createExpEditorHoT(this_exp.all_stims[stim_file],"Stimuli",  stim_file);
 	createExpEditorHoT(this_exp.all_procs[proc_file], "Procedure",proc_file);
 	createExpEditorHoT(this_exp.cond_array,"Conditions","Conditions.csv");
-	
+
 	$("#run_stop_buttons").show();
-	megaUberJson.exp_mgmt.any_loaded = true;	
+	megaUberJson.exp_mgmt.any_loaded = true;
 	$("#dropbox_inputs").show();
 }
 function update_trial_json(){
@@ -499,21 +434,21 @@ function update_trial_json(){
 	var this_exp   		= megaUberJson.exp_mgmt.experiments[experiment];
 	var proc_trialtypes = {};
 	var proc_keys		= Object.keys(this_exp.all_procs);
-	
-	//list all columns with trialtype in them 	
+
+	//list all columns with trialtype in them
 	var post_trialtypes = this_exp.all_procs["Procedure.csv"][0].filter(function(key){
 		return /trial type/.test(key);
-	});	
+	});
 	proc_keys.forEach(function(procedure){
-		post_trialtypes.forEach(function(trialtype){			
-			check_trialtypes_in_proc(procedure,trialtype.toLowerCase());		
+		post_trialtypes.forEach(function(trialtype){
+			check_trialtypes_in_proc(procedure,trialtype.toLowerCase());
 		});
-	});	
+	});
 }
-function updateUberMegaFile(){			
-	dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},function(result){			
-		if($("#simulator_table").is(":hidden")){				
-			$("#option_Edit").click();				
+function updateUberMegaFile(){
+	dbx_obj.new_upload({path:"/uberMegaFile.json",contents:JSON.stringify(megaUberJson),mode:'overwrite'},function(result){
+		if($("#simulator_table").is(":hidden")){
+			$("#option_Edit").click();
 		}
 	},function(error){
 		bootbox.alert(error.error + "<br> Perhaps wait a bit and save again?");
@@ -532,7 +467,7 @@ $(document).keydown(function (e) {
     keys[e.which] = true;
 });
 
-$(window).bind('keydown', function(event) {  
+$(window).bind('keydown', function(event) {
   if (event.ctrlKey || event.metaKey) {
     switch (String.fromCharCode(event.which).toLowerCase()) {
       case 's':
@@ -540,7 +475,7 @@ $(window).bind('keydown', function(event) {
           $("#save_btn").click();
         break;
     }
-  }	
+  }
 });
 $(window).bind('keyup', function(event) {
   delete keys[event.which];

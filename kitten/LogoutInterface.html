@@ -15,7 +15,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 
+
 		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 -->
 <style>
@@ -26,28 +26,33 @@
 </style>
 <script>
 </script>
-<table id="logout_table">				
-	<tr>	
+<table id="logout_table">
+	<tr>
 		<td>
 			<a href="" id="authlink" class="button" style="display:none">Authenticate Dropbox</a>
 			<span id="dropbox_account_email" class="account_info text-white">No dropbox account linked yet</span>
 		</td>
-		
-		<td>			
+
+		<td>
 			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/dbx.ico.png" id="dropbox_logo">
 		</td>
     <td>
       <span id="save_status" class="text-white"></span>
-    </td>		
+    </td>
 		<td>
-			<span id="collector_account_email" class="account_info text-white"></span>
+			<span id="google_account_email" class="account_info text-white"></span>
 		</td>
-		
+    <td>
+			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/google.png" id="google_logo">
+		</td>
+    <td>
+      <span id="collector_account_email" class="account_info text-white"></span>
+    </td>
 		<td>
 			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/collector.ico.png" id="collector_logo">
 		</td>
     <td>
-      <form action="login.php" method="post" style="padding:0px">	
+      <form action="login.php" method="post" style="padding:0px">
         <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
         <input type="hidden" name="return_page" value="index.php"/>
       </form>
@@ -57,9 +62,11 @@
 <script>
 
 user_data = {
-	email : '<?= $user_email ?>'	
+	//email used to be here
+
+  // email : ' $user_email '
 }
-		
+
 $("#collector_account_email").html(user_data.email);
 
 
@@ -76,7 +83,7 @@ function highlight_account(element_id){
             fontSize:"0px"
           },
           {
-            duration:1000            
+            duration:1000
           }
         );
       }
@@ -91,21 +98,25 @@ $(".logo").hover(function(){
     fontSize:"14px"
   },500);
 },function(){
-  var account_id = this.id.replace("logo","account_email");  
+  var account_id = this.id.replace("logo","account_email");
   $("#"+account_id).animate({
     fontSize:"0px"
-  },500);  
+  },500);
 });
 
 $("#collector_logo").on("click", function(){
   bootbox.confirm("Are you sure you want to log-out?",function(response){
-    if(response){      
+    if(response){
       $("#logout_btn").click();
     }
-  });  
+  });
 });
 
-var local_website = "<?= $_SESSION['local_website'] ?>";
+$("#google_logo").on("click",function(){
+  bootbox.confirm("Would you like to open your google drive in a new tab?",function(response){
+    window.open('https://drive.google.com/drive/u/0/my-drive','_blank');
+  });
+});
 
 $("#dropbox_logo").on("click", function(){
 	var dialog = bootbox.dialog({
@@ -128,19 +139,9 @@ $("#dropbox_logo").on("click", function(){
 		},
 		ok: {
 			label: "Cancel",
-			className: 'btn-secondary',							
+			className: 'btn-secondary',
 		}
 	}
 	});
 });
-function force_reauth_dbx(){
-  dbx.setClientId(CLIENT_ID); // i think is necessary				
-  if(local_website.indexOf("localhost") !== -1){
-    local_website += "/www";
-  }
-  authUrl = dbx.getAuthenticationUrl(local_website+'/<?= $_SESSION['version'] ?>');
-  authUrl += "&force_reauthentication=true";	
-  document.getElementById('authlink').href = authUrl;
-  $("#authlink")[0].click();
-}
 </script>

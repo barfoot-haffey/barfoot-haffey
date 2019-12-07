@@ -15,18 +15,16 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 		
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
+
+		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
-$simulator_on = "true";
 -->
 <script>
-developer_obj.similulator_on = true;
-</script>
-<div id="initiate_tool_div"></div>
-<script>
-$("#initiate_tool_div").load("IndexTabs/Simulator/initiateTool.html");
+if(typeof(dev_obj) == "undefined"){
+  dev_obj = {};
+}
+dev_obj.simulator_on = true;
 </script>
 
 
@@ -44,8 +42,8 @@ var User_Data = {
 window.onbeforeunload = function() {
 	if($("#save_status").html() !== "" & $("#save_status").html() !== "Up to date"){
 		//bootbox.alert("If you haven't completed the experiment, please type CTRL-S to save your data and e-mail it to the researcher and explain why you didn't complete the study.");
-		return "Please do not try to refresh - you will have to restart if you do so.";	
-	}		
+		return "Please do not try to refresh - you will have to restart if you do so.";
+	}
 };
 </script>
 
@@ -54,11 +52,6 @@ window.onbeforeunload = function() {
   <script>
   $("#load_experiment_div").load("IndexTabs/Simulator/ExperimentEditor/LoadSqlExperiment.html");
   </script>
-  <?php require("ExperimentEditor/LoadSqlExperiment.php"); ?>
-  <span class='not_survey_cell_view_td' align="right">
-
-    <?php require("SupportBars/interfaces.php"); ?>
-  </span>
 </nav>
 
 <script>
@@ -85,15 +78,15 @@ block_save = true;
     <td>
       <table>
         <tr>
-          <td id="Presentation">            
+          <td id="Presentation">
             <div id="ExperimentContainer" style="text-align:center; margin:auto">
               <div id="sql_experiment_div"></div>
               <script>
-              $("#sql_experiment_div").load("sqlExperiment.html");
+              $("#sql_experiment_div").load("RunStudy.html");
               </script>
               <div id="preview_message">Select an experiment to be able to start a preview. Once you press start the experiment will buffer to the level of trials you've selected.</div>
             </div>
-          </td>        
+          </td>
         </tr>
         <tr>
           <td id="run_stop_buttons" align="centre">
@@ -102,7 +95,7 @@ block_save = true;
             <button type="button" id="shuffle_off_button" class="btn btn-primary" title='Click to turn Shuffle OFF'>Shuffle</button>
             <button type="button" id="shuffle_on_button" class="btn btn-outline-primary" title='Click to turn Shuffle ON' style="display:none">Shuffle</button>
           </td>
-        </tr> 
+        </tr>
       </table>
     </td>
   </tr>
@@ -113,7 +106,7 @@ block_save = true;
         <div id="trialtype_editor_div"></div>
         <script>
         $("#experiment_editor_div").load(collector_map["ExperimentEditor.html"]);
-        $("#experiment_editor_div").load(collector_map["ExperimentEditor.html"]);
+        $("#trialtype_editor_div").load(collector_map["TrialTypeEditor.html"]);
         </script>
 			</div>
     </td>
@@ -125,7 +118,7 @@ block_save = true;
 <script>
 presentation_style_default = $("#Presentation")[0].style;
 
-$("#shuffle_off_button").on("click",function(){			// code for disabling shuffling	
+$("#shuffle_off_button").on("click",function(){			// code for disabling shuffling
 	$("#shuffle_on_button").show();
 	$("#shuffle_off_button").hide();
 });
@@ -133,7 +126,7 @@ $("#shuffle_on_button").on("click",function(){			// code for enabling shuffling
 	$("#shuffle_on_button").hide();
 	$("#shuffle_off_button").show();
 });
-  
+
 $("#stop_button").on("click",function(){
 	$("#experiment_div").hide();
 	$(".trial_iframe").remove();
@@ -143,34 +136,6 @@ $("#stop_button").on("click",function(){
 	$("#stim_progress").show();
 	$(".progress").hide();
 	$("#experiment_progress").css("width","0%");
-	delete(stim_interval);	
-});
-
-$(document).keyup(function(e) {
-	if($("#ACE_editor").is(":focus")){
-		alert("whoop");
-	}
-	switch(e.which){
-		case 27:
-			$("#survey_cell_view").hide();
-			break;
-		case 37:
-		case 38:
-		case 39:
-		case 40:
-			if(typeof(survey_hot) !== "undefined"){
-				var thisCellValue = survey_hot.getValue();
-				$("#survey_cell_view").val(thisCellValue);				
-			};
-			$("#survey_cell_view").show();
-			break;
-		default:
-			if(typeof($(".handsontableInput")[0]) !== "undefined"){				
-				var thisCellValue = $(".handsontableInput")[0].value; // bit of a hack
-				$("#survey_cell_view").val(thisCellValue);
-				$("#survey_cell_view").show();
-			}
-			break;			
-	}
+	delete(stim_interval);
 });
 </script>

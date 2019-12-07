@@ -192,43 +192,38 @@ function createHoT(container, data,sheet_name) {
 					alert("error - "+sheet_name+" not found in "+experiment);
 				}
 			}
-		},        
-	afterDeselect: function(){
-		$(".survey_cell_view_td").hide(); 
-	},
-	afterInit: function() {
-		updateDimensions(this);
-	},
-	afterCreateCol: function() {
-		updateDimensionsDelayed(this, 55, 0);
-	},
-	afterCreateRow: function() {
-		updateDimensionsDelayed(this, 0, 28);
-	},
-	afterRemoveCol: function() {
-		updateDimensionsDelayed(this);
-	},
-	afterRemoveRow: function() {
-		updateDimensionsDelayed(this);
-	},
-	afterSelectionEnd: function(){
-		thisCellValue = this.getValue();
-		$("#survey_cell_view").val(thisCellValue);
-		$(".survey_cell_view_td").show();
-		
-		var coords        = this.getSelected();
-		var column        = this.getDataAtCell(0,coords[1]); 
-		var thisCellValue = this.getDataAtCell(coords[0],coords[1]);
-		console.dir(column);
-		console.dir(thisCellValue);
-		console.dir(sheet_name);
-		thisCellValue = thisCellValue == null ? thisCellValue = "" : thisCellValue;
-		column        = column        == null ? column        = "" : column;
-		window['Current HoT Coordinates'] = coords;
-		helperActivate(column, thisCellValue,sheet_name);
-		cell_content_process(thisCellValue,coords,sheet_name,container);
-	},
-	cells: function(row, col, prop) {
+		},
+    afterInit: function() {
+      updateDimensions(this);
+    },
+    afterCreateCol: function() {
+      updateDimensionsDelayed(this, 55, 0);
+    },
+    afterCreateRow: function() {
+      updateDimensionsDelayed(this, 0, 28);
+    },
+    afterRemoveCol: function() {
+      updateDimensionsDelayed(this);
+    },
+    afterRemoveRow: function() {
+      updateDimensionsDelayed(this);
+    },
+    afterSelectionEnd: function(){
+      thisCellValue = this.getValue();
+      
+      var coords        = this.getSelected();
+      var column        = this.getDataAtCell(0,coords[1]); 
+      var thisCellValue = this.getDataAtCell(coords[0],coords[1]);
+      console.dir(column);
+      console.dir(thisCellValue);
+      console.dir(sheet_name);
+      thisCellValue = thisCellValue == null ? thisCellValue = "" : thisCellValue;
+      column        = column        == null ? column        = "" : column;
+      window['Current HoT Coordinates'] = coords;
+      helperActivate(column, thisCellValue,sheet_name);
+      cell_content_process(thisCellValue,coords,sheet_name,container);
+    },
+    cells: function(row, col, prop) {
 		var cellProperties = {};        
 		if (row === 0) {
 			cellProperties.renderer = firstRowRenderer;

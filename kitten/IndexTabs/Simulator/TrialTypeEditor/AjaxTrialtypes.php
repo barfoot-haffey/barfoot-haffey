@@ -15,8 +15,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>
- 		
-		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)		
+
+		Kitten release (2019) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 
 $trialtypes_folder = "../../../../../trialtypes";
@@ -29,13 +29,13 @@ $action = $_POST['action'];
 if($action == 'initiate'){
 
 	$default_trialtypes = new stdClass();
-	$default_trialtypes_list = file_get_contents("default/list.txt");
+	$default_trialtypes_list = file_get_contents("Default/DefaultTrialtypeList.txt");
 	$default_trialtypes_list = explode(",",$default_trialtypes_list);
-	
-	foreach($default_trialtypes_list as $name){		
-		$default_trialtypes -> $name = file_get_contents("default/$name.html");
+
+	foreach($default_trialtypes_list as $name){
+		$default_trialtypes -> $name = file_get_contents("Default/$name.html");
 	}
-	echo json_encode($default_trialtypes);	
+	echo json_encode($default_trialtypes);
 }
 
 if($action == 'rename'){
