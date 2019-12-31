@@ -23,6 +23,15 @@ function download_collector_file(filename,content,type){
 	}
 }
 
+function io_to_git_rep(){
+  var this_url = document.URL.split(".");
+  var git_user = this_url[0].replace("https://",  "");
+  var git_repo = this_url[2].split("/")[1];
+  return ("https://github.com/" + git_user + "/" + git_repo);
+  // turn https://anthonyhaffey.github.io/my-collector/kitten/ into https://github.com/anthonyhaffey/my-collector
+}
+
+
 function report_error(error,collector_error_message){
 	console.dir(error);
   if(typeof(collector_error_message) !== "undefined"){

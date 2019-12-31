@@ -32,12 +32,6 @@ dev_obj.simulator_on = true;
 <link rel="stylesheet" type="text/css" href="IndexTabs/Simulator/SimulatorStyle.css" media="screen" />
 
 <script>
-var User_Data = {
-	Username:   "Admin:Simulator",
-	ID:         "Admin:Simulator",
-	Debug_Mode: true,
-	Experiment_Data: {stimuli: {}, procedure: {}, globals: {}, responses: {}}
-}
 
 window.onbeforeunload = function() {
 	if($("#save_status").html() !== "" & $("#save_status").html() !== "Up to date"){

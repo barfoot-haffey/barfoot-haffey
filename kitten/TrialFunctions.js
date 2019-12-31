@@ -51,12 +51,13 @@ if(typeof(Trial) !== "undefined"){
     }
     parent.parent.parent.exp_json.storage[this_name] = this_content;
   }
+  Trial.submit = function(){
+    parent.parent.exp_json.inputs = jQuery( "[name]" );
+    parent.parent.exp_json.finish_trial();
+  }
 }
 
-Trial.submit = function(){
-  parent.parent.exp_json.inputs = jQuery( "[name]" );
-  parent.parent.exp_json.finish_trial();
-}
+
 function precrypted_data(decrypted_data){
 	responses_csv = decrypted_data.responses;
 	response_headers = [];

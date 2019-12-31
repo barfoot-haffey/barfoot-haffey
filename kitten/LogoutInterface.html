@@ -23,6 +23,11 @@
 	height:30px;
 	width:30px;
 }
+#collector_logo,
+#github_logo,
+#logout_btn{
+  display:none;
+}
 </style>
 <table id="logout_table">
 	<tr>
@@ -50,6 +55,9 @@
 			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/collector.ico.png" id="collector_logo">
 		</td>
     <td>
+			<img class='logo' style="border-radius: 50%; background-color:white; padding:2px" src="../logos/Github.png" id="github_logo">
+		</td>
+    <td>
       <form action="login.php" method="post" style="padding:0px">
         <button id="logout_btn" type="submit" name="login_type" value="logout" class="btn btn-primary">Log out</button>
         <input type="hidden" name="return_page" value="index.php"/>
@@ -60,13 +68,25 @@
 
 <script>
 
-user_data = {
-	//email used to be here
+console.dir("dev_obj");
+console.dir(dev_obj);
+console.dir(JSON.stringify(dev_obj));
 
-  // email : ' $user_email '
-}
-
-$("#collector_account_email").html(user_data.email);
+switch(dev_obj.context){
+  case "github":
+    //show the github icon
+    $("#github_logo").show();
+    break;
+  case "server":
+    $("#collector_account_email").html("<?= $user_email ?>"); //or window.localStorage.getItem("user_email")  ?
+    $("#logout_btn").show();
+    $("#collector_logo").show();
+    break;
+  default:
+    $("#logout_btn").show();     //this might be redundant
+    $("#collector_logo").show(); //this might be redundant
+    break;
+};
 
 
 function highlight_account(element_id){
@@ -111,9 +131,19 @@ $("#collector_logo").on("click", function(){
   });
 });
 
+$("#github_logo").on("click",function(){
+  bootbox.confirm("Would you like to view the repository this is based on?",function(response){
+    if(response){
+      window.open(io_to_git_rep(),'_blank');
+    }
+  });
+});
+
 $("#google_logo").on("click",function(){
   bootbox.confirm("Would you like to open your google drive in a new tab?",function(response){
-    window.open('https://drive.google.com/drive/u/0/my-drive','_blank');
+    if(response){
+      window.open('https://drive.google.com/drive/u/0/my-drive','_blank');
+    }
   });
 });
 

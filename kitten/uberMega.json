@@ -1,7 +1,6 @@
 {
   "boosts":    {},
   "exp_mgmt":  {
-    "user_data": 				"tbc",
     "any_loaded": 	 		false,
     "authenticated":   	false,
     "current_manager": 	"",

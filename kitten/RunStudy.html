@@ -24,18 +24,6 @@
 -->
 <script src="../libraries/jquery-3.3.1.min.js"></script>
 <script src="Code/googleTriggers.js"></script>
-
-
-<!--
-
-/*
-
-The encryption code - wrap this more tidily once it is working (and make the crypto-js library local)
-
-*/
-
--->
-
 <script src="../libraries/tweetnacl.js"></script>
 <script src="../libraries/tweetnacl-utils.js"></script>
 <script src="../libraries/crypto-js.min.js"></script>
@@ -60,13 +48,6 @@ function encrypt(receiverPublicKey, msgParams) {  //: string
   }  
 }
 </script>
-
-
-<!--
-<script src="../libraries/tweetnacl.js"></script>
--->
-
-
 <div id="initiate_collector_div"></div>
 <script src="Code/initiateCollector.js"></script>
 
@@ -255,19 +236,19 @@ google_obj = {
   saves_started:0,
   saves_ended:0,
   save_queue:[],
-  save_queue_add:function(save_queue_item){
-    google_obj.save_queue.push(save_queue_item);
-    if(google_obj.save_queue.length == 1){        //need to initiate run_save as it stopped before you added this item
-      google_obj.run_save();
-    }
-  },
   run_save:function(){
     var this_save = google_obj.save_queue.pop();
     this_save();
     if(google_obj.save_queue.length > 0){         //keep going until all saves done.
       gogle_obj.run_save();
     }
-  }
+  },
+  save_queue_add:function(save_queue_item){
+    google_obj.save_queue.push(save_queue_item);
+    if(google_obj.save_queue.length == 1){        //need to initiate run_save as it stopped before you added this item
+      google_obj.run_save();
+    }
+  }  
 }
 
 function collectorPapaParsed(preparsed){
@@ -284,6 +265,10 @@ function collectorPapaParsed(preparsed){
 	}).data;
 
 	return post_parsed;
+}
+
+function local_save(){
+  window.localStorage.setItem("exp_json",JSON.stringify(exp_json));
 }
 
 function simulator_off(){
@@ -407,14 +392,26 @@ function final_trial(){
       }
       break;
     case "github":
-      $("#experiment_div").html("<h1 class='text-danger'>Please wait while we confirm that all your data has been saved</h1>");
+      $("#experiment_div").html("<h1 class='text-danger'>" +
+                                  "Please wait while we confirm that all your data has been saved" +
+                                "</h1>" +
+                                '<div class="progress">'+
+                                  '<div id="google_progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">' +
+                                  '</div>' +
+                                '</div>');
       function google_save_check(){
         setTimeout(function(){
           if(google_obj.saves_started == google_obj.saves_ended){
-            $("#experiment_div").html("<h1>Thank you for participating. If you'd like to download your raw data <span id='download_json'>click here</span></h1>");
-            $("#participant_country").show();
-            $("#participant_country").load("ParticipantCountry.html");
+            $("#google_progress").css("width","100%");
+            setTimeout(function(){
+              $("#experiment_div").html("<h1>Thank you for participating. If you'd like to download your raw data <span id='download_json'>click here</span></h1>");
+              $("#participant_country").show();
+              $("#participant_country").load("ParticipantCountry.html");
+              window.localStorage.removeItem("exp_json");
+            },1000);
           } else {
+            var google_prog_perc = (100*google_obj.saves_ended/google_obj.saves_started) + "%";
+            $("#google_progress").css("width",google_prog_perc);
             google_save_check();
           }
         },1000);
@@ -441,18 +438,24 @@ $("#complete_task").on("click",function(){
 // Pipeline
 /////////////
 
-function initiate_experiment(){
+function initiate_experiment(resume){
 	select_condition();
-	full_screen();
-  create_exp_json_variables();
-	parse_sheets("stimuli");
-	parse_sheets("procedure");
+  full_screen();
+  if(typeof(resume) == "undefined"){
+    create_exp_json_variables();
+    parse_sheets("stimuli");
+    parse_sheets("procedure");
+  }
   create_exp_json_functions();
-  parse_current_proc();
-  clean_trialtypes();
-  insert_start();
-	shuffle_start_exp();
-	process_welcome();
+  if(typeof(resume) == "undefined"){
+    parse_current_proc();
+    clean_trialtypes();
+    insert_start();
+  	shuffle_start_exp();
+  }	 else {
+    buffer_trials();
+  }
+  process_welcome();
 }
 
 
@@ -802,6 +805,7 @@ function create_exp_json_functions(){
 					}
 				},parseFloat(max_time));
 			}
+      local_save();
 
 			//deal with any Trial.set_timer or Trial.time_elapsed functions here
 			//var this_timeout = exp_json.time_outs.filter(row => row.trial_no == parseFloat(exp_json.trial_no));
@@ -811,11 +815,7 @@ function create_exp_json_functions(){
       });
 
 			if(this_timeout.length !== 0){ //should have  && this_timeout.length == 1 - need to deal with when there are multiple
-				console.dir("this_timeout");
-				console.dir(this_timeout);
-        this_timeout.forEach(function(spec_timeout){
-          console.dir("spec_timeout");
-          console.dir(spec_timeout);
+				this_timeout.forEach(function(spec_timeout){
           setTimeout(function(){
             spec_timeout.this_func();
           }, spec_timeout.duration);
@@ -1133,31 +1133,39 @@ function write_trial_iframe(index){
 //////////////////////
 // Start experiment //
 //////////////////////
-
 var exp_json = ""; //this will get updated
-if(typeof(exp_location) !== "undefined" && exp_location !== ""){
-  console.dir(exp_location);
+  
 
-	if(exp_location.indexOf("www.dropbox") !== -1){
-		get_location = exp_location.replace("www.","dl.");
-	} else {
-		get_location = exp_location;
-	}
-
-  $.get(get_location,function(this_experiment){
-    exp_json = JSON.parse(this_experiment);
-    if(typeof(dev_obj.simulator_on) == "undefined" || dev_obj.simulator_on == "false"){ //note this HAS TO BE IN QUOTES to pass properly from PhP to js.
-      initiate_experiment();
-    }
-  });
+if(window.localStorage.getItem("exp_json") !== null){
+  exp_json = JSON.parse(window.localStorage.getItem("exp_json"));
+  initiate_experiment("resume");
 } else {
-  //assume it's gitpod
-  get_location = "https://dl.dropbox.com/s/46xw6a4pkfery75/PY1PR_Autumn_Workshop_1.json?dl";
-  $.get(get_location,function(this_experiment){
-    exp_json = JSON.parse(this_experiment);
-    initiate_experiment();
-  });
+  if(typeof(exp_location) !== "undefined" && exp_location !== ""){
+    console.dir(exp_location);
+
+    if(exp_location.indexOf("www.dropbox") !== -1){
+      get_location = exp_location.replace("www.","dl.");
+    } else {
+      get_location = exp_location;
+    }
+
+    $.get(get_location,function(this_experiment){
+      exp_json = JSON.parse(this_experiment);
+      if(typeof(dev_obj.simulator_on) == "undefined" || dev_obj.simulator_on == "false"){ //note this HAS TO BE IN QUOTES to pass properly from PhP to js.
+        initiate_experiment();
+      }
+    });
+  } else {
+    //assume it's gitpod
+    get_location = "https://dl.dropbox.com/s/46xw6a4pkfery75/PY1PR_Autumn_Workshop_1.json?dl";
+    $.get(get_location,function(this_experiment){
+      exp_json = JSON.parse(this_experiment);
+      initiate_experiment();
+    });
+  }
 }
+
+
 
 function select_condition(){
 	exp_json.conditions = collectorPapaParsed(exp_json.cond_array);
@@ -1212,18 +1220,13 @@ $(window).bind('keydown', function(event) {
 	}
 });
 
-
 //prevent closing without warning
 window.onbeforeunload = function() {
   if(experiment_finished_and_emailed == false){
-
     precrypted_data(exp_json,"It looks like you're trying to leave the experiment before you're finished (or at least before the data has been e-mailed to the researcher. Please choose a filename to save your data as and e-mail it to the researcher. It should appear in your downloads folder.");
-
     return "Please do not try to refresh - you will have to restart if you do so.";
   }
 };
-
 $("body").css("text-align","center");
 $("body").css("margin","auto");
-
 </script>

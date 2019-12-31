@@ -244,28 +244,30 @@ encrypt_obj = {
 
 
     bootbox.prompt("In order to encrypt and decrypt your participants' data, we need a password. Make sure you will remember this password, if you forget it then any data that is encrypted will be lost forever.",function(result){
-      bootbox.prompt("Let's type in the password one more time, just to be sure",function(result_2){
-        if(result == result_2){
+      if(result){
+        bootbox.prompt("Let's type in the password one more time, just to be sure",function(result_2){
+          if(result == result_2){
 
-          var encryptedAES = CryptoJS.AES.encrypt(receiverSecretKey, result_2);
-          var encryptedAES_string = encryptedAES.toString();
-          var decrypted = CryptoJS.AES.decrypt(encryptedAES_string, result_2);
-          var plaintext = decrypted.toString(CryptoJS.enc.Utf8);
+            var encryptedAES = CryptoJS.AES.encrypt(receiverSecretKey, result_2);
+            var encryptedAES_string = encryptedAES.toString();
+            var decrypted = CryptoJS.AES.decrypt(encryptedAES_string, result_2);
+            var plaintext = decrypted.toString(CryptoJS.enc.Utf8);
 
-          if(plaintext == receiverSecretKey){
-            console.dir("all good");
-            megaUberJson.keys.encrypted_private_key = encryptedAES_string;
-            encrypt_obj.confirm_keys();
+            if(plaintext == receiverSecretKey){
+              console.dir("all good");
+              megaUberJson.keys.encrypted_private_key = encryptedAES_string;
+              encrypt_obj.confirm_keys();
+            } else {
+              bootbox.alert("Something went wrong with creating your encryption keys");
+            }
+
           } else {
-            bootbox.alert("Something went wrong with creating your encryption keys");
-          }
+            bootbox.alert("Erm, your passwords didnt match, do you want to have another go?");
+            //update this with the relevant code to clarify whether the user wants to have another go.
 
-        } else {
-          bootbox.alert("Erm, your passwords didnt match, do you want to have another go?");
-          //update this with the relevant code to clarify whether the user wants to have another go.
-
-        }  
-      })
+          }  
+        });
+      }
     });
   },
   google_script_url(){
