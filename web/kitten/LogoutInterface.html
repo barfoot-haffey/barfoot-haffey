@@ -133,7 +133,11 @@ $("#collector_logo").on("click", function(){
 });
 
 $("#github_logo").on("click",function(){
-
+	if(typeof(master_json.github) == "undefined"){
+		master_json.github = {
+			
+		}
+	}
 		if(typeof(master_json.github.repository) == "undefined"){
 			bootbox.alert("You need to identify or create an online git repository  of Collector to run this online");
 		} else {
