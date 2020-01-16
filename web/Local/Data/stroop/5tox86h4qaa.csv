@@ -1,0 +1,4 @@
+post_0_trial_start_ms,item,max_time,shuffle_1,text,trial type,post_0_trial_end_ms,post_0_trial_end_date,max time,shuffle 1,,repeat,cue,answer,letter_color,compatible,color_1,color_2,color_3,color_4,key_1,key_2,key_3,key_4
+,,,,,,,,,,,,,,,,,,,,,,,
+1579175170331,0,,off,,start_experiment,1579175171815,Thu Jan 16 2020 11:46:11 GMT+0000 (Greenwich Mean Time),,,,,,,,,,,,,,,,
+1579175171828,2,,,In this task you will be required to identify what color the letters of the word presented are. <br><br> To do this you'll need to respond with the following keys: <br><br>,instruct,1579175173053,Thu Jan 16 2020 11:46:13 GMT+0000 (Greenwich Mean Time),,off,,,PURPLE,z,Purple,compatible,purple,green,red,blue,D,F,J,K
