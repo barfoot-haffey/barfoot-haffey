@@ -1,0 +1,4 @@
+post_0_trial_start_ms,item,max_time,shuffle_1,text,trial type,cue,answer,starting_time_limit,,post_0_trial_end_ms,post_0_trial_end_date,response,max time,shuffle 1,repeat
+,,,,,,,,,,,,,,,
+1579196422750,0,,off,,start_experiment,O|U|R|P|G,GROUP,10000,,1579196424192,Thu Jan 16 2020 17:40:24 GMT+0000 (Greenwich Mean Time),,,,
+1579196424200,2,,,Click on the letters to put them in the correct order,anagram_speedy,E|C|R|K|W,WRECK,10000,,1579196428609,Thu Jan 16 2020 17:40:28 GMT+0000 (Greenwich Mean Time),WRECK,user,trials,

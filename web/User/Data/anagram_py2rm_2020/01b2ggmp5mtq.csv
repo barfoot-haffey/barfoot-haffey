@@ -1,0 +1,9 @@
+post_0_trial_start_ms,item,max_time,shuffle_1,text,trial type,cue,answer,starting_time_limit,reduce_time,,post_0_trial_end_ms,post_0_trial_end_date,max time,shuffle 1,repeat,response
+,,,,,,,,,,,,,,,,
+1579196649289,0,,off,,start_experiment,O|U|R|P|G,GROUP,10000,500,,1579196650626,Thu Jan 16 2020 17:44:10 GMT+0000 (Greenwich Mean Time),,,,
+1579196650634,0,,,Would you like to begin?,instruct,O|U|R|P|G,GROUP,10000,500,,1579196651865,Thu Jan 16 2020 17:44:11 GMT+0000 (Greenwich Mean Time),user,off,,
+1579196651872,3,,,Click on the letters to put them in the correct order,anagram_speedy,U|M|H|B|T,THUMB,10000,500,,1579196654953,Thu Jan 16 2020 17:44:14 GMT+0000 (Greenwich Mean Time),user,trials,,THUMB
+1579196654961,4,,,Click on the letters to put them in the correct order,anagram_speedy,N|C|A|Y|F,FANCY,10000,500,,1579196658281,Thu Jan 16 2020 17:44:18 GMT+0000 (Greenwich Mean Time),user,trials,,FANCY
+1579196658288,19,,,Click on the letters to put them in the correct order,anagram_speedy,P|E|I|R|V,VIPER,10000,500,,1579196664837,Thu Jan 16 2020 17:44:24 GMT+0000 (Greenwich Mean Time),user,trials,,VIPER
+1579196664849,18,,,Click on the letters to put them in the correct order,anagram_speedy,A|F|R|T|C,CRAFT,10000,500,,1579196667650,Thu Jan 16 2020 17:44:27 GMT+0000 (Greenwich Mean Time),user,trials,,CRAFT
+1579196667657,16,,,Click on the letters to put them in the correct order,anagram_speedy,L|O|I|T|P,PILOT,10000,500,,1579196670569,Thu Jan 16 2020 17:44:30 GMT+0000 (Greenwich Mean Time),user,trials,,PILOT

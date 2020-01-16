@@ -1,0 +1,5 @@
+post_0_trial_start_ms,item,max_time,shuffle_1,text,trial type,cue,answer,starting_time_limit,,post_0_trial_end_ms,post_0_trial_end_date,response,test,max time,shuffle 1,repeat
+,,,,,,,,,,,,,,,,
+1579195681176,0,,off,,start_experiment,O|U|R|P|G,GROUP,10000,,1579195683171,Thu Jan 16 2020 17:28:03 GMT+0000 (Greenwich Mean Time),,,,,
+1579195683179,3,,,Click on the letters to put them in the correct order,anagram_speedy,U|M|H|B|T,THUMB,10000,,1579195687882,Thu Jan 16 2020 17:28:07 GMT+0000 (Greenwich Mean Time),THUMB,,user,trials,
+1579195687894,2,,,Click on the letters to put them in the correct order,anagram_speedy,E|C|R|K|W,WRECK,10000,,1579195695548,Thu Jan 16 2020 17:28:15 GMT+0000 (Greenwich Mean Time),WRECK,,user,trials,

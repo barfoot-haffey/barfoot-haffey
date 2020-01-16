@@ -1,0 +1,13 @@
+post_0_trial_start_ms,item,max_time,shuffle_1,text,trial type,cue,answer,starting_time_limit,reduce_time,,post_0_trial_end_ms,post_0_trial_end_date,response,max time,shuffle 1,repeat
+,,,,,,,,,,,,,,,,
+1579196550196,0,,off,,start_experiment,O|U|R|P|G,GROUP,10000,500,,1579196551865,Thu Jan 16 2020 17:42:31 GMT+0000 (Greenwich Mean Time),,,,
+1579196551871,9,,,Click on the letters to put them in the correct order,anagram_speedy,V|E|O|A|F,FOVEA,10000,500,,1579196555163,Thu Jan 16 2020 17:42:35 GMT+0000 (Greenwich Mean Time),FOVEA,user,trials,
+1579196555171,8,,,Click on the letters to put them in the correct order,anagram_speedy,A|N|R|T|G,GRANT,10000,500,,1579196559168,Thu Jan 16 2020 17:42:39 GMT+0000 (Greenwich Mean Time),GRANT,user,trials,
+1579196559175,5,,,Click on the letters to put them in the correct order,anagram_speedy,I|F|N|E|K,KNIFE,10000,500,,1579196563201,Thu Jan 16 2020 17:42:43 GMT+0000 (Greenwich Mean Time),KNIFE,user,trials,
+1579196563209,7,,,Click on the letters to put them in the correct order,anagram_speedy,N|C|U|E|O,OUNCE,10000,500,,1579196566378,Thu Jan 16 2020 17:42:46 GMT+0000 (Greenwich Mean Time),OUNCE,user,trials,
+1579196566387,3,,,Click on the letters to put them in the correct order,anagram_speedy,U|M|H|B|T,THUMB,10000,500,,1579196569065,Thu Jan 16 2020 17:42:49 GMT+0000 (Greenwich Mean Time),THUMB,user,trials,
+1579196569072,3,,,Click on the letters to put them in the correct order,anagram_speedy,U|M|H|B|T,THUMB,10000,500,,1579196571769,Thu Jan 16 2020 17:42:51 GMT+0000 (Greenwich Mean Time),THUMB,user,trials,
+1579196571776,2,,,Click on the letters to put them in the correct order,anagram_speedy,E|C|R|K|W,WRECK,10000,500,,1579196574600,Thu Jan 16 2020 17:42:54 GMT+0000 (Greenwich Mean Time),WRECK,user,trials,
+1579196574608,6,,,Click on the letters to put them in the correct order,anagram_speedy,O|A|L|K|C,CLOAK,10000,500,,1579196577658,Thu Jan 16 2020 17:42:57 GMT+0000 (Greenwich Mean Time),CLOAK,user,trials,
+1579196577666,10,,,Click on the letters to put them in the correct order,anagram_speedy,N|I|A|C|P,PANIC,10000,500,,1579196580762,Thu Jan 16 2020 17:43:00 GMT+0000 (Greenwich Mean Time),PANIC,user,trials,
+1579196580771,4,,,Click on the letters to put them in the correct order,anagram_speedy,N|C|A|Y|F,FANCY,10000,500,,1579196583529,Thu Jan 16 2020 17:43:03 GMT+0000 (Greenwich Mean Time),FANCY,user,trials,
