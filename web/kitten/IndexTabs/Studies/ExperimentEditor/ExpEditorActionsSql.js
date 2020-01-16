@@ -18,28 +18,40 @@
 		Kitten release (2019-2020) author: Dr. Anthony Haffey (a.haffey@reading.ac.uk)
 */
 $("#delete_exp_btn").on("click",function(){
-	var this_exp = $("#experiment_list").val();
-	if(this_exp == null){
+	var exp_name = $("#experiment_list").val();
+	if(exp_name == null){
 		bootbox.alert("You need to select a study to delete it");
 	} else {
 		bootbox.confirm("Are you sure you want to delete your experiment? <br><br> If you delete it you can go to your <a href='https://www.dropbox.com/home/Apps/Open-Collector' target='blank'>dropbox folder</a> to look up previous versions of your study.", function(result) {
 			if(result){
 				//delete from master_json
-				delete (master_json.exp_mgmt.experiments[this_exp]);
+				delete (master_json.exp_mgmt.experiments[exp_name]);
+				if(dropbox_check()){
+					dbx.filesDelete({path:"/experiments/"+exp_name+".json"})
+						.then(function(response) {
+							$('#experiment_list option:contains('+ exp_name +')')[0].remove();
+							$("#experiment_list").val(document.getElementById('experiment_list').options[0].value);
+							master_json.exp_mgmt.experiment = $("#experiment_list").val();
+							custom_alert(exp_name +" succesfully deleted");
+							update_master_json();
+							update_handsontables();
+						})
+						.catch(function(error) {
+							report_error(error);
+						});
+				} else {
+					$('#experiment_list option:contains('+ exp_name +')')[0].remove();
+					$("#experiment_list").val(document.getElementById('experiment_list').options[0].value);
+					master_json.exp_mgmt.experiment = $("#experiment_list").val();
+					custom_alert(exp_name +" succesfully deleted");
+					update_master_json();
+					update_handsontables();
 
-
-				dbx.filesDelete({path:"/experiments/"+this_exp+".json"})
-					.then(function(response) {
-						$('#experiment_list option:contains('+ this_exp +')')[0].remove();
-						$("#experiment_list").val(document.getElementById('experiment_list').options[0].value);
-						master_json.exp_mgmt.experiment = $("#experiment_list").val();
-						custom_alert(this_exp +" succesfully deleted");
-						update_master_json();
-						update_handsontables();
-					})
-					.catch(function(error) {
-						report_error(error);
-					});
+					//delete the local file if this is
+					if(dev_obj.context == "localhost"){
+						eel.delete_exp(exp_name);
+					}
+				}
 			}
 		});
 	}
@@ -71,7 +83,7 @@ $("#new_experiment_button").on("click",function(){
 	});
 });
 $("#new_proc_button").on("click",function(){
-  var proc_template = new_experiment_data["Procedure"]["Procedure.csv"];
+  var proc_template = new_experiment_data["Procedure"]["Procedure_1"];
 	bootbox.prompt("What would you like the name of the new procedure sheet to be?",function(new_proc_name){
 		var experiment = master_json.exp_mgmt.experiment;
 		var this_exp   = master_json.exp_mgmt.experiments[experiment];
@@ -286,31 +298,34 @@ $("#save_btn").on("click", function(){
 			 encrypt_obj.generate_keys();
 	}
 
-	var experiment = master_json.exp_mgmt.experiment;
-  var this_exp = master_json.exp_mgmt.experiments[experiment];
-      this_exp.public_key    = master_json.keys.public_key;
-      this_exp.save_script = master_json.data.save_script;
+	var experiment 						= master_json.exp_mgmt.experiment;
+  var this_exp 							= master_json.exp_mgmt.experiments[experiment];
+      this_exp.public_key   = master_json.keys.public_key;
+      this_exp.save_script 	= master_json.data.save_script;
 
 	//parse procs for survey saving next
 	if(typeof(this_exp) !== "undefined") {
- //   if(typeof(this_exp.parsed_procs) == "undefined"){
-      this_exp.parsed_procs = {};
-      var procs = Object.keys(this_exp.all_procs);
-      procs.forEach(function(proc){
-        this_exp.parsed_procs[proc] = Papa.parse(Papa.unparse(this_exp.all_procs[proc]),{header:true}).data;
-      });
-   // }
+ 		//   if(typeof(this_exp.parsed_procs) == "undefined"){
+    this_exp.parsed_procs = {};
+    var procs = Object.keys(this_exp.all_procs);
+    procs.forEach(function(proc){
+      this_exp.parsed_procs[proc] = Papa.parse(Papa.unparse(this_exp.all_procs[proc]),{header:true}).data;
+    });
+   	// }
+		//add surveys to experiment
+		if(typeof(this_exp.surveys) == "undefined"){
+			this_exp.surveys = {};
+		}
 
-    //add surveys to experiment
-    if(typeof(this_exp.surveys) == "undefined"){
-      this_exp.surveys = {};
-    }
 
     Object.keys(this_exp.parsed_procs).forEach(function(proc_name){
 
       this_proc = this_exp.parsed_procs[proc_name];
       this_proc.forEach(function(proc_row){
         proc_row = clean_obj_keys(proc_row);
+
+				// survey check
+				////////////////
         if(typeof(proc_row.survey) !== "undefined" &&
           proc_row.survey !== ""){
           var this_survey = proc_row.survey.toLowerCase();
@@ -350,15 +365,52 @@ $("#save_btn").on("click", function(){
     var trialtypes = [];
 
     Object.keys(this_exp.parsed_procs).forEach(function(proc_name){
-      this_exp.parsed_procs[proc_name] = this_exp.parsed_procs[proc_name].map(function(row){
+			var cleaned_parsed_proc = [];
+			this_exp.parsed_procs[proc_name].forEach(function(row){
+				if(Object.values(row).join("") !== ""){
+					cleaned_parsed_proc.push(row);
+				}
+			});
+			this_exp.parsed_procs[proc_name] = cleaned_parsed_proc;
+
+			this_exp.parsed_procs[proc_name] = this_exp.parsed_procs[proc_name].map(function(row,row_index){
         var cleaned_row = clean_obj_keys(row);
         if(trialtypes.indexOf(cleaned_row["trial type"]) == -1){
           trialtypes.push(cleaned_row["trial type"].toLowerCase());
         }
+				cleaned_row["trial type"] = cleaned_row["trial type"].toLowerCase();
+				if(cleaned_row["trial type"].indexOf(" ") !== -1){
+					bootbox.alert("You have a space in row <b>" + (row_index + 2) + "</b> of your procedure <b>" + proc_name + "</b>. Please fix this before trying to run your experiment.");
+				}
+				if(cleaned_row.item == 0){
+					if(typeof(master_json.trialtypes.user_trialtypes[cleaned_row["trial type"]]) !== "undefined"){
+						var this_trialtype = master_json.trialtypes.user_trialtypes[cleaned_row["trial type"]];
+					} else if(typeof(master_json.trialtypes.default_trialtypes[cleaned_row["trial type"]]) !== "undefined"){
+						var this_trialtype = master_json.trialtypes.default_trialtypes[cleaned_row["trial type"]];
+					} else {
+						bootbox.alert("The trialtype <b>" + cleaned_row["trial type"] + "</b> doesn't appear to exist");
+					}
+					these_variables = list_variables(this_trialtype);
+					these_variables.forEach(function(this_variable){
+						if(Object.keys(cleaned_row).indexOf(this_variable) == -1){          //i.e. this variable is not part of this procedure
+							bootbox.alert("You have your item set to <b>0</b> in row <b>" +
+														(row_index + 2) +
+														"</b>. However, it seems like the trialtype <b>" +
+														cleaned_row["trial type"] +
+														"</b> will be looking for a variable in your" +
+														" stimuli sheet.");
+						}
+					});
+
+					//need to take into account the trialtypes might be referring to a header in the procedure sheet
+				}
         return cleaned_row;
       });
-
     });
+
+		proc_file = $("#proc_select").val();
+		createExpEditorHoT(this_exp.all_procs[proc_file], "Procedure",   proc_file);
+
     trialtypes = trialtypes.filter(Boolean); //remove blanks
     if(typeof(this_exp.trialtypes) == "undefined"){
       this_exp.trialtypes = {};

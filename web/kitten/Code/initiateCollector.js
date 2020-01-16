@@ -26,19 +26,31 @@ dev_obj.version = "kitten"; //this needs to be updated when moving to cat, but p
 dev_obj.published_links = [];
 
 
-function collectorPapaParsed(preparsed){
-
-	post_parsed = Papa.parse(Papa.unparse(preparsed),{
-		beforeFirstChunk: function(chunk) {
-			var rows = chunk.split( /\r\n|\r|\n/ );
-			var headings = rows[0].toLowerCase();
-			rows[0] = headings;
-			return rows.join("\r\n");
-		},
-		header:true,
-		skipEmptyLines:true
-	}).data;
-
+function collectorPapaParsed(content){
+  //check if parsed stylesheet
+  if(typeof(content) == "object"){
+    post_parsed = Papa.parse(Papa.unparse(content),{
+  		beforeFirstChunk: function(chunk) {
+  			var rows = chunk.split( /\r\n|\r|\n/ );
+  			var headings = rows[0].toLowerCase();
+  			rows[0] = headings;
+  			return rows.join("\r\n");
+  		},
+  		header:true,
+  		skipEmptyLines:true
+  	}).data;
+  } else {
+    post_parsed = Papa.parse(content,{
+  		beforeFirstChunk: function(chunk) {
+  			var rows = chunk.split( /\r\n|\r|\n/ );
+  			var headings = rows[0].toLowerCase();
+  			rows[0] = headings;
+  			return rows.join("\r\n");
+  		},
+  		header:true,
+  		skipEmptyLines:true
+  	}).data;
+  }
 	return post_parsed;
 }
 function complete_csv(this_csv){
@@ -144,9 +156,28 @@ function initiate_collector(){
     case "gitpod":
     case "localhost":
       $("#logged_in").show();
+      $("#option_Studies").click();
       break;
   }
 }
+
+function list_variables(trialtype){
+  var variables = [];
+
+  split_trialtype = trialtype.split("{{");
+  split_trialtype = split_trialtype.map(function(split_part){
+    if(split_part.indexOf("}}") !== -1){
+      more_split_part = split_part.split("}}");
+      variables.push(more_split_part[0].toLowerCase());
+      more_split_part[0] = more_split_part[0].toLowerCase();
+      split_part = more_split_part.join("}}");
+    }
+    return split_part;
+  });
+  boost_html = split_trialtype.join("{{");
+  return variables;
+}
+
 function save_csv (filename, data) {
 	var blob = new Blob([data], {type: 'text/csv'});
 	if(window.navigator.msSaveOrOpenBlob) {
