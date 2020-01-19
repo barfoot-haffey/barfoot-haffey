@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e700dd51-0b21-44ea-b88e-97aacd83d845" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Collector.py" beforeDir="false" afterPath="$PROJECT_DIR$/Collector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020/Procedure_1" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020/Procedure_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/stroop.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/stroop.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/User/master.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/master.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Code/BrowserCheck.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Code/BrowserCheck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/ContextStart.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/ContextStart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Data/Data.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Data/Data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/RunStudy.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/RunStudy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Studies/SheetEditor/SheetActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Studies/SheetEditor/SheetActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/dbxFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/dbxFunctions.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
