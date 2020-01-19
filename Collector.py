@@ -139,7 +139,7 @@ def save_data(experiment_name,participant_code,responses):
         os.mkdir("web/User/Data")
     if os.path.isdir("web/User/Data/" + experiment_name) == False:
         os.mkdir("web/User/Data/" + experiment_name)
-    experiment_file = open("web/User/Data/" + experiment_name+ "/" + participant_code + ".csv", "w")
+    experiment_file = open("web/User/Data/" + experiment_name+ "/" + participant_code + ".csv", "w", newline='')
     experiment_file.write(responses)
 
 

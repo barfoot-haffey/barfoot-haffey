@@ -121,8 +121,8 @@ encrypt_obj = {
     bootbox.prompt({
       title: "What is your password? (this will never be saved, but is needed to upload your changes to github)",
       inputType: "password",
-      callback: function(password){
-        if(password){
+      callback: function(user_password){
+        if(user_password){
           var decrypted_private_key_obj = CryptoJS.AES.decrypt(master_json.keys.encrypted_private_key, user_password);    
           var decrypted_private_key = decrypted_private_key_obj.toString(CryptoJS.enc.Utf8);
           this_decrypted_message = JSON.parse(encrypt_obj.decrypt(decrypted_private_key,JSON.parse(encrypted_content)));
@@ -265,6 +265,16 @@ encrypt_obj = {
   }
 }
 
+function list_keys(){
+  if(typeof(master_json.keys) !== "undefined" &&
+     typeof(master_json.keys.public_key) !== "undefined" &&
+     master_json.keys.public_key !== ""){
+    $("#public_key").val(master_json.keys.public_key);
+    $("#private_key").val(master_json.keys.encrypted_private_key); 
+  } else {
+    encrypt_obj.generate_keys();
+  }
+}
 
 </script>
 

@@ -1,0 +1,4 @@
+Item,Trial Type,Max Time,Text,Shuffle 1,
+0,instruct,,Your instructions here,,
+2 to 21,anagram,user,Click on the letters to put them in the correct order,off,
+,,,,,
