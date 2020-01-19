@@ -52,6 +52,7 @@ def push_collector(username,
     #create repository if that fails
     #os.system("git push https://github.com/open-collector/open-collector")
     try:
+        print(this_message)
         os.system("git add .")
         os.system("git commit -m '" + this_message + "'")
         os.system("git push https://" + username + ":" + password + "@github.com/" + organisation + "/" + repository+ ".git")
