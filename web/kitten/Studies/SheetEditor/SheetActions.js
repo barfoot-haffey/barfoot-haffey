@@ -411,14 +411,15 @@ $("#save_btn").on("click", function(){
 						bootbox.alert("The trialtype <b>" + cleaned_row["trial type"] + "</b> doesn't appear to exist");
 					}
 					these_variables = list_variables(this_trialtype);
+              
 					these_variables.forEach(function(this_variable){
 						if(Object.keys(cleaned_row).indexOf(this_variable) == -1 &&
                this_variable !== "survey"){          //i.e. this variable is not part of this procedure
-							bootbox.alert("You have your item set to <b>0</b> in row <b>" +
+							custom_alert("You have your item set to <b>0</b> in row <b>" +
 														(row_index + 2) +
 														"</b>. However, it seems like the trialtype <b>" +
 														cleaned_row["trial type"] +
-														"</b> will be looking for a variable in your" +
+														"</b> will be looking for a variable <b>" + this_variable + "</b> in your" +
 														" stimuli sheet.");
 						}
 					});
