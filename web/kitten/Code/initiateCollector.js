@@ -37,7 +37,7 @@ function collectorPapaParsed(content){
   			return rows.join("\r\n");
   		},
   		header:true,
-  		skipEmptyLines:true
+  		skipEmptyLines:'greedy'
   	}).data;
   } else {
     post_parsed = Papa.parse(content,{
@@ -48,7 +48,7 @@ function collectorPapaParsed(content){
   			return rows.join("\r\n");
   		},
   		header:true,
-  		skipEmptyLines:true
+  		skipEmptyLines:'greedy'
   	}).data;
   }
 	return post_parsed;
@@ -143,7 +143,7 @@ function initiate_collector(){
   dev_obj.context = detect_context();
   switch(dev_obj.context){
     case "server":
-      $.post("code/initiateCollector.php",{
+      $.post("code/InitiateCollector.php",{
 				//nothing to post, just want to run it.
       },function(local_key){
 				$("#login_div").show();
