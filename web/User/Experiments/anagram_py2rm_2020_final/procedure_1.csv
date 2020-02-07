@@ -1,7 +1,7 @@
 Item,Trial Type,Max Time,Text,Shuffle 1,survey,
-0,survey,user,,off,consent_miniproject,
 0,instruct,user,First instructions,off,,
 2 to 21,anagram_speedy,user,Click on the letters to put them in the correct order,trials,,
 0,survey,user,,off,anxiety_follow_up.csv,
 0,survey,user,,off,demographics.csv,
+,instruct,,neuroticism,,,
 ,,,,,,
