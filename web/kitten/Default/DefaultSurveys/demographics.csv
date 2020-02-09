@@ -7,4 +7,3 @@ English_Age,"At what age did you start learning English? (write ""0"" if from bi
 Country,What is your country of residence?,Text,,No,
 Handedness,What is your preferred hand?,Likert,Left|Right|Both,No,
 ethnicity,If you would like to please state your ethnicity,Dropdown,Caucasian|Asian|Hispanic|African|Other,Yes,
-neuro_disorders,"Please specify any psychological or neurological conditions you have (type ""No"" if you don't have any)",Text,,No,

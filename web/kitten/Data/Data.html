@@ -46,8 +46,11 @@ Encryption code/interface
 
 
 <nav class="navbar navbar-primary bg-white fixed-top fixed-top-2">
-  <button class="btn btn-primary" id="js_decrypt_btn">Upload and decrypt file</button>
-  <input type="file" id="fileToLoad" style="display:none">
+  <span> <!-- to block formatting that puts the next button on the far right -->
+    <button class="btn btn-primary" id="js_decrypt_btn">Upload and decrypt file</button>
+    <input type="file" id="fileToLoad" style="display:none">
+    <button class="btn btn-primary" onclick="encrypt_obj.change_password()">Change password</button>
+  </span>
 </nav>
 
 
@@ -119,53 +122,121 @@ encrypt_obj = {
   _decrypt_request:function(encrypted_content,
                             default_filename){
     bootbox.prompt({
-      title: "What is your password? (this will never be saved, but is needed to upload your changes to github)",
+      title: "What is your password? (this will never be saved, but is needed)",
       inputType: "password",
       callback: function(user_password){
         if(user_password){
-          var decrypted_private_key_obj = CryptoJS.AES.decrypt(master_json.keys.encrypted_private_key, user_password);    
-          var decrypted_private_key = decrypted_private_key_obj.toString(CryptoJS.enc.Utf8);
-          this_decrypted_message = JSON.parse(encrypt_obj.decrypt(decrypted_private_key,JSON.parse(encrypted_content)));
           
-          response_headers 		 = [];
-          for(var i = 0; i < this_decrypted_message.length ; i++) {
-            decrypted_data = this_decrypted_message[i];
-            Object.keys(decrypted_data).forEach(function(header){
-              if(response_headers.indexOf(header) == -1){
-                response_headers.push(header);
-              };
-            });        
-          }        
-
-          for(var i =0; i < this_decrypted_message.length; i++){
-            response_headers.forEach(function(this_header){
-              if(typeof(this_decrypted_message[i][this_header]) == "undefined"){
-                this_decrypted_message[i][this_header] = "";
+          
+          //set up a function that can be called recursively, working through each archived keypair until there are none.
+          function combine_password_key(keys_list,user_password){
+            if(keys_list.length == 0){
+              bootbox.alert("This password isn't working. Are you sure it's the right password, and that you're decrypting the data with the correct installation of Collector? (i.e. do you have multiple versions of Collector you are conducting research with?");
+            } else {
+              this_private_key = keys_list.pop();
+              var decrypted_private_key_obj = CryptoJS.AES.decrypt(master_json.keys.encrypted_private_key, user_password);  
+              try{
+                var decrypted_private_key = decrypted_private_key_obj.toString(CryptoJS.enc.Utf8);
+              } catch(error) {
+                custom_alert(error + " trying with an archived private key");
+                combine_password_key(keys_list,user_password);
               }
-            });
+              try{
+                this_decrypted_message = JSON.parse(encrypt_obj.decrypt(decrypted_private_key,JSON.parse(encrypted_content)));
+                process_decrypted(this_decrypted_message);
+              } catch(error){
+                custom_alert(error + " trying with an archived private key");
+                combine_password_key(keys_list,user_password);
+              }            
+            }
           }
           
-          //download the data file here
+          function process_decrypted(this_decrypted_message){
+            response_headers 		 = [];
+            for(var i = 0; i < this_decrypted_message.length ; i++) {
+              decrypted_data = this_decrypted_message[i];
+              Object.keys(decrypted_data).forEach(function(header){
+                if(response_headers.indexOf(header) == -1){
+                  response_headers.push(header);
+                };
+              });        
+            }        
 
-          //
-          bootbox.prompt({
-            title: "What would you like to name this file?",
-            value: default_filename,
-            callback: function(result) {
-              var filename = result.toLowerCase().replace(".csv","") + ".csv";
-              save_csv (filename, Papa.unparse(this_decrypted_message,{
-                quotes: false, //or array of booleans
-                quoteChar: '"',
-                escapeChar: '"',
-                delimiter: ",",
-                header: true,
-                newline: "\r\n",
-                skipEmptyLines: true, //or 'greedy',
-                columns: null //or array of strings
-              }));          
+            for(var i =0; i < this_decrypted_message.length; i++){
+              response_headers.forEach(function(this_header){
+                if(typeof(this_decrypted_message[i][this_header]) == "undefined"){
+                  this_decrypted_message[i][this_header] = "";
+                }
+              });
             }
+            
+            //download the data file here
+
+            //
+            bootbox.prompt({
+              title: "What would you like to name this file?",
+              value: default_filename,
+              callback: function(result) {
+                var filename = result.toLowerCase().replace(".csv","") + ".csv";
+                save_csv (filename, Papa.unparse(this_decrypted_message,{
+                  quotes: false, //or array of booleans
+                  quoteChar: '"',
+                  escapeChar: '"',
+                  delimiter: ",",
+                  header: true,
+                  newline: "\r\n",
+                  skipEmptyLines: true, //or 'greedy',
+                  columns: null //or array of strings
+                }));          
+              }
+            });            
+          }
+          if(typeof(master_json.keys.archived) == "undefined"){
+            master_json.keys.archived = [];
+          }
+          var all_private_keys = master_json.keys.archived.map(function(row){
+            return row.encrypted_private_key
           });
+          all_private_keys.push(master_json.keys.encrypted_private_key);
+          combine_password_key(all_private_keys,user_password);
         };
+      }
+    });
+  },
+  archive_keys(){
+    var keypair = {
+                    public_key : master_json.keys.public_key,
+                    encrypted_private_key : master_json.keys.encrypted_private_key
+                  };
+    master_json.keys.archived.push(keypair);                    
+  },
+  change_password(){
+    bootbox.dialog({
+      title:"Delete old password",
+      message:"Do you want to delete the old password keys? WARNING IF YOU DO THIS YOU WILL NEVER BE ABLE TO DECRYPT ANY DATA ASSOCIATED WITH THIS PASSWORD AGAIN. If you don't want to delete the old password, but still want a new one, select <b>No</b>",
+      buttons:{
+        yes: {
+          label: "Yes",
+          className: 'btn-danger',
+          callback: function(){
+            encrypt_obj.generate_keys();
+          }
+        },
+        no: {
+          label: "No",
+          className: 'btn-primary',
+          callback: function(){
+            encrypt_obj.archive_keys();
+            encrypt_obj.generate_keys();
+          }
+        },
+        cancel: {
+          label: "Cancel",
+          className: 'btn-secondary',
+          callback: function(){
+            //nothing
+          }
+        },
       }
     });
   },
@@ -226,8 +297,12 @@ encrypt_obj = {
     receiverPublicKey = nacl.util.encodeBase64(keypair.publicKey);
     receiverSecretKey = nacl.util.encodeBase64(keypair.secretKey)
 
-    master_json.keys = {};
-
+    if(typeof(master_json.keys) == "undefined"){
+      master_json.keys = {
+        archived : []
+      };
+    }
+    
     master_json.keys.public_key = receiverPublicKey;
 
 
@@ -245,6 +320,7 @@ encrypt_obj = {
               console.dir("all good");
               master_json.keys.encrypted_private_key = encryptedAES_string;
               encrypt_obj.confirm_keys();
+              list_keys();
             } else {
               bootbox.alert("Something went wrong with creating your encryption keys");
             }
