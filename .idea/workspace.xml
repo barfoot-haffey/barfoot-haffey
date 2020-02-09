@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e700dd51-0b21-44ea-b88e-97aacd83d845" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020_final.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020_final.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020_final/procedure_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Experiments/anagram_py2rm_2020_final/procedure_1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Surveys/anxiety_follow_up.csv" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Surveys/anxiety_follow_up.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/Surveys/consent_miniproject.csv" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/Surveys/consent_miniproject.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/User/master.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/User/master.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Code/InitiateCollector.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Code/InitiateCollector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Code/OnlineTriggers.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Code/OnlineTriggers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/CollectorMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/CollectorMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Data/Data.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Data/Data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/Default/DefaultSurveys/demographics.csv" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/Default/DefaultSurveys/demographics.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/ParticipantCountry.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/ParticipantCountry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/RunStudy.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/RunStudy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/TrialFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/TrialFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/kitten/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/kitten/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/libraries/ace-master/lib/ace/mode/coffee/coffee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/libraries/ace-master/lib/ace/mode/coffee/parser_test.js" beforeDir="false" />
-    </list>
+    <list default="true" id="e700dd51-0b21-44ea-b88e-97aacd83d845" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Collector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
+            <state relative-caret-position="1309">
+              <caret line="167" column="38" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="38" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -272,8 +253,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Collector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="152" column="38" selection-start-line="152" selection-start-column="38" selection-end-line="152" selection-end-column="38" />
+        <state relative-caret-position="1309">
+          <caret line="167" column="38" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="38" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
