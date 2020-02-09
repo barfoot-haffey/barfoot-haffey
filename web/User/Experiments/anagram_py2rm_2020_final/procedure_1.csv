@@ -6,6 +6,7 @@ If you select an incorrect letter then click on it again to remove it from the a
 When you are ready to start, click ""Next"".",off,,
 2 to 21,anagram_speedy,user,Click on the letters to put them in the correct order,trials,,
 0,survey,user,,off,anxiety_follow_up.csv,
+0,survey,user,neuroticism_BFI,surveys,bfi_neuroticism.csv,
+0,instruct,user,type A and B personality,surveys,,
 0,survey,user,,off,demographics.csv,
-0,instruct,,neuroticism_BFI,off,,
 ,,,,,,
