@@ -8,6 +8,6 @@ When you are ready to start, click ""Next"".",off,,
 0,survey,user,,off,anxiety_follow_up.csv,
 0,survey,user,neuroticism_BFI,surveys,bfi_neuroticism.csv,
 0,instruct,user,"Part of this task requires you to go to the following page <a href=""http://www.psych.uncc.edu/pagoolka/TypeAB.html"" target=""_blank"">here</a> and then write the score it gives you below: <input class=""form-control"" name=""iframe_result"">
-Once you have added the score, please continue to the final questionnaire",surveys,,
+Once you have added the score, please continue to the next questionnaire",surveys,,
 0,survey,user,,off,demographics.csv,
 ,,,,,,
